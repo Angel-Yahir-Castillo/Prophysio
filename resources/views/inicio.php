@@ -11,6 +11,6 @@
 <body>
     <?php include 'header.php';?>
 
-    <h1>Inicio xd</h1>
+    <h1>Inicio xd Hola</h1>
 </body>
 </html>
