@@ -20,7 +20,7 @@
 
 <body>
     <div class="navbar-fixed">
-        <nav style="background-color: #61FFE2;" >
+        <nav style="background-color: #C7F7F7;" >
             <div class="nav-wrapper">
                 <a href="<?php echo url('/')?>" style="padding-left:30px" class="brand-logo black-text">Prophysio</a>
                 <a href="#" data-target="menu-responsive" class="sidenav-trigger">
@@ -124,7 +124,7 @@
         </li>
     </ul>
 
-    <ul class="sidenav"  id="menu-responsive">
+    <ul class="sidenav" style="background-color: #FFFFFF"  id="menu-responsive">
     <li><a  href="<?php echo url('/')?>" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>" class="">Inicio</a></li> 
                     <li>
                         <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
