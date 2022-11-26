@@ -8,6 +8,7 @@ use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,8 @@ Route::get('quienes-somos', [NosotrosController::class, 'index']);
 
 #servicios
 Route::get('servicios', [ServiciosController::class, 'index']);
+
+
+#admin 
+Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin/blog', [AdminController::class, 'blog']);

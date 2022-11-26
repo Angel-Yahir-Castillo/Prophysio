@@ -33,7 +33,7 @@
                         <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Blog
                             <i class="material-icons left">
-                                today
+                                forum
                             </i>
                         </a>
                     </li>
