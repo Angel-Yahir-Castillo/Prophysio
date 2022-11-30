@@ -55,7 +55,7 @@ Route::get('quienes-somos', [NosotrosController::class, 'index']);
 
 #servicios
 Route::get('servicios', [ServiciosController::class, 'index']);
-
+Route::get('cifrado',[ServiciosController::class, 'cifrado']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index']);
