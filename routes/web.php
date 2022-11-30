@@ -41,7 +41,9 @@ Route::get('register', [VisitanteController::class, 'registro']);
 
 # contacto
 Route::get('contacto', [ContactoController::class, 'index']);
-
+Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre']);
+Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond']);
+Route::get('politica-de-privacidad', [ContactoController::class, 'politica']);
 
 
 

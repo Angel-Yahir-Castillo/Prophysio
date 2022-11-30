@@ -12,5 +12,7 @@
     <?php include 'header.php';?>
 
     <h1>Servicios</h1>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <?php include 'footer.php';?>
 </body>
 </html>
