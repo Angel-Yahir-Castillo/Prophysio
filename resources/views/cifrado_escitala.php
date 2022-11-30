@@ -10,7 +10,7 @@
 
 <body>
     <?php include 'header.php';
-        require_once('cifrado.php');
+        
     ?>
 
     <center><h1>Cifrado Escitala</h1><center>
@@ -19,18 +19,18 @@
 
         <div class="row">
 
-            <form action="" class="col s12">
+            <form action="<?php echo url('encripta') ?>" method="get" class="col s12">
 
                 <div class="row card-panel">
 
                     <center><b>Cifrar un mensaje</b></center>
                     <div class="input-field col s12">
-                        <input id="mensaje" type="text" class="validate" required>
+                        <input id="mensaje" type="text" name="mensaje" class="validate" required>
                         <label for="mensaje">Mensaje para cifrar:</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="clave" type="number" class="validate" required>
+                        <input id="clave" type="number" name="clave" class="validate" required>
                         <label for="clave">Clave para cifrar:</label>
                     </div>
 
@@ -50,18 +50,18 @@
 
         <div class="row">
 
-            <form action="<?php echo url('contacto') ?>" method="GET" class="col s12">
+            <form action="<?php echo url('desencripta') ?>" method="GET" class="col s12">
 
                 <div class="row card-panel">
 
                     <center><b>Descifrar un mensaje</b></center>
                     <div class="input-field col s12">
-                        <input id="mensaje_en" type="text" class="validate" required>
+                        <input id="mensaje_en" type="text" name="mensaje" class="validate" required>
                         <label for="mensaje_en">Mensaje cifrado:</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="clave_des" type="number" class="validate" required>
+                        <input id="clave_des" name="clave" type="number" class="validate" required>
                         <label for="clave_des">Clave para descifrar:</label>
                     </div>
 

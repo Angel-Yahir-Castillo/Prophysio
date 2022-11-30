@@ -13,4 +13,12 @@ class ServiciosController extends Controller
     public function cifrado(){
         return view('cifrado_escitala');
     }
+
+    public function encriptar(){
+        return view('encripta');
+    }
+
+    public function desencriptar(){
+        return view('desencripta');
+    }
 }

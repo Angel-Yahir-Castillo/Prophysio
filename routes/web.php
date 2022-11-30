@@ -56,6 +56,8 @@ Route::get('quienes-somos', [NosotrosController::class, 'index']);
 #servicios
 Route::get('servicios', [ServiciosController::class, 'index']);
 Route::get('cifrado',[ServiciosController::class, 'cifrado']);
+Route::get('encripta', [ServiciosController::class, 'encriptar']);
+Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index']);

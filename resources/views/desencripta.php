@@ -15,11 +15,11 @@
         $mensaje = $_GET['mensaje'];
         $clave = $_GET['clave'];
 
-        $encriptado = cifrar($mensaje, $clave);
+        $desencriptado = desCifrar($mensaje, $clave);
     ?>
 
-    <center><h1>Mensaje encriptado:</h1><center>
-    <center><h1><?php echo $encriptado; ?></h1><center>
+    <center><h1>Mensaje desEncriptado:</h1><center>
+    <center><h1><?php echo $desencriptado; ?></h1><center>
 
     <a class="btn" href="<?php echo url('cifrado') ?>" > Regresar</a>
 
