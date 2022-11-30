@@ -44,9 +44,9 @@
           <div class="footer-copyright">
             <div class="container black-text">
             © 2022 Prophysio Huejutla
-            <a class="black-text text-lighten-4 right" target="_blank" href="https://www.instagram.com/prophysio_huejutla/">Instagram</a>
-            <a class="black-text text-lighten-4 right" target="_blank"  href="https://www.facebook.com/">Facebook</a>
-            <a class="black-text text-lighten-4 right" href="#!">WhatsApp</a>
+            <a class="black-text text-lighten-4 right" target="_blank" href="https://www.instagram.com/prophysio_huejutla/"> <img width="30px" height="30px" src="<?php echo asset('iconos/instagram.png')?>"></a>
+            <a class="black-text text-lighten-4 right" target="_blank"  href="https://www.facebook.com/"> <img width="30px" height="30px" src="<?php echo asset('iconos/facebook.png')?>"></a>
+            <a class="black-text text-lighten-4 right" href="#!"> <img width="30px" height="30px" src="<?php echo asset('iconos/whatsapp.png')?>"></a>
             </div>
           </div>
     </footer>
