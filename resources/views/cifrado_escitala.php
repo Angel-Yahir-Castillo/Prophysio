@@ -50,7 +50,7 @@
 
         <div class="row">
 
-            <form action="" class="col s12">
+            <form action="<?php echo url('contacto') ?>" method="GET" class="col s12">
 
                 <div class="row card-panel">
 
@@ -65,7 +65,7 @@
                         <label for="clave_des">Clave para descifrar:</label>
                     </div>
 
-                    <button class="btn" type="submit" >DesEncriptar</button>
+                    <input class="btn" type="submit" value="DesEncriptar"></input>
 
                 </div>
 
