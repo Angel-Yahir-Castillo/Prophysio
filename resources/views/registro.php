@@ -11,9 +11,62 @@
 <body>
     <?php include 'header.php';?>
 
-    <h1>Registrarse</h1>
+    <br><br><br>
+    <div class="section container">
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="row">
+
+            <form action="" method="GET" class="col s12">
+
+                <div class="row card-panel">
+
+                    <center><b>Registrarse</b></center>
+                    <div class="input-field col s12">
+                        <input id="nombre" type="text" name="nombre" class="validate" required>
+                        <label for="nombre">Nombre:</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <input id="correo" name="correo" type="email" class="validate" required>
+                        <label for="correo">Correo electronico:</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <input id="telefono" name="telefono" type="tel" class="validate" required>
+                        <label for="telefono">Telefono:</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <i class="material-icons prefix">remove_red_eye</i>
+                        <input id="contraseña" name="contraseña" type="password" class="validate" required>
+                        <label for="contraseña">Contraseña:</label>
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                        <i class="material-icons prefix">remove_red_eye</i>
+                        <input id="contra" name="contra" type="password" class="validate" required>
+                        <label for="contra">Repetir contraseña:</label>
+                    </div>
+
+                    <center><button class="btn" type="submit" value="">Registrarse
+                        <i class="material-icons left">
+                            person_add
+                        </i>
+                    </button></center>
+
+                    <br>
+
+                    <center>¿Ya tienes una cuenta? <a class="" href="<?php echo url('login') ?>">Inicia sesion aqui</a></center>
+
+                </div>
+
+                
+
+            </form>
+        </div>
+
+    </div>
+    <br><br><br>
     <?php include 'footer.php';?>
 </body>
 </html>
