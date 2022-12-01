@@ -48,7 +48,7 @@
                     $contador++;
                 }
                 else{
-                    $matriz[$i][$j] = ' ';
+                    $matriz[$j][$i] = ' ';
                 }
             }
         }
