@@ -61,7 +61,7 @@
                 <a class="black-text text-lighten-4 " target="_blank"  href="https://www.facebook.com/"> <img width="30px" height="30px" src="<?php echo asset('iconos/facebook.png')?>"></a>
               </div>
               <div class="col s4 m2 section">
-                <a class="black-text text-lighten-4 " href="#!"> <img width="30px" height="30px" src="<?php echo asset('iconos/whatsapp.png')?>"></a>
+                <a class="black-text text-lighten-4 " target="_blank"href="https://api.whatsapp.com/send?phone=5212225081501&text=Hola%2C%20gracias%20por%20comunicarte%20a%20Prophysio%2C%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F%20"> <img width="30px" height="30px" src="<?php echo asset('iconos/whatsapp.png')?>"></a>
               </div>
             </div>
           </div>

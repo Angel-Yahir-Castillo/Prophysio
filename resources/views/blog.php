@@ -15,6 +15,31 @@
 
         <div class="row">
 
+          
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="" src="<?php echo asset('blog_images/lesion_prophysio.png')?>">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title">¿Es necesario tener una lesion para ir a Prophysio?</span>
+                        <p>
+                            La respuesta es: ¡NO! Aquí también te ayudamos a prevenir una lesión para que tu nivel físico sea el mejor. <br>
+                            ¡Ven a una valoración!<br>
+                            ¡Cuida de tu cuerpo!<br>
+                            ¡Agenda tu cita!<br>
+                            Tu salud es nuestra prioridad
+                        </p>
+                    </div>
+
+                    <div class="card-action">
+                        <a href="#"> Cuida tu salud</a>
+                    </div>
+
+                </div>
+            </div> 
+
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
@@ -33,6 +58,8 @@
 
                 </div>
             </div>
+
+            
 
             <div class="col s12 m6 l4">
                 <div class="card">
@@ -60,34 +87,16 @@
                 </div>
             </div>
 
-            <div class="col s12 m6 l4">
+            
+            
+
+        
+
+            <!--
+            <div class="col s12 m6 l5">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/lesion_prophysio.png')?>">
-                    </div>
-
-                    <div class="card-content">
-                        <span class="card-title">¿Es necesario tener una lesion para ir a Prophysio?</span>
-                        <p>
-                            La respuesta es: ¡NO! Aquí también te ayudamos a prevenir una lesión para que tu nivel físico sea el mejor. <br>
-                            ¡Ven a una valoración!<br>
-                            ¡Cuida de tu cuerpo!<br>
-                            ¡Agenda tu cita!<br>
-                            Tu salud es nuestra prioridad
-                        </p>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#"> Cuida tu salud</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/rodillas.png')?>">
+                        <img class="responsive-img" src="<?php echo asset('blog_images/rodillas.png')?>">
                     </div>
 
                     <div class="card-content">
@@ -111,22 +120,22 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
+            
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/lesion_prophysio.png')?>">
+                        <img class="" src="<?php echo asset('blog_images/sedentarismo.png')?>">
                     </div>
 
                     <div class="card-content">
-                        <span class="card-title">¿Es necesario tener una lesion para ir a Prophysio?</span>
+                        <span class="card-title">Sedentarismo</span>
                         <p>
-                            La respuesta es: ¡NO! Aquí también te ayudamos a prevenir una lesión para que tu nivel físico sea el mejor. <br>
-                            ¡Ven a una valoración!<br>
-                            ¡Cuida de tu cuerpo!<br>
-                            ¡Agenda tu cita!<br>
-                            Tu salud es nuestra prioridad
+                            ¿Qué es el sedentarismo? Y ¿Cómo afecta el sedentarismo en mi salud?<br>
+                            - El sedentarismo es las carencia de actividad física fuerte como el deporte, lo que por lo general pone al organismo humano en situación vulnerable ante enfermedades especialmente cardiacas y sociales.<br>
+                            El sedentarismo dificulta el desarrollo óseo normal de la columna vertebral, conlleva a una perdida de la fuerza y de resistencia muscular y hace que la espalda sea más vulnerable al exceso de carga.<br>
+                            ¡DECIDE MOVERTE!<br>
                         </p>
                     </div>
 
@@ -135,31 +144,8 @@
                     </div>
 
                 </div>
-            </div>
+            </div> 
 
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/lesion_prophysio.png')?>">
-                    </div>
-
-                    <div class="card-content">
-                        <span class="card-title">¿Es necesario tener una lesion para ir a Prophysio?</span>
-                        <p>
-                            La respuesta es: ¡NO! Aquí también te ayudamos a prevenir una lesión para que tu nivel físico sea el mejor. <br>
-                            ¡Ven a una valoración!<br>
-                            ¡Cuida de tu cuerpo!<br>
-                            ¡Agenda tu cita!<br>
-                            Tu salud es nuestra prioridad
-                        </p>
-                    </div>
-
-                    <div class="card-action">
-                        <a href="#"> Cuida tu salud</a>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
 
