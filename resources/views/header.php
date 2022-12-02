@@ -49,7 +49,7 @@
                         <a class="" href="<?php echo url('servicios') ?>" style="<?php if(request()->Is('servicios')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Servicios
                             <i class="material-icons left">
-                                today
+                                build
                             </i>
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                         <a class="" href="<?php echo url('quienes-somos') ?>" style="<?php if(request()->Is('quienes-somos')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Nosotros
                             <i class="material-icons left">
-                                chat
+                                people_outline
                             </i>
                         </a>
                     </li>
@@ -146,7 +146,7 @@
                         <a class="" href="<?php echo url('servicios') ?>" style="<?php if(request()->Is('servicios')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Servicios
                             <i class="material-icons left">
-                                today
+                                build
                             </i>
                         </a>
                     </li>
@@ -162,7 +162,7 @@
                         <a class="" href="<?php echo url('quienes-somos') ?>" style="<?php if(request()->Is('quienes-somos')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Nosotros
                             <i class="material-icons left">
-                                chat
+                                people_outline
                             </i>
                         </a>
                     </li>
