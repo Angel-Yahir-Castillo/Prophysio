@@ -69,7 +69,7 @@
 
                     <div class="card-content">
                         <span class="card-title">¿Como prevenir el dolor lumbar?</span>
-                        <p> !!!!Les compartimos acciones sencillas que ayudan a prevenir el #dolor en la zona lumbar. </p>
+                        <p> !!!!Les compartimos acciones sencillas que ayudan a prevenir el dolor en la zona lumbar. </p>
                             <ul>
                                 <li type="disc">- Apoya la espalda al sentarte.</li>
                                 <li type="disc">- Mantén posturas adecuadas al estar sentado o acostado.</li>
