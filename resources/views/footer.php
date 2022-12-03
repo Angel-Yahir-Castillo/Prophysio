@@ -24,7 +24,7 @@
           <div class="container">
             <div class="row">
                 <div class="col l4 m4 s12">
-                    <h5 class="black-text"> </h5>
+                    <h5 class="black-text"> Informacion</h5>
                     <ul>
                     <li><a class="" style="<?php if(request()->Is('politica-de-privacidad')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="<?php echo url('politica-de-privacidad')?>"><b>Politica de privacidad</b></a></li>
                     <li><a class="" style="<?php if(request()->Is('preguntas-frecuentes')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="<?php echo url('preguntas-frecuentes')?>"><b>Preguntas frecuentes</b></a></li>
@@ -34,8 +34,8 @@
               <div class="col l4 m4 s12">
                 <h5 class="black-text">Contacto</h5>
                 <ul>
-                  <li><a class="black-text text-lighten-3" href="#!">Correo electronico</a></li>
-                  <li><a class="black-text text-lighten-3" href="#!">Ubicacion</a></li>
+                  <li><a class="" href="<?php echo url('contacto')?>" style="<?php if(request()->Is('contacto')) echo 'color: #E20089;'; else echo 'color:#000000;';?>"><b>Correo electronico</b></a></li>
+                  <li><p class="black-text text-lighten-3">Ubicacion: <br> Calle Coahulia. S/N. col. Tahuizan. Huejutla Hgo </p></li>
                   <li><p class="black-text text-lighten-3" >Telefono: +52 2225081501</p></li>
                 </ul>
               </div>

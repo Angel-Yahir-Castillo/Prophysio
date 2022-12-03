@@ -70,13 +70,13 @@
                     <div class="card-content">
                         <span class="card-title">¿Como prevenir el dolor lumbar?</span>
                         <p> !!!!Les compartimos acciones sencillas que ayudan a prevenir el dolor en la zona lumbar. </p>
-                            <ul>
-                                <li type="disc">- Apoya la espalda al sentarte.</li>
-                                <li type="disc">- Mantén posturas adecuadas al estar sentado o acostado.</li>
-                                <li type="disc">- No cargues objetos pesados.</li>
-                                <li type="disc">- Realizar ejercicio físico.</li>
-                                <li type="disc">- Realiza pausas activas entre tus actividades.</li>
-                            </ul>
+                            
+                                <li type="disc"> Apoya la espalda al sentarte.</li>
+                                <li type="disc"> Mantén posturas adecuadas al estar sentado o acostado.</li>
+                                <li type="disc"> No cargues objetos pesados.</li>
+                                <li type="disc"> Realizar ejercicio físico.</li>
+                                <li type="disc"> Realiza pausas activas entre tus actividades.</li>
+                            
                         
                     </div>
 
@@ -133,8 +133,8 @@
                         <span class="card-title">Sedentarismo</span>
                         <p>
                             ¿Qué es el sedentarismo? Y ¿Cómo afecta el sedentarismo en mi salud?<br>
-                            - El sedentarismo es las carencia de actividad física fuerte como el deporte, lo que por lo general pone al organismo humano en situación vulnerable ante enfermedades especialmente cardiacas y sociales.<br>
-                            El sedentarismo dificulta el desarrollo óseo normal de la columna vertebral, conlleva a una perdida de la fuerza y de resistencia muscular y hace que la espalda sea más vulnerable al exceso de carga.<br>
+                            <li>El sedentarismo es las carencia de actividad física fuerte como el deporte, lo que por lo general pone al organismo humano en situación vulnerable ante enfermedades especialmente cardiacas y sociales.</li>
+                            <li>El sedentarismo dificulta el desarrollo óseo normal de la columna vertebral, conlleva a una perdida de la fuerza y de resistencia muscular y hace que la espalda sea más vulnerable al exceso de carga.</li>
                             ¡DECIDE MOVERTE!<br>
                         </p>
                     </div>

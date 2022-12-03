@@ -48,6 +48,13 @@
                         <label for="contra">Repetir contraseña:</label>
                     </div>
 
+                    <div class="col s12">
+                        <label for="politica">
+                            <input id="politica" name="politica" type="checkbox" class="filled-in validate" required>
+                            <span><b>He leido y acepto la <a href="<?php echo url('politica-de-privacidad')?>">politica de privacidad</a></b></span>
+                        </label>
+                    </div>
+
                     <center><button class="btn" type="submit" value="">Registrarse
                         <i class="material-icons left">
                             person_add
