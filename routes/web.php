@@ -24,9 +24,15 @@ Route::get('/', HomeController::class);
 
 Route::get('agenda', [AgendaController::class, 'index']);
 
+#blog
 Route::get('blog', [BlogController::class, 'index']);
+Route::get('admin/blog', [BlogController::class, 'admin_show']);
+Route::get('admin/blog/crear', [BlogController::class, 'admin_create']);
+Route::get('admin/blog/editar', [BlogController::class, 'admin_edit']);
 
 Route::get('blog/{articulo}', [BlogController::class, 'show']);
+
+
 
 Route::get('Agenda/{dia}', function ($dia) {
     return 'Agenda del dia: '.$dia;
@@ -61,4 +67,3 @@ Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index']);
-Route::get('admin/blog', [AdminController::class, 'blog']);

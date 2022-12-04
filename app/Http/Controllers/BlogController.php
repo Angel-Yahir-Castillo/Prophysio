@@ -13,4 +13,16 @@ class BlogController extends Controller
     public function show($articulo){
         return view('blog.show', compact('articulo'));
     }
+
+    public function admin_show(){
+        return view('admin.blog_admin_mostrar');
+    }
+
+    public function admin_create(){
+        return view('admin.blog_crear');
+    }
+
+    public function admin_edit(){
+        return view('admin.blog_modificar');
+    }
 }

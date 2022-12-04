@@ -7,7 +7,7 @@
     <title>Admin - blog</title>
 </head>
 <body>
-    <?php include('../header.php'); ?>
-    <h1>Admin blog listado</h1>
+    <?php include ('header_admin.php'); ?>
+    <h1>Admin blog crear</h1>
 </body>
 </html>

@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_blog" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                        <a class="dropdown-trigger" href="#" data-target="id_blog" style="<?php if (request()->Is('admin/blog') or request()->Is('admin/blog/crear') or request()->Is('admin/blog/editar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Blog
                             <i class="material-icons left">
                                 forum
@@ -208,16 +208,16 @@
 
     <ul id="id_blog" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('login') ?>">
+            <a class="black-text" href="<?php echo url('admin/blog/crear') ?>">
                 Agregar
                 <i class="material-icons left">
-                person_add
+                add
                 </i>
             </a>
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('admin/blog') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -226,7 +226,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('admin/blog/editar') ?>">
                 Editar
                 <i class="material-icons left">
                     edit

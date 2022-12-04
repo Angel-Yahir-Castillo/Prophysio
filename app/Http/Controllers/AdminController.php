@@ -10,9 +10,5 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
-    public function blog(){
-        return view('admin.blog.blog_admin_mostrar');
-    }
-
 
 }
