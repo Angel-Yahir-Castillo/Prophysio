@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,7 +64,8 @@ Route::get('politica-de-privacidad', [ContactoController::class, 'politica']);
 #quienes somos? - nosotros
 Route::get('quienes-somos', [NosotrosController::class, 'index']);
 
-
+#usuarios
+Route::post('registro_usuario',[UserController::class, 'registrar']);
 
 
 #servicios
@@ -73,5 +75,5 @@ Route::get('encripta', [ServiciosController::class, 'encriptar']);
 Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
-Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
 Route::get('admin/home', [AdminController::class, 'inicio']);

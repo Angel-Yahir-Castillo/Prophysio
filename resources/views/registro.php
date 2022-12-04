@@ -16,8 +16,9 @@
 
         <div class="row">
 
-            <form action="" method="GET" class="col s12">
+            <form action="<?php echo url('registro_usuario');?>" method="POST" class="col s12">
 
+           <?php echo csrf_field() ?>
                 <div class="row card-panel">
 
                     <center><b>Registrarse</b></center>
@@ -38,8 +39,8 @@
 
                     <div class="input-field col m6 s12">
                         <i class="material-icons prefix">remove_red_eye</i>
-                        <input id="contraseña" name="contraseña" type="password" class="validate" required>
-                        <label for="contraseña">Contraseña:</label>
+                        <input id="contrasena" name="contrasena" type="password" class="validate" required>
+                        <label for="contrasena">Contraseña:</label>
                     </div>
 
                     <div class="input-field col m6 s12">
@@ -55,11 +56,11 @@
                         </label>
                     </div>
 
-                    <center><button class="btn" type="submit" value="">Registrarse
+                    <center><input class="btn" type="submit" value="Registrarse">
                         <i class="material-icons left">
-                            person_add
+                            
                         </i>
-                    </button></center>
+                    </input></center>
 
                     <br>
 
