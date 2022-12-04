@@ -9,6 +9,7 @@ use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PacientesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +23,13 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', HomeController::class);
 
+#agendar
 Route::get('agenda', [AgendaController::class, 'index']);
+
+Route::get('Agenda/{dia}', function ($dia) {
+    return 'Agenda del dia: '.$dia;
+});
+
 
 #blog
 Route::get('blog', [BlogController::class, 'index']);
@@ -33,14 +40,14 @@ Route::get('admin/blog/editar', [BlogController::class, 'admin_edit']);
 Route::get('blog/{articulo}', [BlogController::class, 'show']);
 
 
+#pacientes
+Route::get('admin/pacientes', [PacientesController::class, 'paciente_mostrar']);
+Route::get('admin/pacientes/registrar', [PacientesController::class, 'paciente_create']);
+Route::get('admin/pacientes/editar', [PacientesController::class, 'paciente_edit']);
 
-Route::get('Agenda/{dia}', function ($dia) {
-    return 'Agenda del dia: '.$dia;
-});
 
 # cuenta - visitante
 Route::get('login', [VisitanteController::class, 'login']);
-
 Route::get('register', [VisitanteController::class, 'registro']);
 
 

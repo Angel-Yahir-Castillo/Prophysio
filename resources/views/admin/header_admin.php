@@ -37,7 +37,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_pacientes" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                    <?php $pacientes = array('admin/pacientes', 'admin/pacientes/registrar', 'admin/pacientes/editar');?>
+                        <a class="dropdown-trigger" href="#" data-target="id_pacientes" style="<?php if (in_array(request()->path(), $pacientes)) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Pacientes   
                             <i class="material-icons left">
                                 group
@@ -61,7 +62,8 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_blog" style="<?php if (request()->Is('admin/blog') or request()->Is('admin/blog/crear') or request()->Is('admin/blog/editar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                        <?php $blog = array('admin/blog', 'admin/blog/crear', 'admin/blog/editar');?>
+                        <a class="dropdown-trigger" href="#" data-target="id_blog" style="<?php if (in_array(request()->path(), $blog)) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Blog
                             <i class="material-icons left">
                                 forum
@@ -83,7 +85,7 @@
     <!-- Menus desplegables-->
     <ul id="id_terapeutas" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('login') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Registrar
                 <i class="material-icons left">
                 person_add
@@ -92,7 +94,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -101,7 +103,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Modificar
                 <i class="material-icons left">
                     edit
@@ -112,7 +114,7 @@
 
     <ul id="id_pacientes" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('login') ?>">
+            <a class="black-text" href="<?php echo url('admin/pacientes/registrar') ?>">
                 Registrar
                 <i class="material-icons left">
                 person_add
@@ -121,7 +123,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('admin/pacientes') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -130,7 +132,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('admin/pacientes/editar') ?>">
                 Modificar
                 <i class="material-icons left">
                     edit
@@ -141,7 +143,7 @@
 
     <ul id="id_citas" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('login') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Registrar 
                 <i class="material-icons left">
                 person_add
@@ -150,7 +152,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -159,7 +161,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Reprogramar
                 <i class="material-icons left">
                     alarm
@@ -168,7 +170,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Cancelar
                 <i class="material-icons left">
                     highlight_off
@@ -179,7 +181,7 @@
 
     <ul id="id_servicios" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('login') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Agregar
                 <i class="material-icons left">
                 person_add
@@ -188,7 +190,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -197,7 +199,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('register') ?>">
+            <a class="black-text" href="<?php echo url('') ?>">
                 Editar
                 <i class="material-icons left">
                     edit
