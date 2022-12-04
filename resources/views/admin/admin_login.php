@@ -33,8 +33,9 @@
         <div class="row">
 
             <div class="col m2 l3 s0"></div>
-            <form action="" method="GET" class="col l6 m8 s12">
+            <form action="<?php echo url('login_admin');?>" method="POST" class="col l6 m8 s12">
 
+            <?php echo csrf_field() ?>
                 <div class="row card-panel">
 
                     <center><b>Iniciar sesion</b></center>
@@ -44,31 +45,25 @@
                     </div>
 
                     <div class="input-field col s12 ">
-                        <select>
-                            <option value="1">Terapeuta</option>
-                            <option value="2" selected>Administrador</option>
+                        <select name="tipo"> 
+                            <option value="2">Terapeuta</option>
+                            <option value="1" selected>Administrador</option>
                         </select>
                         <label>Tipo de usuario</label>
                     </div>
 
 
                     <div class="input-field col s12">
-                        <input id="contraseña" name="contraseña" type="password" class="validate" required>
-                        <label for="contraseña">Contraseña:</label>
+                        <input id="contrasena" name="contrasena" type="password" class="validate" required>
+                        <label for="contrasena">Contraseña:</label>
                     </div>
 
-                    <center>
-                        <a class="btn" href="<?php echo url('admin/home')?>">
-                            <i class="material-icons left"> keyboard_tab </i>    
-                            Iniciar sesion
-                        </a>
-                    </center>
-                    <!--
-                    <center><button class="btn" type="submit" value="">Iniciar sesion
+
+                    <center><input class="btn" type="submit" value="Iniciar sesion">
                         <i class="material-icons left">
-                            keyboard_tab
+                            
                         </i>
-                    </button></center> -->
+                    </input></center> 
 
 
                 </div>

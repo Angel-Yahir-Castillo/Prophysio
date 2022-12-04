@@ -18,4 +18,20 @@ class UserController extends Controller
 
         return redirect()->route('admin.login');
     }
+
+    public function login_admin(Request $request){
+        $usuario = new User();
+        $usuario->nombre = $request->user;
+        $usuario->password = $request->contrasena;
+        $usuario->tipo_usuario = $request->tipo;
+
+        $admin = User::where('nombre',$usuario->nombre)->where('password',$usuario->password)->where('tipo_usuario',$usuario->tipo_usuario )->get();
+        if(count($admin) >0){
+            return redirect()->route('admin.home');
+        }
+        else{
+            return redirect()->route('admin.login');
+        }
+        
+    }
 }

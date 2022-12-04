@@ -66,7 +66,7 @@ Route::get('quienes-somos', [NosotrosController::class, 'index']);
 
 #usuarios
 Route::post('registro_usuario',[UserController::class, 'registrar']);
-
+Route::post('login_admin', [UserController::class, 'login_admin']);
 
 #servicios
 Route::get('servicios', [ServiciosController::class, 'index']);
@@ -76,4 +76,4 @@ Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
-Route::get('admin/home', [AdminController::class, 'inicio']);
+Route::get('admin/home', [AdminController::class, 'inicio'])->name('admin.home');
