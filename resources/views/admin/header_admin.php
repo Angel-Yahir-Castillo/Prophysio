@@ -22,7 +22,7 @@
     <div class="navbar-fixed">
         <nav style="background-color: #C7F7F7;" >
             <div class="nav-wrapper">
-                <a href="<?php echo url('admin')?>" style="padding-left:20px" class="brand-logo black-text">Prophysio</a>
+                <a href="<?php echo url('admin/home')?>" style="padding-left:50px" class="brand-logo black-text">Prophysio</a>
                 <a href="#" data-target="menu-responsive" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
@@ -49,7 +49,7 @@
                         <a class="dropdown-trigger" href="#" data-target="id_citas" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Citas
                             <i class="material-icons left">
-                                assignment_ind
+                                content_paste
                             </i>
                         </a>
                     </li>
@@ -57,7 +57,7 @@
                         <a class="dropdown-trigger" href="#" data-target="id_servicios" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Servicios
                             <i class="material-icons left">
-                                account_circle
+                                build
                             </i>
                         </a>
                     </li>
@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_sesiones" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                        <a class="dropdown-trigger" href="<?php echo url('admin')?>" data-target="id_sesiones" style="color:#000000;">
                             Cerrar sesion
                         </a>
                     </li>
@@ -85,7 +85,7 @@
     <!-- Menus desplegables-->
     <ul id="id_terapeutas" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Registrar
                 <i class="material-icons left">
                 person_add
@@ -94,7 +94,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -103,7 +103,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Modificar
                 <i class="material-icons left">
                     edit
@@ -143,16 +143,16 @@
 
     <ul id="id_citas" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Registrar 
                 <i class="material-icons left">
-                person_add
+                add
                 </i>
             </a>
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -161,7 +161,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Reprogramar
                 <i class="material-icons left">
                     alarm
@@ -170,7 +170,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Cancelar
                 <i class="material-icons left">
                     highlight_off
@@ -181,16 +181,16 @@
 
     <ul id="id_servicios" class="dropdown-content">
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Agregar
                 <i class="material-icons left">
-                person_add
+                add
                 </i>
             </a>
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Mostrar
                 <i class="material-icons left">
                 view_list
@@ -199,7 +199,7 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="<?php echo url('') ?>">
+            <a class="black-text" href="<?php echo url('admin/home') ?>">
                 Editar
                 <i class="material-icons left">
                     edit

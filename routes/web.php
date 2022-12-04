@@ -74,3 +74,4 @@ Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index']);
+Route::get('admin/home', [AdminController::class, 'inicio']);
