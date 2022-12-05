@@ -16,7 +16,7 @@ class UserController extends Controller
         $usuario->tipo_usuario = 4;
         $usuario->save();
 
-        return redirect()->route('admin.login');
+        return redirect()->route('login.user');
     }
 
     public function login_admin(Request $request){
@@ -32,6 +32,7 @@ class UserController extends Controller
             return redirect()->route('admin.home');
         }
         else{
+            #echo '<script>alert("Error de autenticacion")</script>';
             return redirect()->route('admin.login');
         }
         

@@ -56,11 +56,11 @@
                         </label>
                     </div>
 
-                    <center><input class="btn" type="submit" value="Registrarse">
+                    <center><button class="btn waves-effect waves-light" type="submit" value="">Registrarse
                         <i class="material-icons left">
-                            
+                            person_add
                         </i>
-                    </input></center>
+                    </button></center>
 
                     <br>
 

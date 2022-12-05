@@ -59,11 +59,11 @@
                     </div>
 
 
-                    <center><input class="btn" type="submit" value="Iniciar sesion">
+                    <center><button class="btn waves-effect waves-light" type="submit" value="">Iniciar sesion
                         <i class="material-icons left">
-                            
+                        keyboard_tab
                         </i>
-                    </input></center> 
+                    </button></center> 
 
 
                 </div>

@@ -48,7 +48,7 @@ Route::get('admin/pacientes/editar', [PacientesController::class, 'paciente_edit
 
 
 # cuenta - visitante
-Route::get('login', [VisitanteController::class, 'login']);
+Route::get('login', [VisitanteController::class, 'login'])->name('login.user');
 Route::get('register', [VisitanteController::class, 'registro']);
 
 
