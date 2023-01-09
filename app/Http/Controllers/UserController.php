@@ -19,6 +19,7 @@ class UserController extends Controller
         return redirect()->route('login.user');
     }
 
+
     public function login_admin(Request $request){
         $usuario = new User();
         $usuario->nombre = $request->user;
@@ -26,15 +27,15 @@ class UserController extends Controller
         $usuario->tipo_usuario = $request->tipo;
 
         $admin = User::where('nombre',$usuario->nombre)->where('password',$usuario->password)->where('tipo_usuario',$usuario->tipo_usuario )->get();
-        #$admin = User::where('nombre',$usuario->nombre)->where('password',$usuario->password)->get();
         
         if(count($admin) >0){
-            return redirect()->route('admin.home');
+            //return redirect()->route('admin.home');
+            return view('admin.home');
         }
         else{
-            #echo '<script>alert("Error de autenticacion")</script>';
-            return redirect()->route('admin.login');
+            $respuesta = 'contraseña incorrecta';
+            return redirect()->route('admin.login', compact('respuesta'));
+            //return view('admin.admin_login', compact('respuesta'));
         }
-        
     }
 }

@@ -9,7 +9,8 @@ class AdminController extends Controller
     public function index(){
         //$usuarios = User::all();
         //return $usuarios;
-        return view('admin.admin_login');
+        $respuesta =  ' ';
+        return view('admin.admin_login', compact('respuesta'));
     }
 
     public function inicio(){

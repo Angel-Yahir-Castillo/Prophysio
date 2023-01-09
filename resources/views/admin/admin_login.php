@@ -65,6 +65,8 @@
                         </i>
                     </button></center> 
 
+                    <?php echo $respuesta ?>
+
 
                 </div>
 
