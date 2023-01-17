@@ -30,14 +30,6 @@
                 <ul class="right hide-on-med-and-down" style="padding-right:20px">
                     <li><a  href="<?php echo url('/')?>" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>" class="">Inicio</a></li> 
                     <li>
-                        <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
-                            Blog
-                            <i class="material-icons left">
-                                forum
-                            </i>
-                        </a>
-                    </li>
-                    <li>
                         <a class="" href="<?php echo url('agenda') ?>" style="<?php if(request()->Is('agenda')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Agendar
                             <i class="material-icons left">
@@ -50,6 +42,14 @@
                             Servicios
                             <i class="material-icons left">
                                 build
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                            Blog
+                            <i class="material-icons left">
+                                forum
                             </i>
                         </a>
                     </li>
@@ -127,14 +127,6 @@
     <ul class="sidenav" style="background-color: #FFFFFF"  id="menu-responsive">
     <li><a  href="<?php echo url('/')?>" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>" class="">Inicio</a></li> 
                     <li>
-                        <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
-                            Blog
-                            <i class="material-icons left">
-                                today
-                            </i>
-                        </a>
-                    </li>
-                    <li>
                         <a class="" href="<?php echo url('agenda') ?>" style="<?php if(request()->Is('agenda')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
                             Agendar
                             <i class="material-icons left">
@@ -147,6 +139,14 @@
                             Servicios
                             <i class="material-icons left">
                                 build
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="<?php echo url('blog') ?>" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;';?>">
+                            Blog
+                            <i class="material-icons left">
+                                today
                             </i>
                         </a>
                     </li>
