@@ -11,6 +11,7 @@
 <body>
     <?php include 'header.php';?>
 
+    <?php echo Breadcrumbs::render('home')?>
     <br><br>
     <div class="container section">
         <div class="row">

@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 #agendar
 Route::get('agenda', [AgendaController::class, 'index']);
