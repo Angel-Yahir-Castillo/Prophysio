@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla - Servicios</title>
-</head>
+@section('title', 'Prophysio Huejutla - Servicios')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
     
     
     <div class="container section">
@@ -23,7 +16,7 @@
                     <center><h5>Fisioterapia Deportiva</h5></center>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" style="height: 250px;" src="<?php echo asset('servicios_imagenes/deportiva.jpg')?>">
+                            <img class="responsive-img" style="height: 250px;" src="{{ asset('servicios_imagenes/deportiva.jpg') }}">
                         </center>
                     </div>
 
@@ -47,7 +40,7 @@
                     </div>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" style="height: 250px;" src="<?php echo asset('servicios_imagenes/Fisioterapia Traumatológica y Ortopédica.jpg')?>">
+                            <img class="responsive-img" style="height: 250px;" src="{{ asset('servicios_imagenes/Fisioterapia Traumatológica y Ortopédica.jpg') }}">
                         </center>
                     </div>
                 </div>
@@ -57,7 +50,7 @@
                     <center><h5>Fisioterapia Pediátrica</h5></center>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" style="height: 250px;" src="<?php echo asset('servicios_imagenes/pediatrica.jpg')?>">
+                            <img class="responsive-img" style="height: 250px;" src="{{ asset('servicios_imagenes/pediatrica.jpg') }}">
                         </center>
                     </div>
 
@@ -86,7 +79,7 @@
                     </div>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" style="height: 250px;" src="<?php echo asset('servicios_imagenes/Geriatrica.jpg')?>">
+                            <img class="responsive-img" style="height: 250px;" src="{{ asset('servicios_imagenes/Geriatrica.jpg') }}">
                         </center>
                     </div>
                 </div>
@@ -96,7 +89,7 @@
                     <center><h5>Terapia Pulmonar</h5></center>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" style="height: 250px;" src="<?php echo asset('servicios_imagenes/Pulmonar.png')?>">
+                            <img class="responsive-img" style="height: 250px;" src="{{ asset('servicios_imagenes/Pulmonar.png') }}">
                         </center>
                     </div>
 
@@ -131,6 +124,4 @@
         </div>
     </div>
     
-    <?php include 'footer.php';?>
-</body>
-</html>
+@endsection

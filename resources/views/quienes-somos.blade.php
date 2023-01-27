@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla - ¿Quines somos?</title>
-</head>
+@section('title', 'Prophysio Huejutla - ¿Quines somos?')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
 
     <div class="container section">
         <center><h2>Prophysio Huejutla</h2></center>
@@ -33,7 +26,7 @@
                 <!--Aqui inicia plantilla para mostrar terapeutas -->
                 <div class="row z-depth-2 section">
                     <div class="col s12 m5 l4">
-                        <img class="responsive-img" src="<?php echo asset('terapeutas/lizbeth_mendoza.jpeg')?>">
+                        <img class="responsive-img" src="{{ asset('terapeutas/lizbeth_mendoza.jpeg') }}">
             
                     </div>
                     <div class="col s12 m7 l8">
@@ -54,7 +47,7 @@
                 
                 <div class="row z-depth-2 section"> 
                     <div class="col s12 m5 l4">
-                            <img class="responsive-img" src="<?php echo asset('terapeutas/lizbeth_mendoza.jpeg')?>">
+                            <img class="responsive-img" src="{{ asset('terapeutas/lizbeth_mendoza.jpeg') }}">
                 
                         </div>
 
@@ -75,7 +68,7 @@
 
                 <div class="row z-depth-2 section"> 
                     <div class="col s12 m5 l4">
-                        <img class="responsive-img" src="<?php echo asset('terapeutas/lizbeth_mendoza.jpeg')?>">
+                        <img class="responsive-img" src="{{ asset('terapeutas/lizbeth_mendoza.jpeg') }}">
                     </div>
 
                     <div class="col s12 m7 l8">
@@ -100,8 +93,4 @@
 
     </div>
     
-
-    
-    <?php include 'footer.php';?>
-</body>
-</html>
+@endsection

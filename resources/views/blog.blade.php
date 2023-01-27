@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla - Blog</title>
-</head>
+@section('title', 'Prophysio Huejutla - Blog')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
 
     <div class="container section">
 
@@ -19,7 +12,7 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/lesion_prophysio.png')?>">
+                        <img class="" src="{{ asset('blog_images/lesion_prophysio.png') }}">
                     </div>
 
                     <div class="card-content">
@@ -43,7 +36,7 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/bursitis.png')?>">
+                        <img class="" src="{{ asset('blog_images/bursitis.png') }}">
                     </div>
 
                     <div class="card-content">
@@ -64,7 +57,7 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/dolor_lumbar.png')?>">
+                        <img class="" src="{{ asset('blog_images/dolor_lumbar.png') }}">
                     </div>
 
                     <div class="card-content">
@@ -126,7 +119,7 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img class="" src="<?php echo asset('blog_images/sedentarismo.png')?>">
+                        <img class="" src="{{ asset('blog_images/sedentarismo.png') }}">
                     </div>
 
                     <div class="card-content">
@@ -152,6 +145,4 @@
 
     </div>
 
-    <?php include 'footer.php';?>
-</body>
-</html>
+    @endsection

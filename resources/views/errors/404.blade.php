@@ -1,4 +1,4 @@
-@extends('errors::minimal')
+@extends('errors::prophysioError')
 
 @section('title', 'Pagina no encontrada')
 @section('code', '404')

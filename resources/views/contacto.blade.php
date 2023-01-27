@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla - Contacto</title>
-</head>
+@section('title', 'Prophysio Huejutla - Contacto')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
 
     <br><br><br>
     <div class="section container">
@@ -17,7 +10,7 @@
         <div class="row">
 
             <div class="col s0 m1"></div>
-            <form action="" method="GET" class="col m10 s12">
+            <form action="" method="" class="col m10 s12">
 
                 <div class="row card-panel">
 
@@ -61,6 +54,4 @@
 
     </div>
     <br><br><br>
-    <?php include 'footer.php';?>
-</body>
-</html>
+    @endsection

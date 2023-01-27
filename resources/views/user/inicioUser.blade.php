@@ -1,0 +1,1 @@
+<center><h3>Bienvenido @auth {{Auth::user()->name}} @endauth</h3></center>

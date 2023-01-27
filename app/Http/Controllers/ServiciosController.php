@@ -21,4 +21,8 @@ class ServiciosController extends Controller
     public function desencriptar(){
         return view('desencripta');
     }
+
+    public function errorFuncion(){
+        abort(500);
+    }
 }

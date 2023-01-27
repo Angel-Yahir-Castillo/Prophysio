@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla - Agenda</title>
-</head>
+@section('title', 'Prophysio Huejutla - Agendar')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
 
     <br><br><br>
     <div class="section container">
@@ -117,8 +110,6 @@
 
     </div>
     <br><br><br>
-    <?php include 'footer.php';?>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -137,5 +128,4 @@
             });
         });
     </script>
-</body>
-</html>
+@endsection

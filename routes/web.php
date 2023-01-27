@@ -22,24 +22,72 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
+//principal
 Route::get('/', HomeController::class)->name('home');
 
-#agendar
-Route::get('agenda', [AgendaController::class, 'index']);
+
+
 
 Route::get('Agenda/{dia}', function ($dia) {
     return 'Agenda del dia: '.$dia;
 });
 
 
-#blog
-Route::get('blog', [BlogController::class, 'index']);
-Route::get('admin/blog', [BlogController::class, 'admin_show']);
-Route::get('admin/blog/crear', [BlogController::class, 'admin_create']);
-Route::get('admin/blog/editar', [BlogController::class, 'admin_edit']);
+#section visitante
+    //blog
+    Route::get('blog', [BlogController::class, 'index'])->name('blog.all');
 
-Route::get('blog/{articulo}', [BlogController::class, 'show']);
+    Route::get('blog/{articulo}', [BlogController::class, 'show'])->name('blog.show');
 
+    //agendar
+    Route::get('agendar', [AgendaController::class, 'index'])->name('agendar.cita');
+
+
+    //servicios 
+    Route::get('servicios', [ServiciosController::class, 'index'])->name('servicios.mostrar');
+
+
+    //auxiliares
+    //contacto
+    Route::get('contacto', [ContactoController::class, 'index'])->name('contacto.formulario');
+    Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre'])->name('preguntas.frecuentes');
+    Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond'])->name('terminos.condiciones');
+    Route::get('politica-de-privacidad', [ContactoController::class, 'politica'])->name('politica.privacidad');
+
+    //quienes somos? - nosotros
+    Route::get('quienes-somos', [NosotrosController::class, 'index'])->name('quienes.somos');
+
+    Route::get('especialistas', [NosotrosController::class, 'index'])->name('especialistas.mostrar');
+
+
+    //cuenta - visitante
+    Route::get('login', [VisitanteController::class, 'login'])->name('login.visit');
+    Route::get('register', [VisitanteController::class, 'registro'])->name('register.visit');
+
+
+    //registro, inicio de sesion
+    Route::post('validar-registro',[UserController::class, 'validar_register'])->name('validar.registro');
+
+    Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->name('inicia.sesion');
+
+    Route::get('logout',[UserController::class, 'logout'])->name('user.logout');
+
+
+#endsection visitante
+
+
+#section usuario registrado
+
+Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware('auth')->name('user.inicio');
+
+#endsection usuario registrado
+
+#section admin
+Route::get('admin/blog', [BlogController::class, 'admin_show'])->name('blog.all.admin');
+Route::get('admin/blog/crear', [BlogController::class, 'admin_create'])->name('blog.create.admin');
+Route::get('admin/blog/editar', [BlogController::class, 'admin_edit'])->name('blog.edit.admin');
+#endsection admin
 
 #pacientes
 Route::get('admin/pacientes', [PacientesController::class, 'paciente_mostrar']);
@@ -47,29 +95,17 @@ Route::get('admin/pacientes/registrar', [PacientesController::class, 'paciente_c
 Route::get('admin/pacientes/editar', [PacientesController::class, 'paciente_edit']);
 
 
-# cuenta - visitante
-Route::get('login', [VisitanteController::class, 'login'])->name('login.user');
-Route::get('register', [VisitanteController::class, 'registro']);
+Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
 
 
 
-# contacto
-Route::get('contacto', [ContactoController::class, 'index']);
-Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre']);
-Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond']);
-Route::get('politica-de-privacidad', [ContactoController::class, 'politica']);
 
-
-
-#quienes somos? - nosotros
-Route::get('quienes-somos', [NosotrosController::class, 'index']);
 
 #usuarios
 Route::post('registro_usuario',[UserController::class, 'registrar']);
 Route::post('login_admin', [UserController::class, 'login_admin']);
 
 #servicios
-Route::get('servicios', [ServiciosController::class, 'index']);
 Route::get('cifrado',[ServiciosController::class, 'cifrado']);
 Route::get('encripta', [ServiciosController::class, 'encriptar']);
 Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
