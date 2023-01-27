@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container section">
-
+    {{ Breadcrumbs::render('blog') }}
         <div class="row">
 
           

@@ -4,8 +4,10 @@
 
 @section('content')
 
-
-    <h1>Terminos y condiciones</h1>
+    <div class="container section">
+        {{ Breadcrumbs::render('terminos_condiciones') }}
+        <h1>Terminos y Condiciones</h1>
+    </div>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     @endsection

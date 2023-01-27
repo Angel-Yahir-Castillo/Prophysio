@@ -8,7 +8,7 @@
     <div class="section container">
 
         <div class="row">
-
+        {{ Breadcrumbs::render('registro') }}
             <form action="{{ route('validar.registro') }}" method="POST" class="col s12">
 
             @csrf 

@@ -6,7 +6,7 @@
     
     
     <div class="container section">
-
+    {{ Breadcrumbs::render('servicios') }}
         <div class="row">
             <center><h3>Nuestros Servicios</h3></center>
             <div class="col s12">

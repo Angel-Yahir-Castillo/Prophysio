@@ -5,6 +5,7 @@
 @section('content')
 
     <div class="container section black-text">
+    {{ Breadcrumbs::render('politica') }}
        <center> <h2>Politica de privacidad</h2> </center>
 
        <div class="row">
