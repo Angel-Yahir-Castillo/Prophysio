@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('plantilla_visit')
 
-    <title>Prophysio Huejutla</title>
-</head>
+@section('title', 'Prophysio Huejutla - Politica de Privacidad')
 
-<body>
-    <?php include 'header.php';?>
+@section('content')
 
     <div class="container section black-text">
        <center> <h2>Politica de privacidad</h2> </center>
@@ -181,6 +174,4 @@
     </div>
     
 
-    <?php include 'footer.php';?>
-</body>
-</html>
+    @endsection
