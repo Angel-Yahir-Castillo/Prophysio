@@ -11,6 +11,8 @@ use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,13 +53,16 @@ Route::get('Agenda/{dia}', function ($dia) {
     //auxiliares
     //contacto
     Route::get('contacto', [ContactoController::class, 'index'])->name('contacto.formulario');
+
+    Route::post('contacto', [ContactoController::class, 'enviarCorreoContacto'])->name('contacto.enviar');
+
+
     Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre'])->name('preguntas.frecuentes');
     Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond'])->name('terminos.condiciones');
     Route::get('politica-de-privacidad', [ContactoController::class, 'politica'])->name('politica.privacidad');
 
     //quienes somos? - nosotros
     Route::get('quienes-somos', [NosotrosController::class, 'index'])->name('quienes.somos');
-
     Route::get('especialistas', [NosotrosController::class, 'index'])->name('especialistas.mostrar');
 
 
@@ -73,7 +78,7 @@ Route::get('Agenda/{dia}', function ($dia) {
 
     Route::get('logout',[UserController::class, 'logout'])->name('user.logout');
 
-
+  
 #endsection visitante
 
 

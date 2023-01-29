@@ -23,6 +23,6 @@ class ServiciosController extends Controller
     }
 
     public function errorFuncion(){
-        abort(500);
+        abort(400);
     }
 }

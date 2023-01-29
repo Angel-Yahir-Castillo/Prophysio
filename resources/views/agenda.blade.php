@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <br><br><br>
+    
     <div class="section container">
     {{ Breadcrumbs::render('agenda') }}
         <div class="row">
