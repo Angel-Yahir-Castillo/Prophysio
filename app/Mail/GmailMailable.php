@@ -9,21 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactanosMailable extends Mailable
+class GmailMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Informacion de Contacto";
-
-    public $contacto;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($contacto)
+    public function __construct()
     {
-        $this->contacto = $contacto;
+        //
     }
 
     /**
@@ -34,7 +31,7 @@ class ContactanosMailable extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Informacion de Contacto',
+            subject: 'Gmail Mailable',
         );
     }
 
@@ -46,7 +43,7 @@ class ContactanosMailable extends Mailable
     public function content()
     {
         return new Content(
-            view: 'correos.contactoFormulario',
+            view: 'view.name',
         );
     }
 

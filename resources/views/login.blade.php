@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <br><br><br>
+    
     <div class=" container">
     
         <div class="row section">
@@ -35,7 +35,7 @@
                     <div class="col s12"><small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> </div>
 
                     <div class="col s12">
-                        <center> ¿Se te olvido tu contraseña?  <a class="" href="#">Recuperar contraseña</a></center><br>
+                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('recuperar.contraseña') }}">Recuperar contraseña</a></center><br>
                     </div>
                     <center><input class="btn" type="submit" value="Iniciar sesion"> </input></center>
 

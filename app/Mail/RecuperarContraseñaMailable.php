@@ -9,21 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactanosMailable extends Mailable
+class RecuperarContraseñaMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Informacion de Contacto";
-
-    public $contacto;
+    public $cuenta;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($contacto)
+    public function __construct($cuenta)
     {
-        $this->contacto = $contacto;
+        $this->cuenta = $cuenta;
     }
 
     /**
@@ -34,7 +32,7 @@ class ContactanosMailable extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Informacion de Contacto',
+            subject: 'Recuperar Contraseña Prophysio Huejutla',
         );
     }
 
@@ -46,7 +44,7 @@ class ContactanosMailable extends Mailable
     public function content()
     {
         return new Content(
-            view: 'correos.contactoFormulario',
+            view: 'correos.recuperarContraseña',
         );
     }
 

@@ -13,4 +13,8 @@ class VisitanteController extends Controller
     public function login(){
         return view('login');
     }
+
+    public function recuperaContraseñaVista(){
+        return view('recuperar_contrasena');
+    }
 }

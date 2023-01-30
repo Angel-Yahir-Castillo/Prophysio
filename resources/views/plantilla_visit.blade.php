@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_sesiones" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a class="dropdown-trigger" href="#" data-target="id_sesiones" style="<?php if (request()->Is('login') or request()->Is('register') or request()->Is('recuperar-contraseña') or request()->Is('recuperar contraseña')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
                             Cuenta
                             <i class="material-icons left">
                                 account_circle

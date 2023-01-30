@@ -22,7 +22,7 @@ class ContactoController extends Controller
         ]);
 
         $correo = new ContactanosMailable($request->all());
-        Mail::to('lizbeth@prophysio.com')->send( $correo);
+        Mail::to('yahirgamerpvz@gmail.com')->send( $correo);
         
         return redirect(route('contacto.formulario'))->with('info', 'Correo enviado exitosamente');
     }

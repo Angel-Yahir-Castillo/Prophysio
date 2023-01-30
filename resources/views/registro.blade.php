@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <br><br><br>
+    
     <div class="section container">
 
         <div class="row">
@@ -17,7 +17,7 @@
                     <center><b>Registrarse</b></center>
                     <div class="input-field col s12">
                         <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
-                            pattern="[A-Za-z]{4,}" title="El nombre debe tener al menos una longitud de 4 letras">
+                            pattern="{4,}" title="El nombre debe tener al menos una longitud de 4 letras">
                         <label for="nombre">Nombre:</label>
                         <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
                     </div>

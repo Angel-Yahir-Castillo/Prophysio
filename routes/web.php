@@ -78,15 +78,32 @@ Route::get('Agenda/{dia}', function ($dia) {
 
     Route::get('logout',[UserController::class, 'logout'])->name('user.logout');
 
+    //recuperar contraseña
+    Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->name('recuperar.contraseña');
+
+    Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->name('user.recuperarContraseña');
+
+
+    Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->name('recuperar.contraseñaEnviar');
+
+
   
 #endsection visitante
 
 
 #section usuario registrado
+    //abrir sesion
+    Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware('auth')->name('user.inicio');
 
-Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware('auth')->name('user.inicio');
-
+    //recuperar contraseña
+    
 #endsection usuario registrado
+
+
+
+
+
+
 
 #section admin
 Route::get('admin/blog', [BlogController::class, 'admin_show'])->name('blog.all.admin');

@@ -7,20 +7,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Mail\RecuperarContraseñaMailable;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserController extends Controller
 {
-    public function registrar(Request $request){
-        $usuario = new User();
-        $usuario->nombre = $request->nombre;
-        $usuario->correo_electronico = $request->correo;
-        $usuario->password = $request->contrasena;
-        $usuario->telefono = $request->telefono;
-        $usuario->tipo_usuario = 4;
-        $usuario->save();
-
-        return redirect()->route('login.user');
-    }
 
     public function inicia_sesion(Request $request){
         
@@ -42,7 +34,7 @@ class UserController extends Controller
 
             $request->session()->regenerate();
 
-            return redirect(route('user.sesion'));
+            return redirect(route('user.inicio'));
         }
 
         if(count($user) >0){
@@ -73,8 +65,8 @@ class UserController extends Controller
         $user->name = $request->nombre;
         $user->email = $request->correo;
         $user->phone = $request->telefono;
+        //$user->password = $request->contrasena;
         $user->password = Hash::make($request->contrasena);
-
        if($user->save()){
             Auth::login($user);
             return redirect(route('user.inicio'));
@@ -91,7 +83,27 @@ class UserController extends Controller
     }
 
 
+    public function recuperarContraseña(Request $request){
+        $user = User::where('email', $request->correo)->first();
+
+        $request->validate([
+            'correo' => ['required', 'email'],
+        ]);
+
+        if($user == null){
+            return redirect(route('recuperar.contraseña'))->with('info','El correo ingresado no esta registrado');
+        }
+
+        $correo = new RecuperarContraseñaMailable($user);
+        Mail::to($request->correo)->send($correo);
+
+        return view('recuperar_contrasena_Correo', compact('user'));
+    }
         
+    public function recuperaContraseñaVistaDos(){
+        return view('recuperar_contrasena_Correo');
+    }
+
     public function logout(Request $request){
 
         Auth::logout();
@@ -102,22 +114,4 @@ class UserController extends Controller
         return redirect(route('home'));
     }
 
-    public function login_admin(Request $request){
-        $usuario = new User();
-        $usuario->nombre = $request->user;
-        $usuario->password = $request->contrasena;
-        $usuario->tipo_usuario = $request->tipo;
-
-        $admin = User::where('nombre',$usuario->nombre)->where('password',$usuario->password)->where('tipo_usuario',$usuario->tipo_usuario )->get();
-        
-        if(count($admin) >0){
-            //return redirect()->route('admin.home');
-            return view('admin.home');
-        }
-        else{
-            $respuesta = 'contraseña incorrecta';
-            return redirect()->route('admin.login', compact('respuesta'));
-            //return view('admin.admin_login', compact('respuesta'));
-        }
-    }
 }
