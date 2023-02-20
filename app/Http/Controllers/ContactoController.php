@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Pregunta;
 
 class ContactoController extends Controller
 {
@@ -28,7 +29,8 @@ class ContactoController extends Controller
     }
 
     public function pre_fre(){
-        return view('preguntas_frecuentes');
+        $preguntas = Pregunta::all();
+        return view('preguntas_frecuentes', compact('preguntas'));
     }
 
     public function ter_cond(){
