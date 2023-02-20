@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('img/logo.png') }}">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -13,7 +15,7 @@
     
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>@yield('title') </title>
     
 </head>
@@ -178,6 +180,56 @@
 
     @yield('content')
 
+    <!-- chat-->
+    <div class="row" id="chat" style="display: none">
+        <div class="col s1 l3 m3"></div>
+        <div class="col s10 l6 m6 " style="height: 500px; background: #fff; border-radius: 5px; border: 1px solid lightgrey; border-top: 0px;">
+            <div class="row">
+                <div class="col s12" style="border-bottom: 1px solid #006fe6; background-color: #C7F7F7; border-radius: 5px 5px 0 0; color: #000; font-size: 20px; font-weight: 500; line-height: 60px;">
+                    <center>Chat de ayuda</center>
+                </div>
+            </div>
+            <div id="form" class="row" style="padding: 15px; min-height: 400px; max-height: 400px; overflow-y: auto;">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="col s2">
+                            <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%; background: #C7F7F7; " >person</i> </center>
+                        </div>
+                        <div class="col s8" style="border-radius: 15px; background: #C7F7F7; padding: 12px 15px ; margin-left:10px;">
+                            <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> Hola, ¿En que puedo ayudarte? </b> </label>
+                        </div>
+                        <div class="col s1"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="height: 70px; width: 100%; padding: 10px; background-color: #ccc9c9; border:solid 1px lightgrey">
+                <div class="col s9 m10" style="background-color: #ccc9c9;  height: 50px; padding-top: 10px; ">
+                    <input id="data" type="text" style="background-color: #fff; height:30px; width:90%; margin-right: 10%; padding-left: 10px; padding-right: 10px; border-radius: 4px" placeholder="Escribe algo..." class="validate" required>
+                </div>
+                <div class="col s3 m2" style="background-color: #ccc9c9; height: 50px; padding-top: 10px;">
+                    <button class="btn black-text" style="height:30px; background-color: green" id="send-btn">
+                        <i class="material-icons center">
+                            send
+                        </i> 
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col s1 l3 m3"></div>
+    </div>
+
+    <div class="row">
+        <div class="col s11"></div>
+        <div class="col s1">
+        <button class="btn-floating btn-large waves-effect waves-light" style="background-color: #C7F7F7;" onclick="ocultarChat();"><i class="material-icons black-text">chat</i></button>
+        </div>
+    </div>
+
+
+
+
     <footer class="page-footer" style="background-color: #C7F7F7;">
           <div class="container">
             <div class="row">
@@ -216,7 +268,7 @@
                 <a class="black-text text-lighten-4 " target="_blank" href="https://www.instagram.com/prophysio_huejutla/"> <img width="30px" height="30px" src="<?php echo asset('iconos/instagram.png')?>"></a>
               </div>
               <div class="col s4 m2 section">
-                <a class="black-text text-lighten-4 " target="_blank"  href="https://www.facebook.com/"> <img width="30px" height="30px" src="<?php echo asset('iconos/facebook.png')?>"></a>
+                <a class="black-text text-lighten-4 " target="_blank"  href="https://www.facebook.com/prophysioof?mibextid=ZbWKwL"> <img width="30px" height="30px" src="<?php echo asset('iconos/facebook.png')?>"></a>
               </div>
               <div class="col s4 m2 section">
                 <a class="black-text text-lighten-4 " target="_blank"href="https://api.whatsapp.com/send?phone=5212225081501&text=Hola%2C%20gracias%20por%20comunicarte%20a%20Prophysio%2C%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F%20"> <img width="30px" height="30px" src="<?php echo asset('iconos/whatsapp.png')?>"></a>
@@ -232,6 +284,73 @@
         document.addEventListener('DOMContentLoaded', function() {
             M.AutoInit();
         });
+    </script>
+
+    <script>
+        function ocultarChat(){
+            var x = document.getElementById("chat");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function(){
+        $("#send-btn").on("click", function(){
+            $value = $("#data").val();
+            if($value == ""){
+                M.toast({html: 'Por favor, ingresa tu pregunta!'})
+                return;
+            }
+            $msg = ` <div class="col s12">
+            <div class="row">
+                <div class="col s1"></div>
+                <div class="col s8" style="border-radius: 15px; background: #efefef; padding: 12px 15px ;">
+                    <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${$value} </b> </label>
+                </div>
+                <div class="col s2">
+                    <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%;  margin-right:10px; background: #efefef; " >person</i> </center>
+                </div>
+            </div>
+            </div>`;
+            //$("#form").append($msg);
+            document.getElementById("form").innerHTML += $msg;
+            $("#data").val('');
+            
+            
+            // start ajax code
+            $.ajax({
+                url: "{{route('ayuda.chat')}}",
+                type: 'POST',
+                data: 'pregunta='+$value,
+                success: function(result){
+                    $replay = ` <div class="col s12">
+                        <div class="row">
+                            <div class="col s2">
+                                <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%; background: #C7F7F7; " >person</i> </center>
+                            </div>
+                            <div class="col s8" style="border-radius: 15px; background: #C7F7F7; padding: 12px 15px ; margin-left:10px;">
+                                <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${result} </b> </label>
+                            </div>
+                            <div class="col s2"></div>
+                        </div>
+                    </div>`;
+                    $("#form").append($replay);
+                    // when chat goes down the scroll bar automatically comes to the bottom
+                    $("#form").scrollTop($("#form")[0].scrollHeight);
+                }
+            }); 
+        });
+    });
     </script>
 </body>
 </html>

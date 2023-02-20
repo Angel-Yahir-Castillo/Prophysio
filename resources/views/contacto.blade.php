@@ -58,7 +58,46 @@
             </form>
         </div>
 
+        <div class="row">
+            <center><h4>Visitanos, nuestra ubicacion:</h4></center>
+            <div id="map" class="col s12">
+
+            </div>
+        </div>
     </div>
+
+    <script async 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnXx_jG0Rev6Hw-tSaQdKLbvFRunowrGU&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+    <style>
+    #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+    </style>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        const prophysio = { lat: 21.143141, lng: -98.422463, };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 19,
+            center: prophysio,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+            position: prophysio,
+            map: map,
+        });
+        }
+
+        window.initMap = initMap;
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     @if (session('info'))

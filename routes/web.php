@@ -11,7 +11,7 @@ use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,3 +135,9 @@ Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 #admin 
 Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
 Route::get('admin/home', [AdminController::class, 'inicio'])->name('admin.home');
+
+
+#section apoyo
+// chat
+Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat');
+#endsection
