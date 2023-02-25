@@ -12,13 +12,13 @@
 
                     <ul class="slides">
                         <li>
-                            <img src="<?php echo asset('slider/slider01.JPG')?>"> 
+                            <img src="{{ asset('slider/slider01.JPG') }}"> 
                         </li>
                         <li>
-                            <img src="<?php echo asset('slider/slider02.JPG')?>"> 
+                            <img src="{{ asset('slider/slider02.JPG') }}"> 
                         </li>
                         <li>
-                            <img src="<?php echo asset('slider/slider03.jpeg')?>"> 
+                            <img src="{{ asset('slider/slider03.jpeg') }}"> 
                         </li>
                     </ul>
                 </div>

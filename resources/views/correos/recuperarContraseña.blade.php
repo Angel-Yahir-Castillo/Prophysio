@@ -13,7 +13,7 @@
 
     <p>Hola <b>{{ $cuenta['name'] }}</b> usted ha solicitado la recuperación de su contraseña en caso de no requerirla solo ignore este mensaje.</p>
     
-    <p>Tu contraseña actualmente para iniciar sesion en Prophysio Huejutla es: <b>{{ $cuenta['password'] }}</b></p>
+    <p>Tu contraseña actualmente para iniciar sesion en Prophysio Huejutla es: <b>{{ $cuenta['contrasena'] }}</b></p>
 
     <p>Gracias por su preferencia, estamos a sus órdenes…</p>
 

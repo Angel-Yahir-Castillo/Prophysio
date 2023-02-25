@@ -65,7 +65,7 @@ class UserController extends Controller
         $user->name = $request->nombre;
         $user->email = $request->correo;
         $user->phone = $request->telefono;
-        //$user->password = $request->contrasena;
+        $user->contrasena = $request->contrasena;
         $user->password = Hash::make($request->contrasena);
        if($user->save()){
             Auth::login($user);
