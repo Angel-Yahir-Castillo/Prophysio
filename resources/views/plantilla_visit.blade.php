@@ -128,7 +128,7 @@
     </ul>
 
     <ul class="sidenav" style="background-color: #FFFFFF"  id="menu-responsive">
-    <li><a  href="{{ route('home')}}" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>" class="">Inicio</a></li> 
+        <li><a  href="{{ route('home')}}" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>" class="">Inicio</a></li> 
                     <li>
                         <a class="" href="{{ route('agendar.cita') }}" style="<?php if(request()->Is('agendar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
                             Agendar

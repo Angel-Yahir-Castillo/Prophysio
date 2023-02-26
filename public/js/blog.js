@@ -1,3 +1,16 @@
+const opcionCambiada = () => {
+    if($etiquetas.value === 'all'){
+        verBlogs();
+    }
+    else{
+        verBlogsEtiqueta($etiquetas.value);
+    }
+  };
+
+const $etiquetas = document.getElementById('etiquetasLista')
+$etiquetas.addEventListener("change", opcionCambiada);
+
+
 function verBlogs(){
     $.ajaxSetup({
         headers: {
@@ -7,42 +20,93 @@ function verBlogs(){
 
     $("#blogs").empty();
     $.ajax({
-        url: "blogsApi",
+        url: "http://localhost/prophysio/public/api/blogsApi",
         type: "POST",
         success: function(result){
             var resultado = JSON.parse(result);
             resultado.forEach(blog => {
-                $registro = `            <div class="col s12 m6 l4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img alt="${blog.alt}" style="width: 100%;" class="" src=" ${blog.imagen} ">
-                            </div>
+                if(blog.estado === 1){
+                    $registro = `            <div class="col s12 m6 l4 contBlog">
+                    <div class="card">
+                        <div class="card-image">
+                            <img alt="${blog.alt}" style="width: 100%;" class="" src=" ${blog.imagen} ">
+                        </div>
 
-                            <div class="card-content">
-                                <span class="card-title"> ${blog.nombre}</span>
-                                ${blog.contenido}
-                            </div>
+                        <div class="card-content">
+                            <span class="card-title"> ${blog.nombre}</span>
+                            ${blog.contenido}
+                        </div>
 
-                            <div id="blog${blog.id}" class="card-action"> </div>
-                        </div> </div>`
-                $("#blogs").append($registro);
-                $.ajax({
-                    url: "etiquetaApi",
-                    type: "POST",
-                    data: 'id='+ blog.id,
-                    success: function(resultadoT){
-                        resultadoT.forEach(etiqueta => {
-                            $tags = `<a href="#"> ${etiqueta.nombre}</a>`
-                            document.getElementById('blog'+blog.id).innerHTML += $tags;
-                        })
-                    }
-                })
+                        <div id="blog${blog.id}" class="card-action"> </div>
+                    </div> </div>`
+                    $("#blogs").append($registro);
+                    $.ajax({
+                        url: "http://localhost/prophysio/public/api/etiquetaApi",
+                        type: "POST",
+                        data: 'id='+ blog.id,
+                        success: function(resultadoT){
+                            resultadoT.forEach(etiqueta => {
+                                $tags = `<button onclick="verBlogsEtiqueta(${etiqueta.id})" class="enlace"> ${etiqueta.nombre}</button>`
+                                document.getElementById('blog'+blog.id).innerHTML += $tags;
+                            })
+                        }
+                    })
+                }
+
             });            
         }
     }); 
 }
 
-function obtenerEtiquetas(idBlog){
+function verBlogsEtiqueta(idEtiqueta) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $("#blogs").empty();
+    $.ajax({
+        url: "http://localhost/prophysio/public/api/blogEtiquetaApi",
+        type: "POST",
+        data: 'id='+ idEtiqueta,
+        success: function(result){
+            var resultado = JSON.parse(result);
+            resultado.forEach(blog => {
+                if(blog.estado === 1){
+                    $registro = `            <div class="col s12 m6 l4 contBlog">
+                    <div class="card">
+                        <div class="card-image">
+                            <img alt="${blog.alt}" style="width: 100%;" class="" src=" ${blog.imagen} ">
+                        </div>
+
+                        <div class="card-content">
+                            <span class="card-title"> ${blog.nombre}</span>
+                            ${blog.contenido}
+                        </div>
+
+                        <div id="blog${blog.id}" class="card-action"> </div>
+                    </div> </div>`
+                    $("#blogs").append($registro);
+                    $.ajax({
+                        url: "http://localhost/prophysio/public/api/etiquetaApi",
+                        type: "POST",
+                        data: 'id='+ blog.id,
+                        success: function(resultadoT){
+                            resultadoT.forEach(etiqueta => {
+                                $tags = `<button onclick="verBlogsEtiqueta(${etiqueta.id})"  class="enlace"> ${etiqueta.nombre}</button>`
+                                document.getElementById('blog'+blog.id).innerHTML += $tags;
+                            })
+                        }
+                    })
+                }
+
+            });            
+        }
+    }); 
+}
+
+function obtenerEtiquetas(){
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -50,11 +114,19 @@ function obtenerEtiquetas(idBlog){
     });
 
     $.ajax({
-        url: "etiquetaApi",
+        url: "http://localhost/prophysio/public/api/mostrarEtiquetaApi",
         type: "POST",
-        data: 'id='+ idBlog,
         success: function(resultado){
-            return resultado;
+            const $etiquetas = document.getElementById('etiquetasLista')
+            resultado = JSON.parse(resultado);
+            resultado.forEach(etiqueta => {
+                console.log(etiqueta.nombre);
+                const option = document.createElement('option');
+                option.value = etiqueta.id;
+                option.text = etiqueta.nombre;
+                //$tag = `<option value="${etiqueta.id}">${etiqueta.nombre}</option>`;
+                $etiquetas.appendChild(option);
+            })
         }
     })
 }

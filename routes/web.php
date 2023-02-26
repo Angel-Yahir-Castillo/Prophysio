@@ -35,9 +35,6 @@ Route::get('Agenda/{dia}', function ($dia) {
     return 'Agenda del dia: '.$dia;
 });
 
-#api´s
-    Route::post('blogsApi', [BlogController::class, 'mostrarBlogs']);
-    Route::post('etiquetaApi', [BlogController::class, 'obtenerEtiquetas']);
 #section visitante
     //blog
     Route::get('blog', [BlogController::class, 'index'])->name('blog.all');
