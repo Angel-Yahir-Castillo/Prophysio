@@ -17,7 +17,6 @@ function verBlogs(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     $("#blogs").empty();
     $.ajax({
         url: "http://localhost/prophysio/public/api/blogsApi",
@@ -31,12 +30,10 @@ function verBlogs(){
                         <div class="card-image">
                             <img alt="${blog.alt}" style="width: 100%;" class="" src=" ${blog.imagen} ">
                         </div>
-
                         <div class="card-content">
                             <span class="card-title"> ${blog.nombre}</span>
                             ${blog.contenido}
                         </div>
-
                         <div id="blog${blog.id}" class="card-action"> </div>
                     </div> </div>`
                     $("#blogs").append($registro);
@@ -64,7 +61,6 @@ function verBlogsEtiqueta(idEtiqueta) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     $("#blogs").empty();
     $.ajax({
         url: "http://localhost/prophysio/public/api/blogEtiquetaApi",
@@ -79,12 +75,10 @@ function verBlogsEtiqueta(idEtiqueta) {
                         <div class="card-image">
                             <img alt="${blog.alt}" style="width: 100%;" class="" src=" ${blog.imagen} ">
                         </div>
-
                         <div class="card-content">
                             <span class="card-title"> ${blog.nombre}</span>
                             ${blog.contenido}
                         </div>
-
                         <div id="blog${blog.id}" class="card-action"> </div>
                     </div> </div>`
                     $("#blogs").append($registro);
