@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'view' => 'breadcrumbs::Materialize',
+    'view' => 'breadcrumbs::materialize',
 
     /*
     |--------------------------------------------------------------------------
