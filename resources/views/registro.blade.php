@@ -15,9 +15,9 @@
                 <div class="row card-panel">
 
                     <center><b>Registrarse</b></center>
+                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
-                        <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
-                            pattern="{4,}" title="El nombre debe tener al menos una longitud de 4 letras">
+                        <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required>
                         <label for="nombre">Nombre:</label>
                         <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
                     </div>
@@ -73,7 +73,7 @@
         </div>
 
     </div>
-    <br><br><br>
+
 
     <script>
         function mostrarContrasena(){
