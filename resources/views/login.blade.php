@@ -16,7 +16,7 @@
                 <div class="row card-panel">
 
                     <center><b>Iniciar sesion</b></center>
-
+                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
                         <input id="correo" name="correo" type="email" value="{{ old('correo') }}" requiered autofocus class="validate" 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
