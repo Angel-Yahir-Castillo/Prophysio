@@ -7,6 +7,7 @@
     
     <div class=" container">
     
+
         <div class="row section">
         {{ Breadcrumbs::render('login') }}
             <div class="col m2 l3 s0"></div>
@@ -35,7 +36,7 @@
                     <div class="col s12"><small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> </div>
 
                     <div class="col s12">
-                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('recuperar.contraseña') }}">Recuperar contraseña</a></center><br>
+                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('recuperar.contraseña') }}">Recuperar contraseña </a></center><br>
                     </div>
                     <center><input class="btn" type="submit" value="Iniciar sesion"> </input></center>
 
@@ -61,6 +62,7 @@
             }else{
                 tipo.type = "password";
             }
+            
         }
     </script>
     @endsection
