@@ -51,6 +51,7 @@ class UserController extends Controller
 
         //return redirect(route('user.login'));
 
+        
     }
 
     public function validar_register(Request $request){
