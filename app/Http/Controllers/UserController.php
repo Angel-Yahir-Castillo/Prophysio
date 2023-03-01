@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Mail\RecuperarContraseñaMailable;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -21,6 +21,7 @@ class UserController extends Controller
         $request->validate([
             'correo' => ['required', 'email', 'string'],
             'contrasena' => ['required', 'string'],
+            'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
 
         $credentials = [
@@ -53,12 +54,13 @@ class UserController extends Controller
     }
 
     public function validar_register(Request $request){
-
+     
         $request->validate([
             'correo' => ['required', 'email', 'string', 'unique:users,email'],
             'contrasena' => ['required', 'string'],
             'nombre' => ['required', 'string'],
-            'telefono' => ['required', 'string'],
+            'telefono' => ['required', 'string', 'unique:users,phone'],
+            'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
 
         $user = new User();
