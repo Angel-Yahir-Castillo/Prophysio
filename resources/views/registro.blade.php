@@ -14,6 +14,8 @@
             @csrf 
                 <div class="row card-panel">
 
+
+                    <center><b>Registrarse </b></center>
                     <center><b>Registrarse</b></center>
                     <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
@@ -37,10 +39,10 @@
                     </div>
 
                     <div class="input-field col m5 l5 s11">
-                        <input id="contrasena" name="contrasena" value="{{ old('contrasena') }}" type="password" class="validate" required
+                        <input id="contrasena" name="contrasena"  value="{{ old('contrasena') }}" type="password" class="validate" required
                             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%()*?&#.$($)$-$_]{8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
-                        <label for="contrasena">Contraseña:</label>
+                        <label for="contrasena">Contraseña: </label>
                         <small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> 
                     </div>
                     <div class="col m1 l1 s1">
@@ -54,6 +56,7 @@
                             <span><b>He leido y acepto la <a href="{{ route('politica.privacidad') }}">politica de privacidad</a></b></span>
                         </label>
                     </div>
+
 
                     <center><button class="btn waves-effect waves-light" type="submit" value="">Registrarse
                         <i class="material-icons left">
@@ -75,6 +78,8 @@
     </div>
 
 
+    <br><br><br>
+
     <script>
         function mostrarContrasena(){
             var tipo = document.getElementById("contrasena");
@@ -84,5 +89,6 @@
                 tipo.type = "password";
             }
         }
+
     </script>
     @endsection
