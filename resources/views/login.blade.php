@@ -3,14 +3,10 @@
 @section('title', 'Prophysio Huejutla - Login')
 
 @section('content')
-    
-    
     <div class=" container">
-    
         <div class="row section">
         {{ Breadcrumbs::render('login') }}
             <div class="col m2 l3 s0"></div>
-            
             <form action="{{ route('inicia.sesion') }}" method="POST" class="col l6 m8 s12">
             @csrf 
                 <div class="row card-panel">
@@ -44,9 +40,6 @@
                     <center> ¿No tienes una cuenta?  <a class="" href="{{ route('register.visit') }}">Registrarse aqui</a></center>
 
                 </div>
-
-                
-
             </form>
         </div>
 
