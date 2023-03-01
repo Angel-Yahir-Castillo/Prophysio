@@ -91,11 +91,13 @@
                         <label for="hora_cita">Hora para la cita:</label>
                     </div>
 
+                    <center>Para poder agendar <a class="" href="{{ route('login.visit') }}">inicia sesion aqui</a> ó <a class="" href="{{ route('register.visit') }}">registrate aqui</a></center>
+                    <!--
                     <center><button class="btn" type="submit" value="">Agendar
                         <i class="material-icons left">
                             content_paste
                         </i>
-                    </button></center>
+                    </button></center>-->
 
                     <br>
 

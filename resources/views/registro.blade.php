@@ -15,9 +15,9 @@
                 <div class="row card-panel">
 
                     <center><b>Registrarse</b></center>
-                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
-                        <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required>
+                        <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
+                            pattern="{4,}" title="El nombre debe tener al menos una longitud de 4 letras">
                         <label for="nombre">Nombre:</label>
                         <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
                     </div>
@@ -38,7 +38,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="contrasena" name="contrasena" value="{{ old('contrasena') }}" type="password" class="validate" required
-                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%()*?&#.$($)$-$_]{8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="contrasena">Contraseña:</label>
                         <small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> 
@@ -73,7 +73,7 @@
         </div>
 
     </div>
-
+    <br><br><br>
 
     <script>
         function mostrarContrasena(){
