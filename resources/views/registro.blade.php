@@ -38,7 +38,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="contrasena" name="contrasena" value="{{ old('contrasena') }}" type="password" class="validate" required
-                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%()*?&#.$($)$-$_]{8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="contrasena">Contraseña:</label>
                         <small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> 
