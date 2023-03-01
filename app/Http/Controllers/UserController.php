@@ -23,18 +23,16 @@ class UserController extends Controller
             'contrasena' => ['required', 'string'],
             'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
-
+ 
         $credentials = [
             "email" => $request->correo,
             "password" => $request->contrasena
         ];
-
+ 
         $remember  = ($request->has('remember') ? true : false);
 
         if(Auth::attempt($credentials, $remember)){
-
             $request->session()->regenerate();
-
             return redirect(route('user.inicio'));
         }
 
@@ -50,7 +48,6 @@ class UserController extends Controller
         }
 
         //return redirect(route('user.login'));
-
         
     }
 
