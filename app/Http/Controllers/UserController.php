@@ -66,7 +66,7 @@ class UserController extends Controller
         $user->email = $request->correo;
         $user->phone = $request->telefono;
         $user->contrasena = $request->contrasena;
-        $user->password = Hash::make($request->contrasena);
+        $user->password = Hash::make($request->contrasena);  
        if($user->save()){
             Auth::login($user);
             return redirect(route('user.inicio'));
