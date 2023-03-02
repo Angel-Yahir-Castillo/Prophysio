@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
-
+ 
     public function inicia_sesion(Request $request){
-        
+         
         $user = User::where('email', $request->correo)->get();
 
         $request->validate([
