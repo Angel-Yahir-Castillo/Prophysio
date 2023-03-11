@@ -12,6 +12,7 @@ $etiquetas.addEventListener("change", opcionCambiada);
 
 
 function verBlogs(){
+    document.getElementById('circulo').classList.remove('hide');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -23,6 +24,7 @@ function verBlogs(){
         type: "POST",
         success: function(result){
             var resultado = JSON.parse(result);
+            document.getElementById('circulo').classList.add('hide');
             resultado.forEach(blog => {
                 if(blog.estado === 1){
                     $registro = `            <div class="col s12 m6 l4 contBlog">
@@ -56,6 +58,7 @@ function verBlogs(){
 }
 
 function verBlogsEtiqueta(idEtiqueta) {
+    document.getElementById('circulo').classList.remove('hide');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -68,6 +71,7 @@ function verBlogsEtiqueta(idEtiqueta) {
         data: 'id='+ idEtiqueta,
         success: function(result){
             var resultado = JSON.parse(result);
+            document.getElementById('circulo').classList.add('hide');
             resultado.forEach(blog => {
                 if(blog.estado === 1){
                     $registro = `            <div class="col s12 m6 l4 contBlog">

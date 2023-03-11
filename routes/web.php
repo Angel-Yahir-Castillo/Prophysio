@@ -28,68 +28,6 @@ use App\Http\Controllers\ChatController;
 //principal
 Route::get('/', HomeController::class)->name('home');
 
-
-
-
-Route::get('Agenda/{dia}', function ($dia) {
-    return 'Agenda del dia: '.$dia;
-});
-
-#section visitante
-    //blog
-    Route::get('blog', [BlogController::class, 'index'])->name('blog.all');
-    
-    Route::get('blog/{articulo}', [BlogController::class, 'show'])->name('blog.show');
-
-    //agendar
-    Route::get('agendar', [AgendaController::class, 'index'])->name('agendar.cita');
-
-
-    //servicios 
-    Route::get('servicios', [ServiciosController::class, 'index'])->name('servicios.mostrar');
-
-
-    //auxiliares
-    //contacto
-    Route::get('contacto', [ContactoController::class, 'index'])->name('contacto.formulario');
-
-    Route::post('contacto', [ContactoController::class, 'enviarCorreoContacto'])->name('contacto.enviar');
-
-
-    Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre'])->name('preguntas.frecuentes');
-    Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond'])->name('terminos.condiciones');
-    Route::get('politica-de-privacidad', [ContactoController::class, 'politica'])->name('politica.privacidad');
-
-    //quienes somos? - nosotros
-    Route::get('quienes-somos', [NosotrosController::class, 'index'])->name('quienes.somos');
-    Route::get('especialistas', [NosotrosController::class, 'index'])->name('especialistas.mostrar');
-
-
-    //cuenta - visitante
-    Route::get('login', [VisitanteController::class, 'login'])->name('login.visit');
-    Route::get('register', [VisitanteController::class, 'registro'])->name('register.visit');
-
-
-    //registro, inicio de sesion
-    Route::post('validar-registro',[UserController::class, 'validar_register'])->name('validar.registro');
-
-    Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->name('inicia.sesion');
-
-    Route::get('logout',[UserController::class, 'logout'])->name('user.logout');
-
-    //recuperar contraseña
-    Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->name('recuperar.contraseña');
-
-    Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->name('user.recuperarContraseña');
-
-
-    Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->name('recuperar.contraseñaEnviar');
-
-
-  
-#endsection visitante
-
-
 #section usuario registrado
     //abrir sesion
     Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware('auth')->name('user.inicio');
@@ -99,21 +37,10 @@ Route::get('Agenda/{dia}', function ($dia) {
 #endsection usuario registrado
 
 
+//Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 
 
 
-
-
-#section admin
-Route::get('admin/blog', [BlogController::class, 'admin_show'])->name('blog.all.admin');
-Route::get('admin/blog/crear', [BlogController::class, 'admin_create'])->name('blog.create.admin');
-Route::get('admin/blog/editar', [BlogController::class, 'admin_edit'])->name('blog.edit.admin');
-#endsection admin
-
-#pacientes
-Route::get('admin/pacientes', [PacientesController::class, 'paciente_mostrar']);
-Route::get('admin/pacientes/registrar', [PacientesController::class, 'paciente_create']);
-Route::get('admin/pacientes/editar', [PacientesController::class, 'paciente_edit']);
 
 
 Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
@@ -126,10 +53,6 @@ Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar
 Route::post('registro_usuario',[UserController::class, 'registrar']);
 Route::post('login_admin', [UserController::class, 'login_admin']);
 
-#servicios
-Route::get('cifrado',[ServiciosController::class, 'cifrado']);
-Route::get('encripta', [ServiciosController::class, 'encriptar']);
-Route::get('desencripta',[ServiciosController::class, 'desencriptar']);
 
 #admin 
 Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
@@ -140,3 +63,7 @@ Route::get('admin/home', [AdminController::class, 'inicio'])->name('admin.home')
 // chat
 Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat');
 #endsection
+
+
+require __DIR__.'/visit.php';
+require __DIR__.'/admin.php';

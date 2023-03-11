@@ -16,6 +16,14 @@ class UserController extends Controller
  
     public function inicia_sesion(Request $request){
          
+        /*
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify',[
+            'secret' => '6LcztLgkAAAAACPjzQROEzdg_PqH1WsrEU-N-ETV',
+            'response' => $request->input('g-recaptcha-response'),
+        ])->object();
+
+        return $response->score;
+        */
         $user = User::where('email', $request->correo)->get();
 
         $request->validate([
