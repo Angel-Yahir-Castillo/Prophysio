@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coments', function (Blueprint $table) {
+        Schema::create('terapeutas_x_especialidades', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('blog_id')->constrained('blogs');
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('contenido');
+            $table->foreignId('terapeuta_id')->constrained('terapeutas');
+            $table->foreignId('espacialidad_id')->constrained('especialidades');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coments');
+        Schema::dropIfExists('terapeutas_x_especialidades');
     }
 };
