@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgendaController;
@@ -15,6 +16,18 @@ use App\Http\Controllers\ChatController;
 
 
 Route::get('admin/dashboard', [AdminController::class, 'inicio'])->name('admin.dashboard');
+
+Route::prefix('admin/db')->name('admin.db.')->controller(BackupController::class)->group(function () {
+    Route::get('/respaldos', 'index')->name('backup');
+    Route::get('/restauracion', 'restore')->name('restore');
+
+   
+});
+
+Route::get('respaldos-completos',[BackupController::class, 'respaldoCompleto'])->name('admin.db.backup.completo');
+Route::post('respaldos-tabla',[BackupController::class, 'respaldarTabla'])->name('admin.db.backup.tabla');
+
+
 
 #blog
 Route::get('admin/blog', [BlogController::class, 'admin_show'])->name('blog.all.admin');

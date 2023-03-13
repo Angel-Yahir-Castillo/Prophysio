@@ -27,9 +27,9 @@
             <div class="user-view">
                 <div style="background-color: #C7F7F7;" class="background">
                 </div>
-                <a href="#"><img class="circle" src="{{ asset('img/logo.png') }}"></a>
-                <a href="#"><span class="black-text name">Prophysio Huejutla</span></a>
-                <a href="#"><span class="black-text email">Administrador</span></a>
+                <a href="{{route('admin.dashboard')}}"><img class="circle" src="{{ asset('img/logo.png') }}"></a>
+                <a href="{{route('admin.dashboard')}}"><span class="black-text name">Prophysio Huejutla</span></a>
+                <a href="{{route('admin.dashboard')}}"><span class="black-text email">Administrador</span></a>
             </div>
         </li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">today</i> Citas</a></li>
@@ -44,7 +44,7 @@
         <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">chat</i> Articulos</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect dropdown-trigger" data-target="id_bd" href="#"><i class="material-icons left">data_usage</i> Base de datos</a></li>
+        <li><a class="waves-effect dropdown-trigger" data-target="id_bd"  @if (Request::is('admin/db/*')) style="background-color:#C7F7F7;" @endif  href="#"><i class="material-icons left">data_usage</i> Base de datos</a></li>
         <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">fitness_center</i> Tipos de Terapias</a></li>
         <li><div class="divider"></div></li>
@@ -55,8 +55,8 @@
     </ul>
 
     <ul id="id_bd" class="dropdown-content">
-        <li><a class="waves-effect" href="#"><i class="material-icons left">backup</i> Respaldos</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">restore</i> Restauracion</a></li>
+        <li><a class="waves-effect" href="{{route('admin.db.backup')}}"><i class="material-icons left">backup</i> Respaldos</a></li>
+        <li><a class="waves-effect" href="{{route('admin.db.restore')}}"><i class="material-icons left">restore</i> Restauracion</a></li>
     </ul>
 
     <ul id="id_personalizar" class="dropdown-content">

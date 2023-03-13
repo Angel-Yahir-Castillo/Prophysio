@@ -34,7 +34,8 @@ class UserController extends Controller
  
         $credentials = [
             "email" => $request->correo,
-            "password" => $request->contrasena
+            "password" => $request->contrasena,
+            "active" => 1
         ];
  
         $remember  = ($request->has('remember') ? true : false);
@@ -44,6 +45,11 @@ class UserController extends Controller
             return redirect(route('user.inicio'));
         }
 
+        if($user[0]->active == 0){
+            throw validationException::withMessages([
+                'correo' => __('auth.active')
+            ]);
+        }
         if(count($user) >0){
             throw validationException::withMessages([
                 'contrasena' => __('auth.password')
@@ -54,6 +60,7 @@ class UserController extends Controller
                 'correo' => __('auth.failed'),
             ]);
         }
+
 
         //return redirect(route('user.login'));
         
