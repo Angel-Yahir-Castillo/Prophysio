@@ -51,12 +51,10 @@ Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar
 
 #usuarios
 Route::post('registro_usuario',[UserController::class, 'registrar']);
-Route::post('login_admin', [UserController::class, 'login_admin']);
 
 
-#admin 
-Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
-Route::get('admin/home', [AdminController::class, 'inicio'])->name('admin.home');
+
+
 
 
 #section apoyo

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use ZipArchive;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
 
     public function index()
     {
-        $respuesta =  ' ';
-        return view('admin.admin_login', compact('respuesta'));
+        return view('admin.login');
     }
 
     public function inicio()
@@ -19,31 +20,74 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function respaldar()
-    {
-        $nombre = "prophysio";
-        $usuario = "root";
-        $password = "";
+    public function login(Request $request){
+        $user = User::where('email', $request->correo)->get();
 
-        $fecha = date('Y-m-d_His');
+        $request->validate([
+            'correo' => ['required', 'email'],
+            'contrasena' => ['required', 'string'],
+            'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
+        ]);
+ 
+        if($request->tipo =="1"){
+            $credentials = [
+                "email" => $request->correo,
+                "password" => $request->contrasena,
+                "active" => 1,
+                "es_admin" => 1
+            ];
+        }
+        else{
+            $credentials = [
+                "email" => $request->correo,
+                "password" => $request->contrasena,
+                "active" => 1,
+                "es_terapeuta" => 1
+            ];
+        }
 
-        $nombre_sql = $nombre . '-' . $fecha . '.sql';
+        
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect(route('admin.dashboard'));
+        }
 
-        $dump = "mysqldump --user=$usuario --password=$password $nombre > $nombre_sql";
-
-        exec($dump);
-
-        //para guardar en .zip
-        $zip = new ZipArchive();
-
-        $nombre_zip = $nombre . '-' . $fecha . '.zip';
-
-        if ($zip->open($nombre_zip, ZipArchive::CREATE) === true) {
-            $zip->addFile($nombre_sql);
-            $zip->close();
-            unlink($nombre_sql);
-            header("Location: $nombre_zip");
-            exit();
-        };
+        if(count($user) >0){ 
+            if($user[0]->active == 0){
+                throw validationException::withMessages([
+                    'correo' => __('auth.active')
+                ]);
+            }     
+            elseif($request->tipo=="1" && $user[0]->es_admin == 0 ){
+                throw validationException::withMessages([
+                    'tipo' => __('auth.permission')
+                ]);
+            }  
+            elseif($request->tipo=="2" && $user[0]->es_terapeuta == 0 ){
+                throw validationException::withMessages([
+                    'tipo' => __('auth.permission')
+                ]);
+            }  
+            throw validationException::withMessages([
+                'contrasena' => __('auth.password')
+            ]);
+            
+        }
+        else{
+            throw validationException::withMessages([
+                'correo' => __('auth.failed'),
+            ]);
+        }
     }
+
+    public function logout(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('admin.login'));
+    }
+
 }

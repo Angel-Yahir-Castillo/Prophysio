@@ -15,7 +15,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 
 
+
+Route::get('admin', [AdminController::class, 'index'])->name('admin.login');
+Route::post('login_admin', [AdminController::class, 'login'])->name('admin.login.form');
+
 Route::get('admin/dashboard', [AdminController::class, 'inicio'])->name('admin.dashboard');
+Route::get('admin_logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 Route::prefix('admin/db')->name('admin.db.')->controller(BackupController::class)->group(function () {
     Route::get('/respaldos', 'index')->name('backup');

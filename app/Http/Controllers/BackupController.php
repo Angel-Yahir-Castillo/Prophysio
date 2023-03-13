@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use ZipArchive;
 use App\Models\Historial;
 use App\Exceptions;
-
+use Illuminate\Support\Facades\Auth;
 
 class BackupController extends Controller
 {
@@ -47,7 +47,7 @@ class BackupController extends Controller
         $nuevo = new Historial();
         $nuevo->nombre_respaldo = $nombre_sql;
         $nuevo->tipo_respaldo = 'completo';
-        $nuevo->user_id = 12;
+        $nuevo->user_id = Auth::user()->id;
         $nuevo->save();
 
         exit();
@@ -94,7 +94,7 @@ class BackupController extends Controller
         $nuevo = new Historial();
         $nuevo->nombre_respaldo = $nombre_sql;
         $nuevo->tipo_respaldo = 'tabla';
-        $nuevo->user_id = 12;
+        $nuevo->user_id = Auth::user()->id;
         $nuevo->save();
 
         exit();

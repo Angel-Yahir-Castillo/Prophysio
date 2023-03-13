@@ -45,12 +45,12 @@ class UserController extends Controller
             return redirect(route('user.inicio'));
         }
 
-        if($user[0]->active == 0){
-            throw validationException::withMessages([
-                'correo' => __('auth.active')
-            ]);
-        }
         if(count($user) >0){
+            if($user[0]->active == 0){
+                throw validationException::withMessages([
+                    'correo' => __('auth.active')
+                ]);
+            }
             throw validationException::withMessages([
                 'contrasena' => __('auth.password')
             ]);

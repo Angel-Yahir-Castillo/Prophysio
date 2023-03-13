@@ -16,6 +16,7 @@ return [
     'failed' => 'El correo ingresado no existe',
     'password' => 'La contraseña es incorrecta.',
     'active' => 'Tu cuenta de usuario ha sido eliminada, ya no puedes acceder a ella.',
+    'permission' => 'No cuentas con los permisos necesarios para acceder',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

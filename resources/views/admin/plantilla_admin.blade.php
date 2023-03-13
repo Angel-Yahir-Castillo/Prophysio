@@ -16,11 +16,19 @@
     
 </head>
 <body>
-    <div class="container section">
-        <a href="#" data-target="menu-side" class="sidenav-trigger">
-            <i class="material-icons">menu</i>
-        </a>
+
+    <div class="navbar-fidex">
+        <div class="row">
+            <div id="encabezado" style="width:100%; height: 70px; background-color:#C7F7F7" class="col s12">
+                <a href="#" data-target="menu-side" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <a href="#" class="bradn-logo">Prophysio</a>
+                <a href="{{route('admin.logout')}}" class=""><i class="material-icons">exit_to_app</i> Cerrar sesion </a>
+            </div>
+        </div>
     </div>
+
 
     <ul class="sidenav"  id="menu-side">
         <li>
@@ -85,6 +93,19 @@
             M.AutoInit();
         });
     </script>
+
+    <style>
+        #encabezado{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-around;
+            align-items: center;
+        }
+        #encabezado a{
+            color:black;
+            font-size: 25px;
+        }
+    </style>
     @yield('scripts_styles')
 </body>
 </html>
