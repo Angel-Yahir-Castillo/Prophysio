@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Informacion;
 
 class NosotrosController extends Controller
 {
     public function index(){
-        return view('quienes-somos');
+        $informacion = Informacion::orderby('created_at','desc')->first();
+        return view('quienes-somos',compact('informacion'));
     }
 }

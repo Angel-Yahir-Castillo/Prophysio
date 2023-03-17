@@ -3,16 +3,13 @@
 use App\Http\Controllers\BackupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiciosController;
-use App\Http\Controllers\VisitanteController;
-use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\NosotrosController;
+use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\InfoEmpresaController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ChatController;
 
 
 
@@ -54,6 +51,22 @@ Route::prefix('admin/servicios')->middleware('auth')->name('admin.servicios.')->
     Route::post('/store','store')->name('store');
 });
 
+Route::prefix('admin/especialidades')->middleware('auth')->name('admin.especialidades.')->controller(EspecialidadesController::class)->group(function () {
+    Route::get('/','admin_index')->name('show');
+    Route::get('/crear','create')->name('create');
+    Route::get('/eliminar','delete')->name('delete');
+    Route::get('/editar','edit')->name('edit');
 
+    Route::post('/store','store')->name('store');
+});
+
+
+Route::prefix('admin/empresa')->middleware('auth')->name('admin.empresa.')->controller(InfoEmpresaController::class)->group(function () {
+    Route::get('/','admin_index')->name('show');
+    Route::get('/eliminar','delete')->name('delete');
+    Route::get('/actualizar','edit')->name('edit');
+
+    Route::post('/store','store')->name('store');
+});
 
 ?>

@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col s12 m6">
                 <h4>Mision</h4>
-                <p>Colaborar para mejorar la salud y la calidad de vida de los pacientes, ofreciendo servicios de atención de fisioterapia basada en evidencia a través de profesionales certificados, como también promover la atención médica sanitaria desde la prevención.</p>
+                <p>{{$informacion->mision}}</p>
             </div>
             <div class="col s12 m6">
                 <h4>Vision</h4>
-                <p> Ser una clínica de fisioterapia que proporcione atención médica de calidad, como también dar acompañamiento en la formación de fisioterapeutas a través de la investigación constante.</p>
+                <p>{{$informacion->vision}}</p>
             </div>
         </div>
 

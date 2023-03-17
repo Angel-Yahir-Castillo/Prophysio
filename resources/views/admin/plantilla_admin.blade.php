@@ -58,7 +58,7 @@
         <li><div class="divider"></div></li>
         <li><a class="waves-effect dropdown-trigger" data-target="id_personalizar" href="#"><i class="material-icons left">edit</i> Perzonalizar</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect dropdown-trigger" data-target="id_empresa" href="#"><i class="material-icons left">business</i> Empresa</a></li>
+        <li><a class="waves-effect dropdown-trigger" data-target="id_empresa" href="#" @if (Request::is('admin/empresa/*')) || Request::is('admin/empresa')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">business</i> Empresa</a></li>
         <li><div class="divider"></div></li>
     </ul>
 
@@ -76,7 +76,7 @@
     </ul>
 
     <ul id="id_empresa" class="dropdown-content">
-        <li><a class="waves-effect" href="#"><i class="material-icons left">info</i> Informacion</a></li>
+        <li><a class="waves-effect" href="{{route('admin.empresa.show')}}"><i class="material-icons left">info</i> Informacion</a></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">policy</i> Politica de privacidad</a></li>
     </ul>
 
