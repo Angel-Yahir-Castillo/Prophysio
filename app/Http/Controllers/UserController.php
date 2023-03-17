@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
 use App\Mail\RecuperarContraseñaMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -69,10 +70,10 @@ class UserController extends Controller
     public function validar_register(Request $request){
      
         $request->validate([
-            'correo' => ['required', 'email', 'string', 'unique:users,email'],
-            'contrasena' => ['required', 'string'],
-            'nombre' => ['required', 'string'],
-            'telefono' => ['required', 'string', 'unique:users,phone'],
+            'correo' => ['required', 'email','max:255', 'string', 'unique:users,email'],
+            'password' => ['required','confirmed', Rules\Password::defaults()],
+            'nombre' => ['required', 'string','max:255'],
+            'telefono' => ['required', 'string', 'max:10' , 'unique:users,phone'],
             'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
 
@@ -80,7 +81,7 @@ class UserController extends Controller
         $user->name = $request->nombre;
         $user->email = $request->correo;
         $user->phone = $request->telefono;
-        $user->contrasena = $request->contrasena;
+        $user->contrasena = $request->password;
         $user->password = Hash::make($request->contrasena);  
        if($user->save()){
             Auth::login($user);

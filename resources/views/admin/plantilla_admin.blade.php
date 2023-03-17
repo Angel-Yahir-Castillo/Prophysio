@@ -48,9 +48,9 @@
         <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">group</i> Usuarios</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">build</i> Servicios</a></li>
+        <li><a class="waves-effect" href="{{route('admin.servicios.show')}}"  @if (Request::is('admin/servicios/*') || Request::is('admin/servicios')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">build</i> Servicios</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">chat</i> Articulos</a></li>
+        <li><a class="waves-effect" href="{{route('admin.blog.show')}}" @if (Request::is('admin/blog/*') || Request::is('admin/blog')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">forum</i> Articulos</a></li>
         <li><div class="divider"></div></li>
         <li><a class="waves-effect dropdown-trigger" data-target="id_bd"  @if (Request::is('admin/db/*')) style="background-color:#C7F7F7;" @endif  href="#"><i class="material-icons left">data_usage</i> Base de datos</a></li>
         <li><div class="divider"></div></li>

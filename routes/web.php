@@ -30,7 +30,7 @@ Route::get('/', HomeController::class)->name('home');
 
 #section usuario registrado
     //abrir sesion
-    Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware('auth')->name('user.inicio');
+    Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified'])->name('user.inicio');
 
     //recuperar contraseña
     
@@ -39,23 +39,10 @@ Route::get('/', HomeController::class)->name('home');
 
 //Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 
-
-
-
-
 Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
-
-
-
-
 
 #usuarios
 Route::post('registro_usuario',[UserController::class, 'registrar']);
-
-
-
-
-
 
 #section apoyo
 // chat

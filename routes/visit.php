@@ -12,7 +12,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
-
+use App\Http\Controllers\VerifyEmailController;
+use App\Http\Controllers\EmailVerificationPromptController;
+use App\Http\Controllers\EmailVerificationNotificationController;
 
 //blog
 Route::get('blog', [BlogController::class, 'index'])->name('blog.all');
@@ -60,9 +62,18 @@ Route::post('recuperar contraseña', [UserController::class, 'recuperarContrase�
 
 Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->name('recuperar.contraseñaEnviar');
 
+Route::middleware('auth')->group(function () {
+    Route::get('verify-email', EmailVerificationPromptController::class)
+                ->name('verification.notice');
 
-  
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
+                ->middleware(['signed', 'throttle:6,1'])
+                ->name('verification.verify');
 
+    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+                ->middleware('throttle:6,1')
+                ->name('verification.send');
+});
 
 
 ?>

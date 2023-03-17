@@ -45,15 +45,19 @@ class BlogController extends Controller
         return view('blog.show', compact('articulo'));
     }
 
-    public function admin_show(){
-        return view('admin.blog_admin_mostrar');
+    public function admin_index(){
+        return view('admin.blog.mostrar');
     }
 
     public function admin_create(){
-        return view('admin.blog_crear');
+        return view('admin.blog.crear');
     }
 
     public function admin_edit(){
-        return view('admin.blog_modificar');
+        return view('admin.blog.modificar');
+    }
+
+    public function admin_delete(){
+        return view();
     }
 }

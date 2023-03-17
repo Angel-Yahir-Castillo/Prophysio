@@ -18,12 +18,12 @@
                     <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
                         <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
-                            pattern="{4,}" title="El nombre debe tener al menos una longitud de 4 letras">
+                            title="El nombre debe tener al menos una longitud de 4 letras">
                         <label for="nombre">Nombre:</label>
                         <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
                     </div>
                     
-                    <div class="input-field col s12">
+                    <div class="input-field col m6 s12">
                         <input id="correo" name="correo" type="email" value="{{ old('correo') }}" class="validate" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un correo electronico valido">
                         <label for="correo">Correo electronico:</label>
@@ -38,15 +38,27 @@
                     </div>
 
                     <div class="input-field col m5 l5 s11">
-                        <input id="contrasena" name="contrasena" value="{{ old('contrasena') }}" type="password" class="validate" required
+                        <input id="password" name="password" value="" type="password" class="validate" required
                             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
-                        <label for="contrasena">Contraseña:</label>
-                        <small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> 
+                        <label for="password">Contraseña:</label>
+                        <small style="color: red;">@error('password') {{ $message }} @enderror</small> 
                     </div>
                     <div class="col m1 l1 s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena()"><i class="material-icons ">remove_red_eye</i></button>
                     </div>
+
+                    <div class="input-field col m5 l5 s11">
+                        <input id="password_confirmation" name="password_confirmation" value="" type="password" class="validate" required
+                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                            una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
+                        <label for="password_confirmation">Repetir contraseña:</label>
+                        <small style="color: red;">@error('password_confirmation') {{ $message }} @enderror</small> 
+                    </div>
+                    <div class="col m1 l1 s1">
+                        <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena2()"><i class="material-icons ">remove_red_eye</i></button>
+                    </div>
+
 
                     <div class="col s12">
                         <label for="politica">
@@ -78,7 +90,15 @@
 
     <script>
         function mostrarContrasena(){
-            var tipo = document.getElementById("contrasena");
+            var tipo = document.getElementById("password");
+            if(tipo.type == "password"){
+                tipo.type = "text";
+            }else{
+                tipo.type = "password";
+            }
+        }
+        function mostrarContrasena2(){
+            var tipo = document.getElementById("password_confirmation");
             if(tipo.type == "password"){
                 tipo.type = "text";
             }else{
