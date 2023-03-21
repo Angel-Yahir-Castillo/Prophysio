@@ -9,43 +9,56 @@
     
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/logo.png') }}">
     <title>Verificacion de correo</title>
 </head>
 <body>
     
     <div class="container section">
         <div class="row">
-            <div class="col s12">
-                <p>Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.</p>
+            <div class="col s0 m4"></div>
+            <div class="col m4 s12">
+                <div class="row">
+                    <div class="col s12">
+                        <p>Gracias por registrarte! Antes de comenzar, ¿podría verificar su dirección de correo electrónico haciendo clic en el enlace que le acabamos de enviar? Si no recibiste el correo electrónico, con gusto te enviaremos otro.</p>
+                    </div>
+                    @if (session('status') == 'verification-link-sent')
+                        <div class="col s12">
+                            <p>Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó durante el registro.</p> 
+                        </div>
+                    @endif
+                    <div class="col s12">
+                        <center>
+                        <div class="col s12">
+                            <form method="POST" action="{{ route('verification.send') }}">
+                                @csrf
+
+                                <div>
+                                    <button class="btn" type="submit">
+                                        Reenviar correo de verificacion
+                                    </button>
+                                </div>
+                            </form>
+
+                            <form method="POST" action="{{ route('user.logout') }}">
+                                @csrf
+
+                                <br>
+                                <button type="submit" class="btn">
+                                    Cerrar sesion
+                                </button>
+                            </form>
+                        </div>
+                        </center>
+                    </div>
+                </div>
+                
             </div>
+            <div class="col s0 m4"></div>
         </div>
     </div>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="col s12">
-            <p>A new verification link has been sent to the email address you provided during registration.</p> 
-        </div>
-    @endif
 
-    <div class="col s12">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-
-            <div>
-                <button type="submit">
-                    Resend Verification Email
-                </button>
-            </div>
-        </form>
-
-        <form method="POST" action="{{ route('user.logout') }}">
-            @csrf
-
-            <button type="submit" class="btn">
-                Log Out
-            </button>
-        </form>
-    </div>
 
 
 

@@ -2,14 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiciosController;
-use App\Http\Controllers\VisitanteController;
-use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\NosotrosController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 
@@ -26,29 +19,16 @@ use App\Http\Controllers\ChatController;
 
 
 //principal
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)->middleware('isGuest') ->name('home');
 
-#section usuario registrado
-    //abrir sesion
-    Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified'])->name('user.inicio');
-
-    //recuperar contraseña
-    
-#endsection usuario registrado
-
-
-//Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-
+//mostrar pagina de error
 Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
 
-#usuarios
-Route::post('registro_usuario',[UserController::class, 'registrar']);
-
-#section apoyo
 // chat
 Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat');
-#endsection
+
 
 
 require __DIR__.'/visit.php';
 require __DIR__.'/admin.php';
+require __DIR__.'/user.php';

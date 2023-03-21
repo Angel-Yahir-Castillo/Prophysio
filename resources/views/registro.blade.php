@@ -39,7 +39,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="password" name="password" value="" type="password" class="validate" required
-                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password">Contraseña:</label>
                         <small style="color: red;">@error('password') {{ $message }} @enderror</small> 
@@ -50,7 +50,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="password_confirmation" name="password_confirmation" value="" type="password" class="validate" required
-                            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password_confirmation">Repetir contraseña:</label>
                         <small style="color: red;">@error('password_confirmation') {{ $message }} @enderror</small> 
@@ -68,15 +68,19 @@
                         </label>
                     </div>
 
-                    <center><button class="btn waves-effect waves-light" type="submit" value="">Registrarse
-                        <i class="material-icons left">
-                            person_add
-                        </i>
-                    </button></center>
+                    <div class="col s12">
+                        <center><button class="btn waves-effect waves-light" type="submit" value="">Registrarse
+                            <i class="material-icons left">
+                                person_add
+                            </i>
+                        </button></center>
+                    </div>
+                    
+                    <div class="col s12">
+                        <br>
+                        <center>¿Ya tienes una cuenta? <a class="" href="{{ route('login.visit') }}">Inicia sesion aqui</a></center>
+                    </div>
 
-                    <br>
-
-                    <center>¿Ya tienes una cuenta? <a class="" href="{{ route('login.visit') }}">Inicia sesion aqui</a></center>
 
                 </div>
 

@@ -237,6 +237,11 @@
         </div>
     </div>
 
+    <div class="fixed-action-btn">
+        <button onclick="ocultarChat()" class="btn-floating btn-large waves-effect waves-light red" >
+            <i class="large material-icons">chat</i>
+    </button>
+    </div>
 
 
 
@@ -328,7 +333,7 @@
         }
     </script>
 
-<script>
+    <script>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

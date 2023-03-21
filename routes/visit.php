@@ -12,68 +12,49 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\VerifyEmailController;
-use App\Http\Controllers\EmailVerificationPromptController;
-use App\Http\Controllers\EmailVerificationNotificationController;
+
 
 //blog
-Route::get('blog', [BlogController::class, 'index'])->name('blog.all');
-
-Route::get('blog/{articulo}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('blog', [BlogController::class, 'index'])->middleware('isGuest')->name('blog.all');
 
 //agendar
-Route::get('agendar', [AgendaController::class, 'index'])->name('agendar.cita');
-
+Route::get('agendar', [AgendaController::class, 'index'])->middleware('isGuest')->name('agendar.cita');
 
 //servicios 
-Route::get('servicios', [ServiciosController::class, 'index'])->name('servicios.mostrar');
+Route::get('servicios', [ServiciosController::class, 'index'])->middleware('isGuest')->name('servicios.mostrar');
 
 
-//auxiliares
 //contacto
-Route::get('contacto', [ContactoController::class, 'index'])->name('contacto.formulario');
-Route::post('contacto', [ContactoController::class, 'enviarCorreoContacto'])->name('contacto.enviar');
-
-Route::get('preguntas-frecuentes', [ContactoController::class, 'pre_fre'])->name('preguntas.frecuentes');
-Route::get('terminos-y-condiciones', [ContactoController::class, 'ter_cond'])->name('terminos.condiciones');
-Route::get('politica-de-privacidad', [ContactoController::class, 'politica'])->name('politica.privacidad');
+Route::middleware('isGuest')->controller(ContactoController::class)->group(function(){
+    Route::get('contacto', 'index')->name('contacto.formulario');
+    Route::post('contacto', 'enviarCorreoContacto')->name('contacto.enviar');  
+    Route::get('preguntas-frecuentes', 'pre_fre')->name('preguntas.frecuentes');
+    Route::get('terminos-y-condiciones', 'ter_cond')->name('terminos.condiciones');
+    Route::get('politica-de-privacidad', 'politica')->name('politica.privacidad');
+});
 
 //quienes somos? - nosotros
-Route::get('quienes-somos', [NosotrosController::class, 'index'])->name('quienes.somos');
-Route::get('especialistas', [NosotrosController::class, 'index'])->name('especialistas.mostrar');
+Route::middleware('isGuest')->controller(NosotrosController::class)->group(function(){
+    Route::get('quienes-somos', 'index')->name('quienes.somos');
+    Route::get('especialistas', 'index')->name('especialistas.mostrar');
+});
 
-
-//cuenta - visitante
-Route::get('login', [VisitanteController::class, 'login'])->name('login.visit');
-Route::get('register', [VisitanteController::class, 'registro'])->name('register.visit');
-
-
-//registro, inicio de sesion
-Route::post('validar-registro',[UserController::class, 'validar_register'])->name('validar.registro');
-
-Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->name('inicia.sesion');
-
-Route::get('logout',[UserController::class, 'logout'])->name('user.logout');
-
-//recuperar contraseña
-Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->name('recuperar.contraseña');
-
-Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->name('user.recuperarContraseña');
-
-Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->name('recuperar.contraseñaEnviar');
-
-Route::middleware('auth')->group(function () {
-    Route::get('verify-email', EmailVerificationPromptController::class)
-                ->name('verification.notice');
-
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-                ->middleware(['signed', 'throttle:6,1'])
-                ->name('verification.verify');
-
-    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-                ->middleware('throttle:6,1')
-                ->name('verification.send');
+//cuenta - visitante - vistas
+Route::middleware('isGuest')->controller(VisitanteController::class)->group(function(){
+    Route::get('login', 'login')->name('login.visit');
+    Route::get('register', 'registro')->name('register.visit');
 });
 
 
+//registro, inicio de sesion
+Route::post('validar-registro',[UserController::class, 'validar_register'])->middleware('isGuest')->name('validar.registro');
+Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->middleware('isGuest')->name('inicia.sesion');
+
+
+//recuperar contraseña
+Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->middleware('isGuest')->name('recuperar.contraseña');
+
+Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->middleware('isGuest')->name('user.recuperarContraseña');
+
+Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->middleware('isGuest')->name('recuperar.contraseñaEnviar');
 ?>

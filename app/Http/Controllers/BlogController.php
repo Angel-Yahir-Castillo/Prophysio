@@ -46,7 +46,8 @@ class BlogController extends Controller
     }
 
     public function admin_index(){
-        return view('admin.blog.mostrar');
+        $blogs = Blog::all();
+        return view('admin.blog.mostrar',compact('blogs'));
     }
 
     public function admin_create(){

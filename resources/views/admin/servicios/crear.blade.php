@@ -32,7 +32,7 @@
 
                     <div class="file-field input-field col s12">
                         <div class="btn">
-                            <span>File</span>
+                            <span>Imagen</span>
                             <input type="file" required name="imagen" id="imagen" onchange="vistaPreliminar(event)" accept=".jpeg,.jpg,.png" >
                         </div>
                         <div class="file-path-wrapper">
@@ -41,7 +41,7 @@
                         <small style="color: red;">@error('imagen') {{ $message }} @enderror</small> 
                     </div>
 
-                    <div class="col s12">
+                    <div style="display: none" id="div-imagen" class="col s12">
                         <center><img src="" width="300px" height="225px" alt="" id="img-foto"></center>
                     </div>
 
@@ -78,7 +78,7 @@
         let vistaPreliminar = (event)=>{
             let leer_img = new FileReader();
             let id_img = document.getElementById('img-foto');
-
+            document.getElementById('div-imagen').style.display = 'block';
             leer_img.onload = ()=>{
                 if(leer_img.readyState==2){
                     id_img.src = leer_img.result;

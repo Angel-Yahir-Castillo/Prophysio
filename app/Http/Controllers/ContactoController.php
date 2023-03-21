@@ -16,10 +16,10 @@ class ContactoController extends Controller
     public function enviarCorreoContacto(Request $request){
 
         $request->validate([
-            'nombre' => ['required','string'],
-            'correo' => ['required', 'email'],
-            'telefono' => 'required',
-            'mensaje' => ['required', 'string'],
+            'nombre' => ['required','string','min:5'],
+            'correo' => ['required', 'email','string'],
+            'telefono' => ['required','string', 'max:10'],
+            'mensaje' => ['required', 'string','max:255'],
         ]);
 
         $correo = new ContactanosMailable($request->all());
