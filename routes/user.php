@@ -5,12 +5,54 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerifyEmailController;
 use App\Http\Controllers\EmailVerificationPromptController;
 use App\Http\Controllers\EmailVerificationNotificationController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\NosotrosController;
+
 
 //abrir sesion
 Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified'])->name('user.inicio');
 
 //cerrar sesion
 Route::post('logout',[UserController::class, 'logout'])->name('user.logout');
+
+Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->group(function () {
+    //blog
+    Route::get('blog', [BlogController::class, 'userIndex'])->name('blog.all');
+
+    //agendar
+    Route::get('agendar', [AgendaController::class, 'userIndex'])->name('agendar.cita');
+
+    //servicios 
+    Route::get('servicios', [ServiciosController::class, 'userIndex'])->name('servicios.mostrar');
+});
+
+
+
+//contacto
+Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(ContactoController::class)->group(function(){
+    Route::get('contacto', 'index_user')->name('contacto.formulario');
+    Route::post('contacto', 'enviarCorreoContacto_user')->name('contacto.enviar');  
+    Route::get('preguntas-frecuentes', 'pre_fre_user')->name('preguntas.frecuentes');
+    Route::get('terminos-y-condiciones', 'ter_cond_user')->name('terminos.condiciones');
+    Route::get('politica-de-privacidad', 'politica_user')->name('politica.privacidad');
+});
+
+//quienes somos? - nosotros
+Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(NosotrosController::class)->group(function(){
+    Route::get('quienes-somos', 'userIndex')->name('quienes.somos');
+    Route::get('especialistas', 'userIndex')->name('especialistas.mostrar');
+});
+
+//cuenta - visitante - vistas
+Route::middleware('isGuest')->controller(VisitanteController::class)->group(function(){
+    Route::get('login', 'login')->name('login.visit');
+    Route::get('register', 'registro')->name('register.visit');
+});
+
 
 //verificacion de correos
 Route::middleware('auth')->group(function () {

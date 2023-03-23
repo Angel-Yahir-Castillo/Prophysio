@@ -1,17 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ChatController;
 
 
 //blog

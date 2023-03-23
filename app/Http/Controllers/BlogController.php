@@ -14,6 +14,11 @@ class BlogController extends Controller
         return view('blog', compact('etiquetas'));
     }
 
+    public function userIndex(){
+        $etiquetas = Tag::all();
+        return view('user.blog', compact('etiquetas'));
+    }
+
     public function mostrarEtiquetas(Request $request){
         $etiquetas = Tag::all();
         return json_encode($etiquetas);

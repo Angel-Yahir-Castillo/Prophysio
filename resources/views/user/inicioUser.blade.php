@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+@extends('user.plantilla_user')
 
-    <title>Bienvenido </title>
-    
-</head>
+@section('meta')
 
-<body>
+@endsection
 
+@section('title', 'Prophysio  Huejutla')
+
+@section('content')
     <center><h3>Bienvenido @auth {{Auth::user()->name}} @endauth</h3></center>
 
 
@@ -30,13 +17,37 @@
         </button></center> 
     </form>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <br>
+    <div class="container section">
+        <div class="row">
+            <div class="col s12">
+                <div class="slider">
+                    <ul class="slides">
+                        <li>
+                            <img src="{{ asset('slider/slider01.JPG') }}"> 
+                        </li>
+                        <li>
+                            <img src="{{ asset('slider/slider02.JPG') }}"> 
+                        </li>
+                        <li>
+                            <img src="{{ asset('slider/slider03.jpeg') }}"> 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
-    <script>
+@section('scripts_styles')
+    <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
-            M.AutoInit();
+            var elems = document.querySelectorAll('.slider');
+            var instances = M.Slider.init(elems,{
+                duration: 600,
+                interval: 3000,
+                height: 600
+            });
         });
     </script>
-</body>
-</html>
+@endsection

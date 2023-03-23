@@ -4,28 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bloqueo del clic derecho -->
-    <script>
-        /*
-        window.onload = function() {
-            document.addEventListener("contextmenu", function(e) {
-                e.preventDefault();
-            });
-        }*/
-    </script>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('img/logo.png') }}">
-    @yield('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    @yield('meta')
     <title>@yield('title') </title>
     
 </head>
@@ -34,13 +21,13 @@
     <div class="navbar-fixed">
         <nav style="background-color: #C7F7F7;" >
             <div class="nav-wrapper">
-                <a href="{{ route('home')}}" style="padding-left:30px" class="brand-logo black-text">Prophysio</a>
+                <a href="{{ route('user.inicio')}}" style="padding-left:30px" class="brand-logo black-text">Prophysio</a>
                 <a href="#" data-target="menu-responsive" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
     
                 <ul class="right hide-on-med-and-down" style="padding-right:20px">
-                    <li><a  href="{{ route('home') }}" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>" class="">Inicio</a></li> 
+                    <li><a  href="{{ route('user.inicio') }}" @if (Request::is('inicio')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif class="">Inicio</a></li> 
                     <li>
                         <a class="" href="{{ route('agendar.cita') }}" style=" <?php if(request()->Is('agendar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
                             Agendar
@@ -50,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{{ route('servicios.mostrar') }}" style="<?php if(request()->Is('servicios')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a href="{{ route('user.servicios.mostrar') }}" @if (Request::is('inicio/servicios')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Servicios
                             <i class="material-icons left">
                                 build
@@ -58,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{{ route('blog.all') }}" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a class="" href="{{ route('user.blog.all') }}" @if (Request::is('inicio/blog')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Blog
                             <i class="material-icons left">
                                 forum
@@ -74,7 +61,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{{ route('quienes.somos') }}" style="<?php if(request()->Is('quienes-somos')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a class="" href="{{ route('user.quienes.somos') }}" @if (Request::is('inicio/quienes-somos')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Nosotros
                             <i class="material-icons left">
                                 people_outline
@@ -82,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="" href="{{ route('contacto.formulario') }}" style="<?php if(request()->Is('contacto')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a class="" href="{{ route('user.contacto.formulario') }}" @if (Request::is('inicio/contacto')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Contacto
                             <i class="material-icons left">
                                 chat
@@ -237,7 +224,7 @@
         </div>
     </div>
 
-    <!--
+    <!-- boton flotante
     <div class="fixed-action-btn">
         <button onclick="ocultarChat()" class="btn-floating btn-large waves-effect waves-light red" >
             <i class="large material-icons">chat</i>
@@ -245,22 +232,22 @@
     </div>
     -->
 
-
+    <!-- footer-->
     <footer class="page-footer" style="background-color: #C7F7F7;">
           <div class="container">
             <div class="row">
                 <div class="col l4 m4 s12">
                     <h5 class="black-text"> Informacion</h5>
                     <ul>
-                    <li><a class="" style="<?php if(request()->Is('politica-de-privacidad')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('politica.privacidad') }}"><b>Politica de privacidad</b></a></li>
-                    <li><a class="" style="<?php if(request()->Is('preguntas-frecuentes')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('preguntas.frecuentes') }}"><b>Preguntas frecuentes</b></a></li>
-                    <li><a class="" style="<?php if(request()->Is('terminos-y-condiciones')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('terminos.condiciones') }}"><b>Terminos y condiciones</b></a></li>
+                    <li><a @if (Request::is('inicio/politica-de-privacidad')) style="color:#E20089;" @else style="color:#000;" @endif  href="{{ route('user.politica.privacidad') }}"><b>Politica de privacidad</b></a></li>
+                    <li><a @if (Request::is('inicio/preguntas-frecuentes')) style="color:#E20089;" @else style="color:#000;" @endif href="{{ route('user.preguntas.frecuentes') }}"><b>Preguntas frecuentes</b></a></li>
+                    <li><a @if (Request::is('inicio/terminos-y-condiciones')) style="color:#E20089;" @else style="color:#000;" @endif href="{{ route('user.terminos.condiciones') }}"><b>Terminos y condiciones</b></a></li>
                     </ul>
                 </div>
               <div class="col l4 m4 s12">
                 <h5 class="black-text">Contacto</h5>
                 <ul>
-                  <li><a class="" href="{{ route('contacto.formulario') }}" style="<?php if(request()->Is('contacto')) echo 'color: #E20089;'; else echo 'color:#000000;';?>"><b>Correo electronico</b></a></li>
+                  <li><a href="{{ route('user.contacto.formulario') }}" @if (Request::is('inicio/contacto')) style="color:#E20089;" @else style="color:#000;" @endif><b>Correo electronico</b></a></li>
                   <li><p class="black-text text-lighten-3">Ubicacion: <br> Calle Coahulia. S/N. col. Tahuizan. Huejutla Hgo </p></li>
                   <li><p class="black-text text-lighten-3" >Telefono: +52 2225081501</p></li>
                 </ul>
@@ -268,9 +255,9 @@
               <div class="col l4 m4 s12">
                 <h5 class="black-text">¿Quienes somos?</h5>
                 <ul>
-                  <li><a class="" style="<?php if(request()->Is('quienes-somos')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('quienes.somos') }}"><b>Mision y vision</b></a></li>
-                  <li><a class="" style="<?php if(request()->Is('servicios')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('servicios.mostrar') }}"><b>Servicios</b></a></li>
-                  <li><a class="" style="<?php if(request()->Is('quienes-somos')) echo 'color: #E20089;'; else echo 'color:#000000;';?>" href="{{ route('quienes.somos') }}"><b>Especialistas</b></a></li>
+                  <li><a @if (Request::is('inicio/quienes-somos')) style="color:#E20089;" @else style="color:#000;" @endif href="{{ route('user.quienes.somos') }}"><b>Mision y vision</b></a></li>
+                  <li><a @if (Request::is('inicio/servicios')) style="color:#E20089;" @else style="color:#000;" @endif href="{{ route('user.servicios.mostrar') }}"><b>Servicios</b></a></li>
+                  <li><a @if (Request::is('inicio/quienes-somos')) style="color:#E20089;" @else style="color:#000;" @endif href="{{ route('user.quienes.somos') }}"><b>Especialistas</b></a></li>
                 </ul>
               </div>
             </div>
@@ -335,59 +322,60 @@
     </script>
 
     <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $(document).ready(function(){
-        $("#send-btn").on("click", function(){
-            $value = $("#data").val();
-            if($value == ""){
-                M.toast({html: 'Por favor, ingresa tu pregunta!'})
-                return;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            $msg = ` <div class="col s12">
-            <div class="row">
-                <div class="col s1"></div>
-                <div class="col s8" style="border-radius: 15px; background: #efefef; padding: 12px 15px ;">
-                    <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${$value} </b> </label>
-                </div>
-                <div class="col s2">
-                    <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%;  margin-right:10px; background: #efefef; " >person</i> </center>
-                </div>
-            </div>
-            </div>`;
-            //$("#form").append($msg);
-            document.getElementById("form").innerHTML += $msg;
-            $("#data").val('');
-            
-            
-            // start ajax code
-            $.ajax({
-                url: "{{route('ayuda.chat')}}",
-                type: 'POST',
-                data: 'pregunta='+$value,
-                success: function(result){
-                    $replay = ` <div class="col s12">
-                        <div class="row">
-                            <div class="col s2">
-                                <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%; background: #C7F7F7; " >person</i> </center>
-                            </div>
-                            <div class="col s8" style="border-radius: 15px; background: #C7F7F7; padding: 12px 15px ; margin-left:10px;">
-                                <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${result} </b> </label>
-                            </div>
-                            <div class="col s2"></div>
-                        </div>
-                    </div>`;
-                    $("#form").append($replay);
-                    // when chat goes down the scroll bar automatically comes to the bottom
-                    $("#form").scrollTop($("#form")[0].scrollHeight);
-                }
-            }); 
         });
-    });
+
+        $(document).ready(function(){
+            $("#send-btn").on("click", function(){
+                $value = $("#data").val();
+                if($value == ""){
+                    M.toast({html: 'Por favor, ingresa tu pregunta!'})
+                    return;
+                }
+                $msg = ` <div class="col s12">
+                <div class="row">
+                    <div class="col s1"></div>
+                    <div class="col s8" style="border-radius: 15px; background: #efefef; padding: 12px 15px ;">
+                        <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${$value} </b> </label>
+                    </div>
+                    <div class="col s2">
+                        <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%;  margin-right:10px; background: #efefef; " >person</i> </center>
+                    </div>
+                </div>
+                </div>`;
+                //$("#form").append($msg);
+                document.getElementById("form").innerHTML += $msg;
+                $("#data").val('');
+                
+                
+                // start ajax code
+                $.ajax({
+                    url: "{{route('ayuda.chat')}}",
+                    type: 'POST',
+                    data: 'pregunta='+$value,
+                    success: function(result){
+                        $replay = ` <div class="col s12">
+                            <div class="row">
+                                <div class="col s2">
+                                    <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%; background: #C7F7F7; " >person</i> </center>
+                                </div>
+                                <div class="col s8" style="border-radius: 15px; background: #C7F7F7; padding: 12px 15px ; margin-left:10px;">
+                                    <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${result} </b> </label>
+                                </div>
+                                <div class="col s2"></div>
+                            </div>
+                        </div>`;
+                        $("#form").append($replay);
+                        // when chat goes down the scroll bar automatically comes to the bottom
+                        $("#form").scrollTop($("#form")[0].scrollHeight);
+                    }
+                }); 
+            });
+        });
     </script>
+    @yield('scripts_styles')
 </body>
 </html>

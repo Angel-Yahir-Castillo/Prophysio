@@ -12,6 +12,11 @@ class ServiciosController extends Controller
         return view('servicios',compact('servicios'));
     }
 
+    public function userIndex(){
+        $servicios = Servicio::all();
+        return view('user.servicios',compact('servicios'));
+    }
+
     public function admin_index(){
         $servicios = Servicio::all();
         return view('admin.servicios.mostrar',compact('servicios'));

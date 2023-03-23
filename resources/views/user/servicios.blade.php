@@ -1,10 +1,12 @@
-@extends('plantilla_visit')
+@extends('user.plantilla_user')
+
+@section('meta')
+
+@endsection
 
 @section('title', 'Prophysio Huejutla - Servicios')
 
 @section('content')
-    
-    
     <div class="container section">
     {{ Breadcrumbs::render('servicios') }}
         <div class="row">
@@ -18,7 +20,7 @@
                     </div>
                     <div class="col s12 m5 l4">
                         <center>
-                            <img class="responsive-img" src="{{ asset('servicios_imagenes/'.$servicio->imagen) }}" alt="{{$servicio->alt}}">
+                            <img class="responsive-img"  src="{{ asset('servicios_imagenes/'.$servicio->imagen) }}" alt="{{$servicio->alt}}">
                         </center>
                     </div>
                 </div>
@@ -27,5 +29,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts_styles')
+
+@endsection
+
+
+
+
+@section('content')
+    
+    
+
     
 @endsection

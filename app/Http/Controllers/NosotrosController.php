@@ -11,4 +11,9 @@ class NosotrosController extends Controller
         $informacion = Informacion::orderby('created_at','desc')->first();
         return view('quienes-somos',compact('informacion'));
     }
+
+    public function userIndex(){
+        $informacion = Informacion::orderby('created_at','desc')->first();
+        return view('user.quienes-somos',compact('informacion'));
+    }
 }
