@@ -8,7 +8,7 @@ use App\Http\Controllers\EmailVerificationNotificationController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiciosController;
-use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 
@@ -47,12 +47,12 @@ Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->contro
     Route::get('especialistas', 'userIndex')->name('especialistas.mostrar');
 });
 
-//cuenta - visitante - vistas
-Route::middleware('isGuest')->controller(VisitanteController::class)->group(function(){
-    Route::get('login', 'login')->name('login.visit');
-    Route::get('register', 'registro')->name('register.visit');
-});
 
+//configurar pregunta secreta
+Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(CuentaController::class)->group(function(){
+    Route::get('cuenta', 'index')->name('cuenta.show');
+    Route::post('pregunta-secreta', 'preg_secreta')->name('pregunta.configurar');
+});
 
 //verificacion de correos
 Route::middleware('auth')->group(function () {

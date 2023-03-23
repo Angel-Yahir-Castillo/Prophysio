@@ -85,8 +85,8 @@
 
     <ul id="id_sesiones" class="dropdown-content">
         <li>
-            <a class="black-text" href="{{ route('login.visit') }}">
-                Iniciar sesion
+            <a class="black-text" href="{{ route('user.cuenta.show') }}">
+                Mi cuenta
                 <i class="material-icons left">
                     person
                 </i>
@@ -95,7 +95,7 @@
         <li class="divider"></li>
         <li>
             <a class="black-text" href="{{ route('register.visit') }}">
-                Registrarse
+                Cerrar sesion
                 <i class="material-icons left">
                     person_add
                 </i>

@@ -50,4 +50,15 @@
             });
         });
     </script>
+
+    
+    @if (session('info'))
+        <script>
+            M.toast({
+                html: '{{ session("info")}} ',
+                classes: 'black',
+                displayLength: 3000,
+            })
+        </script>
+    @endif
 @endsection

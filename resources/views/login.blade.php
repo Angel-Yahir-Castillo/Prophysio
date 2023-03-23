@@ -13,6 +13,11 @@
             @csrf 
                 <div class="row card-panel">
 
+                    @if (session('status'))
+                        <div class="col s12">
+                            <p class="green-text">{{ session("status")}}</p> 
+                        </div>
+                    @endif
                     <center><b>Iniciar sesion</b></center>
                     <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
                     <div class="input-field col s12">
@@ -41,7 +46,7 @@
 
                     <br>
                     <div class="col s12">
-                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('recuperar.contraseña') }}">Recuperar contraseña </a></center><br>
+                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('password.request') }}">Recuperar contraseña </a></center><br>
                     </div>
                     <center><input class="btn" type="submit" value="Iniciar sesion"> </input></center>
 

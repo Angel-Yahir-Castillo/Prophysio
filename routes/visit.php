@@ -8,7 +8,9 @@ use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\PasswordResetLinkController;
+use App\Http\Controllers\NewPasswordController;
+use App\Http\Controllers\PasswordResetController;
 
 //blog
 Route::get('blog', [BlogController::class, 'index'])->middleware('isGuest')->name('blog.all');
@@ -46,6 +48,25 @@ Route::middleware('isGuest')->controller(VisitanteController::class)->group(func
 Route::post('validar-registro',[UserController::class, 'validar_register'])->middleware('isGuest')->name('validar.registro');
 Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->middleware('isGuest')->name('inicia.sesion');
 
+//Recuperar contraseña
+Route::middleware('isGuest')->controller(PasswordResetController::class)->group(function(){
+    Route::get('recuperar-contraseña','mostrarOpciones')->name('password.options');
+});
+
+//Recuperar contraseña correo
+Route::middleware('isGuest')->group(function(){
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+                ->name('password.request');
+
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+                ->name('password.email');
+
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+                ->name('password.reset');
+
+    Route::post('reset-password', [NewPasswordController::class, 'store'])
+                ->name('password.store');
+});
 
 //recuperar contraseña
 Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->middleware('isGuest')->name('recuperar.contraseña');
