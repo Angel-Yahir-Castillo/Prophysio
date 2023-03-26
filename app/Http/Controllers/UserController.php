@@ -43,6 +43,9 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials, $remember)){
             $request->session()->regenerate();
+            if(auth()->user()->respuesta==null){
+                return redirect(route('user.configurar.pregunta'));
+            }
             return redirect(route('user.inicio'));
         }
 
@@ -127,7 +130,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('home'));
+        return redirect(route('home'))->with('status', 'Sesion cerrada');
     }
 
 }

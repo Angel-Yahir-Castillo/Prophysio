@@ -11,7 +11,7 @@ use App\Http\Controllers\InfoEmpresaController;
 
 
 
-Route::get('admin', [AdminController::class, 'index'])
+Route::get('admin', [AdminController::class, 'index'])->middleware('isGuest')
     ->name('admin.login');
 
 Route::post('login_admin', [AdminController::class, 'login'])

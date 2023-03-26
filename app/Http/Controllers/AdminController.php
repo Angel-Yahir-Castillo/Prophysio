@@ -49,7 +49,10 @@ class AdminController extends Controller
         
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect(route('admin.dashboard'));
+            if($request->tipo=="1")
+                return redirect(route('admin.dashboard'));
+            else
+                return redirect(route('terapeuta.dashboard'));
         }
 
         if(count($user) >0){ 

@@ -32,3 +32,4 @@ Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat')
 require __DIR__.'/visit.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/user.php';
+require __DIR__.'/terapeutas.php';

@@ -1,37 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
-    <title>Verificacion de correo</title>
-</head>
-<body>
-    <br><br><br>
-    <div class="section container">
+@extends('plantilla_visit')
 
-        <div class="row">
-            <div class="col s0 m2 l3"></div>
-            <form action="{{ route('password.store') }}" method="POST" class="col s12 m8 l6">
+@section('title', 'Recuperar Contraseña')
+
+@section('content')
+    
+<br><br><br>
+    <div class=" container">
+    
+        <div class="row section">
+        
+            <div class="col m2 l3 s0"></div>
+            
+            <form action="{{route('password.respuesta.validate')}}" method="POST" class="col l6 m8 s12">
             @csrf 
                 <div class="row card-panel">
-                    <center><b>Nueva contraseña</b></center> 
-                    <!-- Password Reset Token -->
-                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
+                    <center><b>Recuperar Contraseña</b></center>
+
+                    <p> {{$user->name}} Para recuperar tu contraseña contesta la siguiente pregunta:</p>
+                    <p><b>{{$user->pregunta}}</b></p>
                     <div class="input-field col s12">
-                        <input id="email" name="email" type="email" value="{{ old('email', $request->email) }}" class="validate" required
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un correo electronico valido">
-                        <label for="email">Correo electronico:</label>
-                        <small style="color: red;">@error('email') {{ $message }} @enderror</small> 
+                        <input id="respuesta" name="respuesta" type="text" value="" requiered class="validate" >
+                        <label for="respuesta">Respuesta:</label>
+                        <small style="color: red;">@error('respuesta') {{ $message }} @enderror</small> 
+                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
                     </div>
 
+                    <div class="input-field col s12">
+                        <input id="correo" name="correo" type="hidden" value="{{$user->email}}" requiered class="validate" 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
+                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
+                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
+                    </div>
+
+                    <center><b>Ingresa tu nueva Contraseña</b></center>
                     <div class="input-field col s11">
                         <input id="password" name="password" value="" type="password" class="validate" required
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
@@ -54,27 +56,19 @@
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena2()"><i class="material-icons ">remove_red_eye</i></button>
                     </div>
 
+                    <center><input class="btn" type="submit" value="Aceptar"> </input></center>
 
-                    <div class="col s12">
-                        <center><button class="btn waves-effect waves-light" type="submit" value="">Restablecer contraseña
-                        </button></center>
-                    </div>
-                    
+                    <br>
 
                 </div>
+
+                
+
             </form>
         </div>
+
     </div>
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            M.AutoInit();
-        });
-    </script>
-
+    
     <script>
         function mostrarContrasena(){
             var tipo = document.getElementById("password");
@@ -93,6 +87,6 @@
             }
         }
     </script>
-</body>
-</html>
 
+
+    @endsection

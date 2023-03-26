@@ -13,12 +13,12 @@
     <title>Verificacion de correo</title>
 </head>
 <body>
-    
+    <br><br><br>
     <div class="container section">
         <div class="row">
             <div class="col s0 m4"></div>
             <div class="col m4 s12">
-                <div class="row">
+                <div class="card-panel row">
                     <div class="col s12">
                         <p>Gracias por registrarte! Antes de comenzar, ¿podría verificar su dirección de correo electrónico haciendo clic en el enlace que le acabamos de enviar? Si no recibiste el correo electrónico, con gusto te enviaremos otro.</p>
                     </div>

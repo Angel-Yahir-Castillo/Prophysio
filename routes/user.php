@@ -11,15 +11,15 @@ use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
-
+use App\Http\Controllers\PreguntaSecretaController;
 
 //abrir sesion
-Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified'])->name('user.inicio');
+Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified','conf-preg'])->name('user.inicio');
 
 //cerrar sesion
 Route::post('logout',[UserController::class, 'logout'])->name('user.logout');
 
-Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->group(function () {
+Route::prefix('inicio/')->middleware(['auth','verified','conf-preg'])->name('user.')->group(function () {
     //blog
     Route::get('blog', [BlogController::class, 'userIndex'])->name('blog.all');
 
@@ -33,7 +33,7 @@ Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->group(
 
 
 //contacto
-Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(ContactoController::class)->group(function(){
+Route::prefix('inicio/')->middleware(['auth','verified','conf-preg'])->name('user.')->controller(ContactoController::class)->group(function(){
     Route::get('contacto', 'index_user')->name('contacto.formulario');
     Route::post('contacto', 'enviarCorreoContacto_user')->name('contacto.enviar');  
     Route::get('preguntas-frecuentes', 'pre_fre_user')->name('preguntas.frecuentes');
@@ -42,16 +42,22 @@ Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->contro
 });
 
 //quienes somos? - nosotros
-Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(NosotrosController::class)->group(function(){
+Route::prefix('inicio/')->middleware(['auth','verified','conf-preg'])->name('user.')->controller(NosotrosController::class)->group(function(){
     Route::get('quienes-somos', 'userIndex')->name('quienes.somos');
     Route::get('especialistas', 'userIndex')->name('especialistas.mostrar');
 });
 
 
-//configurar pregunta secreta
-Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->controller(CuentaController::class)->group(function(){
+//configurar cuenta
+Route::prefix('inicio/')->middleware(['auth','verified','conf-preg'])->name('user.')->controller(CuentaController::class)->group(function(){
     Route::get('cuenta', 'index')->name('cuenta.show');
+   
+});
+
+//configurar pregunta secreta
+Route::middleware(['auth','verified','conf-preg'])->name('user.')->controller(PreguntaSecretaController::class)->group(function(){
     Route::post('pregunta-secreta', 'preg_secreta')->name('pregunta.configurar');
+    Route::get('configurar-pregunta', 'index')->name('configurar.pregunta');
 });
 
 //verificacion de correos

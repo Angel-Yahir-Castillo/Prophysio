@@ -51,6 +51,11 @@ Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->middlewar
 //Recuperar contraseña
 Route::middleware('isGuest')->controller(PasswordResetController::class)->group(function(){
     Route::get('recuperar-contraseña','mostrarOpciones')->name('password.options');
+    Route::get('pregunta-secreta','mostrarPregunta')->name('password.secret');
+    Route::post('verificar-correo','validarCorreo')->name('password.email.validate');
+    Route::get('escribir-respuesta','preguntar')->name('password.pregunta');
+
+    Route::post('verificar-respuesta','validarRespuesta')->name('password.respuesta.validate');
 });
 
 //Recuperar contraseña correo
@@ -69,9 +74,9 @@ Route::middleware('isGuest')->group(function(){
 });
 
 //recuperar contraseña
-Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->middleware('isGuest')->name('recuperar.contraseña');
+//Route::get('recuperar-contraseña',[VisitanteController::class, 'recuperaContraseñaVista'])->middleware('isGuest')->name('recuperar.contraseña');
 
-Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->middleware('isGuest')->name('user.recuperarContraseña');
+//Route::post('recuperar contraseña', [UserController::class, 'recuperarContraseña'])->middleware('isGuest')->name('user.recuperarContraseña');
 
 Route::get('enviar-correo',[UserController::class, 'recuperaContraseñaVistaDos'])->middleware('isGuest')->name('recuperar.contraseñaEnviar');
 ?>

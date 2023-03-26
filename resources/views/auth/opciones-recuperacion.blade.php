@@ -6,40 +6,34 @@
     
     <br><br><br>
     <div class=" container">
-    
         <div class="row section">
-        
             <div class="col m2 l3 s0"></div>
-            
-            <form action="{{ route('user.recuperarContraseña') }}" method="POST" class="col l6 m8 s12">
-            @csrf 
+             <div class="col l6 m8 s12">
                 <div class="row card-panel">
-
                     <center><b>Recuperar Contraseña</b></center>
 
-                    <p>Para recuperar su contraseña Ingrese su correo electronico con el cual esta registrado</p>
-                    <div class="input-field col s12">
-                        <input id="correo" name="correo" type="email" value="{{ old('correo') }}" requiered autofocus class="validate" 
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
-                        <label for="correo">Correo electronico:</label>
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
-                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
+                    <p>
+                        Eliga un metodo para recuperar contraseña
+                    </p>
 
+                    <div class="col s12">
+                        <p>1. Recuperar contraseña por correo electronico</p>
+                        <center><a class="btn"  href="{{route('password.request')}}"> Aceptar </a></center>
                     </div>
+                    
 
-                    <center><input class="btn" type="submit" value="Aceptar"> </input></center>
+                    <div class="col s12">
+                        <p>2. Recuperar contraseña por pregunta secreta</p>
+                        <center><a class="btn"  href="{{route('password.secret')}}"> Aceptar </a></center>
+                    </div>
 
                     <br>
 
                 </div>
-
-                
-
-            </form>
+            </div>
         </div>
-
     </div>
-    <br><br><br>
+    <br>
 
 
     @endsection
