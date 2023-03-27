@@ -10,6 +10,10 @@ class AgendaController extends Controller
         return view('agenda');
     }
 
+    public function userIndex(){
+        return view('user.agenda');
+    }
+
     public function create(){
         
     }

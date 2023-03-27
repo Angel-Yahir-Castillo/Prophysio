@@ -29,7 +29,7 @@
 
                 <div class="col s12 m3 l4"></div>
                 <div class="col s12 m6 l4">
-                    <img class="responsive-img" alt="Imagen de un telefono descompuesto" src="{{ asset('iconos/error.jpg') }}">
+                    <img class="responsive-img" alt="Imagen de un terapeuta triste" src="{{ asset('iconos/error.jpg') }}">
                 </div>
                 <div class="col s12 m3 l4"></div>
 

@@ -46,16 +46,16 @@ Route::middleware('isGuest')->controller(VisitanteController::class)->group(func
 
 //registro, inicio de sesion
 Route::post('validar-registro',[UserController::class, 'validar_register'])->middleware('isGuest')->name('validar.registro');
-Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->middleware('isGuest')->name('inicia.sesion');
+Route::post('inicia-sesion',[UserController::class, 'inicia_sesion'])->middleware(['isGuest','throttle:4,1'])->name('inicia.sesion');
 
-//Recuperar contraseña
+//Recuperar contraseña pregunta secreta
 Route::middleware('isGuest')->controller(PasswordResetController::class)->group(function(){
     Route::get('recuperar-contraseña','mostrarOpciones')->name('password.options');
     Route::get('pregunta-secreta','mostrarPregunta')->name('password.secret');
     Route::post('verificar-correo','validarCorreo')->name('password.email.validate');
-    Route::get('escribir-respuesta','preguntar')->name('password.pregunta');
+    Route::get('escribir-respuesta/{email}','preguntar')->name('password.pregunta');
 
-    Route::post('verificar-respuesta','validarRespuesta')->name('password.respuesta.validate');
+    Route::post('verificar-respuesta','validarRespuesta')->middleware('throttle:4,1')->name('password.respuesta.validate');
 });
 
 //Recuperar contraseña correo

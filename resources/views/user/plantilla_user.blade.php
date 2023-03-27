@@ -25,11 +25,10 @@
                 <a href="#" data-target="menu-responsive" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
-    
                 <ul class="right hide-on-med-and-down" style="padding-right:20px">
                     <li><a  href="{{ route('user.inicio') }}" @if (Request::is('inicio')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif class="">Inicio</a></li> 
                     <li>
-                        <a class="" href="{{ route('agendar.cita') }}" style=" <?php if(request()->Is('agendar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
+                        <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/agendar')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Agendar
                             <i class="material-icons left">
                                 today
@@ -53,14 +52,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_sesiones" style="<?php if (request()->Is('login') or request()->Is('register') or request()->Is('recuperar-contraseña') or request()->Is('recuperar contraseña')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Cuenta
-                            <i class="material-icons left">
-                                account_circle
-                            </i>
-                        </a>
-                    </li>
-                    <li>
                         <a class="" href="{{ route('user.quienes.somos') }}" @if (Request::is('inicio/quienes-somos')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
                             Nosotros
                             <i class="material-icons left">
@@ -76,17 +67,23 @@
                             </i>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-trigger" href="#" data-target="id_sesiones" @if ((Request::is('inicio/cuenta')) || (Request::is('inicio/cuenta/*'))) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000;" @endif >
+                        @auth {{Auth::user()->name}} @endauth
+                            <i class="material-icons left">
+                                account_circle
+                            </i>
+                        </a>
+                    </li>
                 </ul>
-    
             </div>
-            
         </nav>
     </div>
 
     <ul id="id_sesiones" class="dropdown-content">
         <li>
             <a class="black-text" href="{{ route('user.cuenta.show') }}">
-                Mi cuenta
+                Cuenta
                 <i class="material-icons left">
                     person
                 </i>
@@ -94,10 +91,10 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="{{ route('register.visit') }}">
-                Cerrar sesion
+            <a class="black-text" href="{{ route('user.cerrar.sesion') }}">
+                Salir
                 <i class="material-icons left">
-                    person_add
+                    logout
                 </i>
             </a>
         </li>
@@ -105,8 +102,8 @@
 
     <ul id="id_sesionResp" class="dropdown-content">
         <li>
-            <a class="black-text" href="{{ route('login.visit') }}">
-                Iniciar sesion
+            <a class="black-text" href="{{ route('user.cuenta.show') }}">
+                Cuenta
                 <i class="material-icons left">
                     person
                 </i>
@@ -114,65 +111,65 @@
         </li>
         <li class="divider"></li>
         <li>
-            <a class="black-text" href="{{ route('register.visit') }}">
-                Registrarse
+            <a class="black-text" href="{{ route('user.cerrar.sesion') }}">
+                Salir
                 <i class="material-icons left">
-                    person_add
+                    logout
                 </i>
             </a>
         </li>
     </ul>
 
     <ul class="sidenav" style="background-color: #FFFFFF"  id="menu-responsive">
-        <li><a  href="{{ route('home')}}" style="<?php if(request()->Is('/')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>" class="">Inicio</a></li> 
-                    <li>
-                        <a class="" href="{{ route('agendar.cita') }}" style="<?php if(request()->Is('agendar')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Agendar
-                            <i class="material-icons left">
-                                today
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('servicios.mostrar') }}" style="<?php if(request()->Is('servicios')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Servicios
-                            <i class="material-icons left">
-                                build
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('blog.all') }}" style="<?php if(request()->Is('blog')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Blog
-                            <i class="material-icons left">
-                            forum
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-trigger" href="#" data-target="id_sesionResp" style="<?php if (request()->Is('login') or request()->Is('register')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Cuenta
-                            <i class="material-icons left">
-                                account_circle
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('quienes.somos') }}" style="<?php if(request()->Is('quienes-somos')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Nosotros
-                            <i class="material-icons left">
-                                people_outline
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="{{ route('contacto.formulario') }}" style="<?php if(request()->Is('contacto')) echo 'background-color: #E20089; color:#FFFFFF;'; else echo 'color:#000000;'; ?>">
-                            Contacto
-                            <i class="material-icons left">
-                                chat
-                            </i>
-                        </a>
-                    </li>
+        <li><a  href="{{ route('user.inicio') }}" @if (Request::is('inicio')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif class="">Inicio</a></li> 
+        <li>
+            <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/agendar')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                Agendar
+                <i class="material-icons left">
+                    today
+                </i>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.servicios.mostrar') }}" @if (Request::is('inicio/servicios')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                Servicios
+                <i class="material-icons left">
+                    build
+                </i>
+            </a>
+        </li>
+        <li>
+            <a class="" href="{{ route('user.blog.all') }}" @if (Request::is('inicio/blog')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                Blog
+                <i class="material-icons left">
+                    forum
+                </i>
+            </a>
+        </li>
+        <li>
+            <a class="" href="{{ route('user.quienes.somos') }}" @if (Request::is('inicio/quienes-somos')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                Nosotros
+                <i class="material-icons left">
+                    people_outline
+                </i>
+            </a>
+        </li>
+        <li>
+            <a class="" href="{{ route('user.contacto.formulario') }}" @if (Request::is('inicio/contacto')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                Contacto
+                <i class="material-icons left">
+                    chat
+                </i>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-trigger" href="#" data-target="id_sesionResp" @if ((Request::is('inicio/cuenta')) || (Request::is('inicio/cuenta/*'))) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000;" @endif >
+            @auth {{Auth::user()->name}} @endauth
+                <i class="material-icons left">
+                    account_circle
+                </i>
+            </a>
+        </li>
     </ul>
 
     @yield('content')
@@ -265,7 +262,7 @@
           <div class=" footer-copyright">
             <div class=" row container black-text">
               <div class="col section s12 m6">
-                <p>© 2022 Prophysio Huejutla</p> 
+                <p>© 2023 Prophysio Huejutla</p> 
               </div>
               <div class="col s4 m2 section">
                 <a class="black-text text-lighten-4 " target="_blank" href="https://www.instagram.com/prophysio_huejutla/"> <img width="30px" height="30px" src="<?php echo asset('iconos/instagram.png')?>"></a>

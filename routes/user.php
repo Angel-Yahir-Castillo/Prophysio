@@ -18,6 +18,7 @@ Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth'
 
 //cerrar sesion
 Route::post('logout',[UserController::class, 'logout'])->name('user.logout');
+Route::get('logout',[UserController::class, 'salir'])->name('user.cerrar.sesion');
 
 Route::prefix('inicio/')->middleware(['auth','verified'])->name('user.')->group(function () {
     //blog

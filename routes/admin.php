@@ -14,7 +14,7 @@ use App\Http\Controllers\InfoEmpresaController;
 Route::get('admin', [AdminController::class, 'index'])->middleware('isGuest')
     ->name('admin.login');
 
-Route::post('login_admin', [AdminController::class, 'login'])
+Route::post('login_admin', [AdminController::class, 'login'])->middleware('throttle:3,1')
     ->name('admin.login.form');
 
 Route::get('admin/dashboard', [AdminController::class, 'inicio'])

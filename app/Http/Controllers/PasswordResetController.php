@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\PregSecreta;
 use Illuminate\Http\Request;
 use App\Models\User;
-use com_exception;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class PasswordResetController extends Controller
 {
@@ -31,17 +31,30 @@ class PasswordResetController extends Controller
             return redirect(route('password.secret'))->with('info','El correo ingresado no esta registrado');
         }
 
-
-        return redirect(route('password.pregunta'))->with('data',$user);
+        return redirect(route('password.pregunta',Crypt::encryptString($user->email)));
     }
 
-    public function preguntar(){
-        $usuario = session('data');
+    public function preguntar($correo){
+        try {
+            $email = Crypt::decryptString($correo);
+        } catch (DecryptException $e) {
+            return redirect(route('password.secret'))->with('info','El correo ingresado no esta registrado');
+        }
+        
+        if(User::where('users.email',$email)->first()->respuesta == null){
+            return redirect(route('password.secret'))->with('info','Esta cuenta no tiene configurada la pregunta secreta, prueba con otro metodo de recuperacion');
+        }
+
         $user = User::select('users.email','users.name','pregunta_secreta.pregunta')
         ->join('pregunta_secreta','users.pregunta_id','=','pregunta_secreta.id')
-        ->where('users.id',$usuario->id)
+        ->where('users.email',$email)
         ->first();
-        //return $user;
+
+        if($user == null){
+            return redirect(route('password.secret'))->with('info','El correo ingresado no esta registrado');
+        }
+        
+        
         return view('auth.ingresar_pregunta',compact('user'));
     }
 
@@ -54,13 +67,16 @@ class PasswordResetController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        if($user->respuesta != $request->respuesta){
-            $user = User::select('users.email','users.name','pregunta_secreta.pregunta')
-            ->join('pregunta_secreta','users.pregunta_id','=','pregunta_secreta.id')
-            ->where('users.email',$user->email)
-            ->first();
-            return view('auth.ingresar_pregunta',compact('user'));
-            //return redirect(route('password.secret'))->with('info','El correo ingresado no esta registrado');
+        
+        try {
+            $respuestaCorrecta = Crypt::decryptString($user->respuesta);
+        } catch (DecryptException $e) {
+            return redirect(route('password.pregunta',Crypt::encryptString($user->email)))->with('info','La respuesta es incorrecta');
+        }
+
+
+        if($respuestaCorrecta != $request->respuesta){
+            return redirect(route('password.pregunta',Crypt::encryptString($user->email)))->with('info','La respuesta es incorrecta');
         }
 
         $user->contrasena=$request->password;

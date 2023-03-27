@@ -20,22 +20,21 @@
                    <center><p> {{$user->name}} Para recuperar tu contraseña contesta la siguiente pregunta:</p></center>
                     <p><b>{{$user->pregunta}}</b></p>
                     <div class="input-field col s12">
-                        <input id="respuesta" name="respuesta" type="text" value="" requiered class="validate" >
+                        <input id="respuesta" name="respuesta" type="text" value="" required class="validate" >
                         <label for="respuesta">Respuesta:</label>
                         <small style="color: red;">@error('respuesta') {{ $message }} @enderror</small> 
                         <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
                     </div>
 
                     <div class="input-field col s12">
-                        <input id="correo" name="correo" type="hidden" value="{{$user->email}}" requiered class="validate" 
+                        <input id="correo" name="correo" type="hidden" value="{{$user->email}}" required class="validate" 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
                         <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
-                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
                     </div>
 
                     <center><b>Ingresa tu nueva Contraseña</b></center>
                     <div class="input-field col s11">
-                        <input id="password" name="password" value="" type="password" class="validate" required
+                        <input id="password" name="password" value="{{ old('password') }}" type="password" class="validate" required
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password">Contraseña:</label>
@@ -46,7 +45,7 @@
                     </div>
 
                     <div class="input-field col s11">
-                        <input id="password_confirmation" name="password_confirmation" value="" type="password" class="validate" required
+                        <input id="password_confirmation" name="password_confirmation" value="{{old('password_confirmation')}}" type="password" class="validate" required
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password_confirmation">Confirmar contraseña:</label>

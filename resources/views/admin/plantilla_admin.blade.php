@@ -24,7 +24,7 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <a href="#" class="bradn-logo">Prophysio</a>
-                <a href="{{route('admin.logout')}}" class=""><i class="material-icons">exit_to_app</i> Cerrar sesion </a>
+                <a href="{{route('admin.logout')}}" class=""><i class="material-icons">logout</i> Cerrar sesion </a>
             </div>
         </div>
     </div>

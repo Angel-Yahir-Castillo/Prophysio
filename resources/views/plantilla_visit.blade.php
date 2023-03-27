@@ -278,7 +278,7 @@
           <div class=" footer-copyright">
             <div class=" row container black-text">
               <div class="col section s12 m6">
-                <p>© 2022 Prophysio Huejutla</p> 
+                <p>© 2023 Prophysio Huejutla</p> 
               </div>
               <div class="col s4 m2 section">
                 <a class="black-text text-lighten-4 " target="_blank" href="https://www.instagram.com/prophysio_huejutla/"> <img width="30px" height="30px" src="<?php echo asset('iconos/instagram.png')?>"></a>

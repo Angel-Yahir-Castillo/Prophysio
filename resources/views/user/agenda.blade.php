@@ -1,4 +1,8 @@
-@extends('plantilla_visit')
+@extends('user.plantilla_user')
+
+@section('meta')
+
+@endsection
 
 @section('title', 'Prophysio Huejutla - Agendar')
 
@@ -9,8 +13,8 @@
     {{ Breadcrumbs::render('agenda') }}
         <div class="row">
 
-            <form action="" method="GET" class="col s12">
-
+            <form action="" method="POST" class="col s12">
+                @csrf
                 <div class="row card-panel">
 
                     <center><b>Agendar una cita</b></center>
@@ -91,13 +95,11 @@
                         <label for="hora_cita">Hora para la cita:</label>
                     </div>
 
-                    <center>Para poder agendar <a class="" href="{{ route('login.visit') }}">inicia sesion aqui</a> ó <a class="" href="{{ route('register.visit') }}">registrate aqui</a></center>
-                    <!--
                     <center><button class="btn" type="submit" value="">Agendar
                         <i class="material-icons left">
                             content_paste
                         </i>
-                    </button></center>-->
+                    </button></center>
 
                     <br>
 
@@ -113,6 +115,9 @@
     </div>
     <br><br><br>
 
+@endsection
+
+@section('scripts_styles')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.datepicker');
@@ -130,4 +135,5 @@
             });
         });
     </script>
+
 @endsection

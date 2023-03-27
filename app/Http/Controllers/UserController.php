@@ -133,4 +133,14 @@ class UserController extends Controller
         return redirect(route('home'))->with('status', 'Sesion cerrada');
     }
 
+    public function salir(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('home'))->with('status', 'Sesion cerrada');
+    }
+
 }

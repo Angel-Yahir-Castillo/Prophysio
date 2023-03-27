@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\PregSecreta;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class PreguntaSecretaController extends Controller
 {
@@ -26,7 +28,7 @@ class PreguntaSecretaController extends Controller
         $usuario = User::where('email',Auth::user()->email)->first();
 
         $usuario->pregunta_id = $request->pregunta;
-        $usuario->respuesta = $request->respuesta;
+        $usuario->respuesta = Crypt::encryptString($request->respuesta);
         $usuario->save(); 
     
         return redirect(route('user.inicio'))->with('info', 'Se actualizo la información');
