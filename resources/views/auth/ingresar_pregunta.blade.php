@@ -17,7 +17,7 @@
 
                     <center><b>Recuperar Contraseña</b></center>
 
-                    <p> {{$user->name}} Para recuperar tu contraseña contesta la siguiente pregunta:</p>
+                   <center><p> {{$user->name}} Para recuperar tu contraseña contesta la siguiente pregunta:</p></center>
                     <p><b>{{$user->pregunta}}</b></p>
                     <div class="input-field col s12">
                         <input id="respuesta" name="respuesta" type="text" value="" requiered class="validate" >

@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-
 class IsGuest
 {
     /**
@@ -17,7 +16,7 @@ class IsGuest
     public function handle(Request $request, Closure $next)
     {
         if(auth()->check()){
-            return redirect(route('user.inicio'));
+            return redirect()->back();
         }
         return $next($request);
     }

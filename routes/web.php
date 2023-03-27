@@ -24,6 +24,11 @@ Route::get('/', HomeController::class)->middleware('isGuest') ->name('home');
 //mostrar pagina de error
 Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
 
+//regresar de error
+Route::get('regreso-error', function(){
+    return redirect()->back();
+})->name('regresar.error');
+
 // chat
 Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat');
 
