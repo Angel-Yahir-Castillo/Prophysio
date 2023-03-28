@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('pregunta_id')->constrained('pregunta_secreta')->nullable();
-            $table->string('respuesta')->nullable();
+        Schema::create('login_securities', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->boolean('google2fa_enable')->default(false);
+            $table->string('google2fa_secret')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,9 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('pregunta_id');
-            $table->dropColumn('respuesta');
-        });
+        Schema::dropIfExists('login_securities');
     }
 };

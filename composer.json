@@ -7,12 +7,15 @@
     "require": {
         "php": "^8.0.2",
         "arcanedev/log-viewer": "^9.0",
+        "bacon/bacon-qr-code": "^2.0",
         "diglactic/laravel-breadcrumbs": "^8.0",
         "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "pragmarx/google2fa-laravel": "^2.1",
+        "pragmarx/google2fa-qrcode": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

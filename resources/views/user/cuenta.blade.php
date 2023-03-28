@@ -12,7 +12,11 @@
 
     <div class=" container">
         <div class="row section">
-            
+            <div class="col s12">
+                <a class="btn" href="{{route('configurar.show2faForm')}}">
+                    Autenticacion de Doble factor
+                </a>
+            </div>
 
 
         </div>
