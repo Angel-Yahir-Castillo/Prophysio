@@ -19,12 +19,12 @@
                         </div>
                     @endif
                     <center><b>Iniciar sesion</b></center>
-                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
+                    <strong style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</strong>
                     <div class="input-field col s12">
                         <input id="correo" name="correo" type="email" value="{{ old('correo') }}" requiered autofocus class="validate" 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
                         <label for="correo">Correo electronico:</label>
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('correo') {{ $message }} @enderror</strong> 
 
                     </div>
 
@@ -35,7 +35,7 @@
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena()"><i class="material-icons ">remove_red_eye</i></button>
                     </div>
-                    <div class="col s12"><small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> </div>
+                    <div class="col s12"><strong style="color: red;">@error('contrasena') {{ $message }} @enderror</strong> </div>
 
                     <div class="col s12">
                         <label for="remember_me">

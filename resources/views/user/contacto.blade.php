@@ -20,21 +20,21 @@
                     <div class="input-field col s12">
                         <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required>
                         <label for="nombre">Nombre completo:</label>
-                        <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('nombre') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col m6 s12">
                         <input id="correo" name="correo" value="@auth {{Auth::user()->email}} @endauth" readonly  type="email" class="validate" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un correo electronico valido">
                         <label for="correo">Correo electronico:</label>
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('correo') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col m6 s12">
                         <input id="telefono" name="telefono" value="@auth {{Auth::user()->phone}} @endauth" readonly  type="tel" class="validate" 
                         pattern="[0-9]{10,10}" title="El telefono debe contener una longitud de 10 digitos" required>
                         <label for="telefono">Telefono:</label>
-                        <small style="color: red;">@error('telefono') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('telefono') {{ $message }} @enderror</strong> 
                     </div>
 
 
@@ -42,7 +42,7 @@
                     <div class="input-field col m12 s12">
                         <textarea id="mensaje" value="{{ old('mensaje') }}"  class="materialize-textarea validate" name="mensaje" required></textarea>
                         <label for="mensaje">Mensaje:</label>
-                        <small style="color: red;">@error('mensaje') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('mensaje') {{ $message }} @enderror</strong> 
                     </div>
 
                     <center><button class="btn" type="submit" value="">Enviar

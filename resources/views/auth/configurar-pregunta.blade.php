@@ -33,7 +33,7 @@
                 @endif
                 <center><b>Configurar pregunta secreta</b></center>
 
-                <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
+                <strong style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</strong>
 
                 <div class="input-field col s12">
                     <select id="pregunta" name="pregunta"> 
@@ -47,7 +47,7 @@
                 <div class="input-field col s12">
                     <input id="respuesta" name="respuesta" type="text" value="{{ old('respuesta') }}" requiered autofocus class="validate">
                     <label for="respuesta">Respuesta:</label>
-                    <small style="color: red;">@error('respuesta') {{ $message }} @enderror</small> 
+                    <strong style="color: red;">@error('respuesta') {{ $message }} @enderror</strong> 
 
                 </div>
 

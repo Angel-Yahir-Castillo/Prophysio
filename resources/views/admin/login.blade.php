@@ -37,12 +37,12 @@
             @csrf
                 <div class="row card-panel">
                     <center><b>Iniciar sesion</b></center>
-                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
+                    <strong style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</strong>
                     <div class="input-field col s12">
                         <input id="correo" name="correo" value="{{ old('correo') }}" type="text" class="validate" autofocus required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
                         <label for="correo">Correo:</label>
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('correo') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col s12 ">
@@ -51,7 +51,7 @@
                             <option value="2">Terapeuta</option>
                         </select>
                         <label>Tipo de usuario</label>
-                        <small style="color: red;">@error('tipo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('tipo') {{ $message }} @enderror</strong> 
                     </div>
 
 
@@ -62,16 +62,18 @@
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena()"><i class="material-icons ">remove_red_eye</i></button>
                     </div>
-                    <div class="col s12"><small style="color: red;">@error('contrasena') {{ $message }} @enderror</small> </div>
+                    <div class="col s12">
+                        <strong style="color: red;">@error('contrasena') {{ $message }} @enderror</strong> 
+                    </div>
 
 
-                    <center><button class="btn waves-effect waves-light" type="submit" value="">Iniciar sesion
-                        <i class="material-icons left">
-                        keyboard_tab
-                        </i>
-                    </button></center> 
-
-                    
+                    <div class="col s12">
+                        <center><button class="btn waves-effect waves-light" type="submit" value="">Iniciar sesion
+                            <i class="material-icons left">
+                            keyboard_tab
+                            </i>
+                        </button></center> 
+                    </div>
 
 
                 </div>

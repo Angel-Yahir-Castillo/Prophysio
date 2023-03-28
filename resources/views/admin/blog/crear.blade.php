@@ -14,19 +14,19 @@
                 <div class="row card-panel">
 
                     <center><b>Agregar un servicio</b></center>
-                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
+                    <strong style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</strong>
                     <div class="input-field col s12">
                         <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
                         minlength="5" maxlength="255" title="El nombre debe tener al menos una longitud de 5 letras y maximo 255">
                         <label for="nombre">Nombre:</label>
-                        <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('nombre') {{ $message }} @enderror</strong> 
                     </div>
                     
                     <div class="input-field col s12">
                         <input id="descripcion" type="text" value="{{ old('descripcion') }}" name="descripcion" class="validate" required
                         minlength="10" maxlength="255" title="El nombre debe tener al menos una longitud de 10 letras y maximo 255">
                         <label for="descripcion">Descripcion del servicio:</label>
-                        <small style="color: red;">@error('descripcion') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('descripcion') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="file-field input-field col s12">
@@ -37,7 +37,7 @@
                         <div class="file-path-wrapper">
                             <input required class="file-path validate" type="text">
                         </div>
-                        <small style="color: red;">@error('imagen') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('imagen') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div style="display: none" id="div-imagen" class="col s12">
@@ -48,7 +48,7 @@
                         <input id="alternativo" type="text" value="{{ old('alternativo') }}" name="alternativo" class="materialize-textarea validate" required
                         minlength="10" maxlength="50" title="El nombre debe tener al menos una longitud de 10 letras y maximo 50">
                         <label for="alternativo">Texto alternativo:</label>
-                        <small style="color: red;">@error('alternativo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('alternativo') {{ $message }} @enderror</strong> 
                     </div>
 
 

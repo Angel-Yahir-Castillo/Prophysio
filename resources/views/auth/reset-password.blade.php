@@ -29,7 +29,7 @@
                         <input id="email" name="email" type="email" value="{{ old('email', $request->email) }}" class="validate" required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un correo electronico valido">
                         <label for="email">Correo electronico:</label>
-                        <small style="color: red;">@error('email') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('email') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col s11">
@@ -37,7 +37,7 @@
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password">Contraseña:</label>
-                        <small style="color: red;">@error('password') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('password') {{ $message }} @enderror</strong> 
                     </div>
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena()"><i class="material-icons ">remove_red_eye</i></button>
@@ -48,7 +48,7 @@
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password_confirmation">Confirmar contraseña:</label>
-                        <small style="color: red;">@error('password_confirmation') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('password_confirmation') {{ $message }} @enderror</strong> 
                     </div>
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena2()"><i class="material-icons ">remove_red_eye</i></button>

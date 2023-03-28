@@ -22,8 +22,8 @@
                         <input id="correo" name="correo" type="email" value="{{ old('correo') }}" requiered autofocus class="validate" 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
                         <label for="correo">Correo electronico:</label>
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
-                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
+                        <strong style="color: red;">@error('correo') {{ $message }} @enderror</strong> 
+                        <strong style="color: red;">@if (session('info')) {{session('info')}} @endif</strong>
 
                     </div>
 

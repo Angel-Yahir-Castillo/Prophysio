@@ -24,7 +24,7 @@
                     </div>
                     @if (session('status'))
                         <div class="col s12">
-                            <p class="green-text">¡Le hemos enviado un correo electrónico con su enlace de restablecimiento de contraseña!</p> 
+                            <strong class="green-text">¡Le hemos enviado un correo electrónico con su enlace de restablecimiento de contraseña!</strong> 
                         </div>
                     @endif
                     <div class="col s12">
@@ -37,7 +37,7 @@
                                     <input id="email" name="email" type="email" value="{{ old('email') }}" requiered autofocus class="validate" 
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
                                     <label for="email">Correo electronico:</label>
-                                    <small style="color: red;">@error('email') {{ $message }} @enderror</small> 
+                                    <strong style="color: red;">@error('email') {{ $message }} @enderror</strong> 
                                 </div>
 
                                 <div class="">

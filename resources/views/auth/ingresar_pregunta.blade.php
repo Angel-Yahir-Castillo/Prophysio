@@ -22,14 +22,14 @@
                     <div class="input-field col s12">
                         <input id="respuesta" name="respuesta" type="text" value="" required class="validate" >
                         <label for="respuesta">Respuesta:</label>
-                        <small style="color: red;">@error('respuesta') {{ $message }} @enderror</small> 
-                        <small style="color: red;">@if (session('info')) {{session('info')}} @endif</small>
+                        <strong style="color: red;">@error('respuesta') {{ $message }} @enderror</strong> 
+                        <strong style="color: red;">@if (session('info')) {{session('info')}} @endif</strong>
                     </div>
 
                     <div class="input-field col s12">
                         <input id="correo" name="correo" type="hidden" value="{{$user->email}}" required class="validate" 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Ingresa un formato de correo electronico valido">
-                        <small style="color: red;">@error('correo') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('correo') {{ $message }} @enderror</strong> 
                     </div>
 
                     <center><b>Ingresa tu nueva Contraseña</b></center>
@@ -38,7 +38,7 @@
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password">Contraseña:</label>
-                        <small style="color: red;">@error('password') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('password') {{ $message }} @enderror</strong> 
                     </div>
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena()"><i class="material-icons ">remove_red_eye</i></button>
@@ -49,7 +49,7 @@
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password_confirmation">Confirmar contraseña:</label>
-                        <small style="color: red;">@error('password_confirmation') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('password_confirmation') {{ $message }} @enderror</strong> 
                     </div>
                     <div class="col s1">
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena2()"><i class="material-icons ">remove_red_eye</i></button>

@@ -23,9 +23,10 @@ class BackupController extends Controller
     }
 
     public function respaldoCompleto(){
-        $nombre = "prophysio_huejutla";
-        $usuario = "root";
-        $password = "";
+        
+        $nombre = env('DB_DATABASE'); //"prophysio_huejutla";
+        $usuario = env('DB_USERNAME'); //"root";
+        $password = env('DB_PASSWORD'); //"";
 
         $fecha = date('Y-m-d_His');
 
@@ -69,9 +70,9 @@ class BackupController extends Controller
     }
 
     public function respaldarTabla(Request $request){
-        $nombre = "prophysio_huejutla";
-        $usuario = "root";
-        $password = "";
+        $nombre = env('DB_DATABASE'); //"prophysio_huejutla";
+        $usuario = env('DB_USERNAME'); //"root";
+        $password = env('DB_PASSWORD'); //"";
         $tabla = $request->name_table;
 
         $fecha = date('Y-m-d_His');

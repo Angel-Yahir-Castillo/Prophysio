@@ -15,19 +15,19 @@
                 <div class="row card-panel">
 
                     <center><b>Agregar una Especialidad</b></center>
-                    <small style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</small>
+                    <strong style="color: red;">@error('g-recaptcha-response') {{ $message }} @enderror</strong>
                     <div class="input-field col s12">
                         <input id="nombre" type="text" value="{{ old('nombre') }}" name="nombre" class="validate" required
                         minlength="5" maxlength="255" title="El nombre debe tener al menos una longitud de 5 letras y maximo 255">
                         <label for="nombre">Nombre de la nueva especialidad:</label>
-                        <small style="color: red;">@error('nombre') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('nombre') {{ $message }} @enderror</strong> 
                     </div>
                     
                     <div class="input-field col s12">
                         <input id="descripcion" type="text" value="{{ old('descripcion') }}" name="descripcion" class="validate" required
                         minlength="10" maxlength="255" title="El nombre debe tener al menos una longitud de 10 letras y maximo 255">
                         <label for="descripcion">Descripcion:</label>
-                        <small style="color: red;">@error('descripcion') {{ $message }} @enderror</small> 
+                        <strong style="color: red;">@error('descripcion') {{ $message }} @enderror</strong> 
                     </div>
 
                     <center><button class="btn waves-effect waves-light" type="submit" value="">Agregar
