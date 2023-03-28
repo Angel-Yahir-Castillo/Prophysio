@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'isGuest' => \App\Http\Middleware\IsGuest::class,
         'isTerapeuta' => \App\Http\Middleware\IsTerapeuta::class,
         'conf-preg' => \App\Http\Middleware\ConfigPregunta::class,
+        '2fa' => \App\Http\Middleware\LoginSecurityMiddleware::class,
     ];
 }
