@@ -10,7 +10,7 @@
 
     
     <div class="section container">
-    {{ Breadcrumbs::render('agenda') }}
+    {{ Breadcrumbs::render('agendaU') }}
         <div class="row">
 
             <form action="" method="POST" class="col s12">

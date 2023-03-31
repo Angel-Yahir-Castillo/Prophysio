@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
@@ -35,7 +35,7 @@
             <div class="user-view">
                 <div style="background-color: #C7F7F7;" class="background">
                 </div>
-                <a href="{{route('admin.dashboard')}}"><img class="circle" src="{{ asset('img/logo.png') }}"></a>
+                <a href="{{route('admin.dashboard')}}"><img class="circle" src="{{ asset('img/logo.jpeg') }}"></a>
                 <a href="{{route('admin.dashboard')}}"><span class="black-text name">Prophysio Huejutla</span></a>
                 <a href="{{route('admin.dashboard')}}"><span class="black-text email">Administrador</span></a>
             </div>

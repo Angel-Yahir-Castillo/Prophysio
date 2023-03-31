@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="section container">
-    {{ Breadcrumbs::render('contacto') }}
+    {{ Breadcrumbs::render('contactoU') }}
         <div class="row ">
 
             <div class="col s0 m1"></div>

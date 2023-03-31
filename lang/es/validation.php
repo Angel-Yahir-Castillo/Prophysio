@@ -94,7 +94,7 @@ return [
         'string' => 'El campo :attribute no debe tener una longitud mayor a :max letras.',
     ],
     'max_digits' => 'The :attribute must not have more than :max digits.',
-    'mimes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => 'El archivo :attribute debe ser de tipo: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
@@ -178,6 +178,7 @@ return [
         'correo' => 'Correo',
         'contrasena' => 'Contraseña',
         'password' => 'Contraseña',
+        'scriptbd' => 'Base de datos',
     ],
 
 ];

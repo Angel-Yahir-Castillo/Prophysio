@@ -12,5 +12,6 @@
     "This password reset link will expire in :count minutes.":"Este enlace de restablecimiento de contraseña caducará en :count minutos.",
     "Reset Password":"Restablecer contraseña",
     "Too Many Requests":"Demasiados intentos",
-    "Too many attempts, please wait a minute to try again.":"Demasiados intentos, espera un minuto para volver a intentarlo."
+    "Too many attempts, please wait a minute to try again.":"Demasiados intentos, espera un minuto para volver a intentarlo.",
+    "Forbidden":"Prohibido"
 }

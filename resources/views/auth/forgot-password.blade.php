@@ -9,15 +9,15 @@
     
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
     <title>Recuperacion de contraseña</title>
 </head>
 <body>
     <br><br><br>
     <div class="container section">
         <div class="row ">
-            <div class="col s0 m4"></div>
-            <div class="col m4 s12">
+            <div class="col s0 m3"></div>
+            <div class="col m6 s12">
                 <div class="row card-panel">
                     <div class="col s12">
                         <p>¿Olvidaste tu contraseña? Ningún problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace de restablecimiento de contraseña que le permitirá elegir una nueva.</p>
@@ -51,7 +51,7 @@
                 </div>
                 
             </div>
-            <div class="col s0 m4"></div>
+            <div class="col s0 m3"></div>
         </div>
     </div>
 

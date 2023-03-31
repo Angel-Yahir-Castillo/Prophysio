@@ -22,7 +22,7 @@ use App\Http\Controllers\ChatController;
 Route::get('/', HomeController::class)->middleware('isGuest') ->name('home');
 
 //mostrar pagina de error
-Route::get('error', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
+Route::get('error/{codigo}', [ServiciosController::class, 'errorFuncion'])->name('mostrar.error');
 
 //regresar de error
 Route::get('regreso-error', function(){

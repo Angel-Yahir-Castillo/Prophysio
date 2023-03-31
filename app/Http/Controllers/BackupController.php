@@ -32,7 +32,7 @@ class BackupController extends Controller
 
         $nombre_sql = $nombre . '-' . $fecha . '.sql';
 
-        $dump = "mysqldump --user=$usuario --password=$password $nombre > $nombre_sql";
+        $dump = "mysqldump --add-drop-database --databases --user=$usuario --password=$password $nombre > $nombre_sql";
 
         exec($dump);
 
@@ -99,5 +99,22 @@ class BackupController extends Controller
         $nuevo->save();
 
         exit();
+    }
+
+    public function restaurar(Request $request){
+        $request->validate([
+            'scriptbd' => ['required']
+        ]);
+        if(pathinfo($request->scriptbd->getClientOriginalName(), PATHINFO_EXTENSION)!=='sql'){
+            return redirect(route('admin.db.restore'))->with('info','La base de datos debe ser un tipo de archivo .sql');
+        };
+
+        $nombre = env('DB_DATABASE'); 
+        $usuario = env('DB_USERNAME'); 
+        $password = env('DB_PASSWORD'); 
+
+        $restaurar = "mysql --user=$usuario --password=$password $nombre < $request->scriptbd"; 
+        exec($restaurar);
+        return redirect(route('admin.dashboard'))->with('Restauracion','Se ha restaurado la base de datos');
     }
 }

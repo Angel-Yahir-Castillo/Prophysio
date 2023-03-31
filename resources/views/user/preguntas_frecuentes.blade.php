@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container section">
-        {{ Breadcrumbs::render('preguntas_frecuentes') }}
+        {{ Breadcrumbs::render('preguntas_frecuentesU') }}
         <center><h3>Preguntas Frecuentes</h3></center>
         @foreach ($preguntas as $pregunta)
         <div class="row">

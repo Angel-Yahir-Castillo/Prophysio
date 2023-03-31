@@ -55,7 +55,7 @@ class ServiciosController extends Controller
     }
 
 
-    public function errorFuncion(){
-        abort(400);
+    public function errorFuncion($codigo){
+        abort($codigo);
     }
 }

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         
@@ -33,9 +33,11 @@
                 </div>
                 <div class="col s12 m3 l4"></div>
 
-                <div class="col s12 ">
-                   <br> <center><a href="{{ route('home') }}" class="btn yellow black-text">Regresar al inicio</a></center>
+
+                <div class="col s12">
+                    <br> <center><a href="{{ route('user.inicio') }}" class="btn yellow black-text">Regresar al inicio</a></center>
                 </div>
+                
             </div>
         </div>
          <!-- Compiled and minified JavaScript -->

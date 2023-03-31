@@ -32,6 +32,7 @@ Route::prefix('admin/db')->middleware(['auth','isAdmin'])->name('admin.db.')->co
 
 Route::get('respaldos-completos',[BackupController::class, 'respaldoCompleto'])->middleware(['auth','isAdmin'])->name('admin.db.backup.completo');
 Route::post('respaldos-tabla',[BackupController::class, 'respaldarTabla'])->middleware(['auth','isAdmin'])->name('admin.db.backup.tabla');
+Route::post('restaurar-bd',[BackupController::class, 'restaurar'])->middleware(['auth','isAdmin'])->name('admin.db.restore.completo');
 
 
 Route::prefix('admin/blog')->middleware(['auth','isAdmin'])->name('admin.blog.')->controller(BlogController::class)->group(function () {

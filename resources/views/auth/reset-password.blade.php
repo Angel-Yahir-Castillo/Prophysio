@@ -9,8 +9,8 @@
     
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
-    <title>Verificacion de correo</title>
+    <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
+    <title>Recuperar contraseña</title>
 </head>
 <body>
     <br><br><br>

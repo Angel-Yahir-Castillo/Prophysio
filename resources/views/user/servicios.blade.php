@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container section">
-    {{ Breadcrumbs::render('servicios') }}
+    {{ Breadcrumbs::render('serviciosU') }}
         <div class="row">
             <center><h3>Nuestros Servicios</h3></center>
             <div class="col s12">

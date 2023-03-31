@@ -9,7 +9,7 @@
     
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/logo.png') }}">
+    <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
     <title>Configuracion de pregunta secreta</title>
 </head>
 <body>

@@ -24,7 +24,7 @@
             </form>
         </div>
         <div class="row">
-        {{ Breadcrumbs::render('blog') }}
+        {{ Breadcrumbs::render('blogU') }}
         </div>
 
         <div id="circulo" class="center section hide">

@@ -65,14 +65,59 @@ Breadcrumbs::for('terminos_condiciones', function (BreadcrumbTrail $trail) {
     $trail->push('Terminos y Condiciones', route('terminos.condiciones'));
 });
 
-// Home > Blog
-/*Breadcrumbs::for('blog', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
-    $trail->push('Blog', route('blog'));
+//usuario 
+Breadcrumbs::for('homeU', function (BreadcrumbTrail $trail) {
+    $trail->push('Home', route('user.inicio'));
 });
 
-// Home > Blog > [Category]
-Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category));
-});*/
+Breadcrumbs::for('agendaU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Agendar', route('user.agendar.cita'));
+});
+
+
+Breadcrumbs::for('serviciosU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Servicios', route('user.servicios.mostrar'));
+});
+
+Breadcrumbs::for('blogU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Blog', route('user.blog.all'));
+});
+
+Breadcrumbs::for('loginU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Iniciar sesion', route('user.login.visit'));
+});
+
+
+Breadcrumbs::for('registroU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Registrarse', route('user.register.visit'));
+});
+
+Breadcrumbs::for('nosotrosU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('¿Quienes somos?', route('user.quienes.somos'));
+});
+
+Breadcrumbs::for('contactoU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Contacto', route('user.contacto.formulario'));
+});
+
+Breadcrumbs::for('politicaU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Politica de Privacidad', route('user.politica.privacidad'));
+});
+
+Breadcrumbs::for('preguntas_frecuentesU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Preguntas Frecuentes', route('user.preguntas.frecuentes'));
+});
+
+Breadcrumbs::for('terminos_condicionesU', function (BreadcrumbTrail $trail) {
+    $trail->parent('homeU');
+    $trail->push('Terminos y Condiciones', route('user.terminos.condiciones'));
+});

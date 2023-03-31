@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container section">
-    {{ Breadcrumbs::render('nosotros') }}
+    {{ Breadcrumbs::render('nosotrosU') }}
         <center><h2>Prophysio Huejutla</h2></center>
 
         <div class="row">

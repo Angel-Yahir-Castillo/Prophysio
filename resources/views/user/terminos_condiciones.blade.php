@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container section">
-        {{ Breadcrumbs::render('terminos_condiciones') }}
+        {{ Breadcrumbs::render('terminos_condicionesU') }}
         <h1>Terminos y Condiciones</h1>
     </div>
 
