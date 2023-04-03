@@ -16,7 +16,8 @@ class IsGuest
     public function handle(Request $request, Closure $next)
     {
         if(auth()->check()){
-            return redirect()->back();
+            //return redirect()->back();
+            return redirect(route('user.inicio'));
         }
         return $next($request);
     }
