@@ -23,7 +23,12 @@
                     @foreach ($blogs as $blog)
                         <tr>
                             <th>{{$blog->nombre}}</th>
-                            <th>{{$blog->estado}}</th>
+                            @if ($blog->estado == 1)
+                                <th>Visible</th>
+                            @else
+                                <th>Oculto</th>
+                            @endif
+                            
                             <th><img width="200px" height="225px" src="{{ asset($blog->imagen) }}" alt="{{$blog->alt}}"></th>
                         </tr>
                     @endforeach
@@ -33,7 +38,7 @@
         </div>
     </div>
         <div class="fixed-action-btn">
-            <a href="{{route('admin.blog.create')}}" class="btn-floating btn-large red">
+            <a href="#" class="btn-floating btn-large red">
                 <i class="large material-icons">create</i>
             </a>
         </div>

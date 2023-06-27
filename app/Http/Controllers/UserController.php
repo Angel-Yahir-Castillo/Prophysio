@@ -75,7 +75,7 @@ class UserController extends Controller
         $request->validate([
             'correo' => ['required', 'email','max:255', 'string', 'unique:users,email'],
             'password' => ['required','confirmed', Rules\Password::defaults()],
-            'nombre' => ['required', 'string','min:5','max:255'],
+            'nombre' => ['required', 'string','min:3','max:255'],
             'telefono' => ['required', 'string', 'max:10' , 'unique:users,phone'],
             'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);

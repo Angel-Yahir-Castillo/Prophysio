@@ -43,10 +43,12 @@ Route::prefix('admin/blog')->middleware(['auth','isAdmin'])->name('admin.blog.')
 });
 
 Route::prefix('admin/pacientes')->middleware(['auth','isAdmin'])->name('admin.pacientes.')->controller(PacientesController::class)->group(function () {
-    Route::get('/','admin_index')->name('show');
-    Route::get('/crear','admin_create')->name('create');
-    Route::get('/eliminar','admin_delete')->name('delete');
-    Route::get('/editar','admin_edit')->name('edit');
+    Route::get('/','index')->name('show');
+    Route::get('/registrar','create')->name('create');
+    Route::get('/eliminar','delete')->name('delete');
+    Route::get('/editar','edit')->name('edit');
+
+    Route::post('/store','store')->name('store');
 });
 
 Route::prefix('admin/servicios')->middleware(['auth','isAdmin'])->name('admin.servicios.')->controller(ServiciosController::class)->group(function () {

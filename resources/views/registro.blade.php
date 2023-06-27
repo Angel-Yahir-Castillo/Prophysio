@@ -39,7 +39,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="password" name="password" value="" type="password" class="validate" required
-                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+-=,./<>?;':\[\]{}|`~])\S{8,}" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password">Contraseña:</label>
                         <strong style="color: red;">@error('password') {{ $message }} @enderror</strong> 
@@ -50,7 +50,7 @@
 
                     <div class="input-field col m5 l5 s11">
                         <input id="password_confirmation" name="password_confirmation" value="" type="password" class="validate" required
-                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])([A-Za-z\d$@$!%()*?&#.$($)$-$_]){8,}$" title="La contraseña debe contener al menos una letra mayuscula, 
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+-=,./<>?;':\[\]{}|`~])\S{8,}" title="La contraseña debe contener al menos una letra mayuscula, 
                             una letra miniscula, un numero, un caracter especial y una longitud de al menos 8 caracteres">
                         <label for="password_confirmation">Repetir contraseña:</label>
                         <strong style="color: red;">@error('password_confirmation') {{ $message }} @enderror</strong> 
@@ -59,7 +59,7 @@
                         <button style="background-color: #fff; border:#fff; cursor:pointer;" type="button" onclick="mostrarContrasena2()"><i class="material-icons ">remove_red_eye</i></button>
                     </div>
 
-
+                    
                     <div class="col s12">
                         <label for="politica">
                             <input id="politica" name="politica" type="checkbox" class="filled-in validate" required

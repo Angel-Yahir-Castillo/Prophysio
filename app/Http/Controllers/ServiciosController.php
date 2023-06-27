@@ -44,7 +44,7 @@ class ServiciosController extends Controller
         $servicio->alt = $request->alternativo;
 
         $servicio->save();
-        return redirect(route('admin.servicios.show'))->with('info', 'Se a agregado exitosamente');;
+        return redirect(route('admin.servicios.show'))->with('info', 'Se a agregado exitosamente');
     }
     public function delete(Request $request){
         return view('admin.servicios');

@@ -11,6 +11,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordResetLinkController;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\PythonController;
+
+Route::get('paciente',[PythonController::class,'pacienteR'])->name('python.paciente');
+Route::post('pacientesRegistro',[PythonController::class,'guardar'])->name('python.guarda.paciente');
+
+Route::get('cita',[PythonController::class,'citasR'])->name('python.cita');
+Route::post('citassRegistro',[PythonController::class,'guardarCitas'])->name('python.guarda.cita');
 
 //blog
 Route::get('blog', [BlogController::class, 'index'])->middleware('isGuest')->name('blog.all');

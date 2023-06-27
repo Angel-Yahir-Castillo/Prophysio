@@ -99,7 +99,7 @@ return [
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'El :attribute debe ser al menos de :min.',
         'string' => 'El campo :attribute debe tener al menos :min caracteres.',
     ],
     'min_digits' => 'The :attribute must have at least :min digits.',
@@ -179,6 +179,11 @@ return [
         'contrasena' => 'Contraseña',
         'password' => 'Contraseña',
         'scriptbd' => 'Base de datos',
+        'ap' => 'Apellido',
+        'ap' => 'Apellido',
+        'fechaNac' => 'Fecha de nacimiento',
+        'cv' => 'Cantidad de visitas',
+        'nc'=>'Numero de casa',
     ],
 
 ];
