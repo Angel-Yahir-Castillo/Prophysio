@@ -29,9 +29,6 @@ Route::get('regreso-error', function(){
     return redirect()->back();
 })->name('regresar.error');
 
-// chat
-Route::post('chat', [ChatController::class, 'preguntaChat'])->name('ayuda.chat');
-
 
 
 require __DIR__.'/visit.php';
