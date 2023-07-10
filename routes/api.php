@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ChatController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +27,5 @@ Route::post('etiquetaApi', [BlogController::class, 'obtenerEtiquetas']);
 Route::post('blogEtiquetaApi', [BlogController::class, 'mostrarBlogsEtiqueta']);
 
 Route::post('mostrarEtiquetaApi', [BlogController::class, 'mostrarEtiquetas']);
+
+Route::get('chatApi', [ChatController::class, 'preguntaChat']);
