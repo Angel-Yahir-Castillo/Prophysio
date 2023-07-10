@@ -13,8 +13,10 @@
             });
         }*/
     </script>
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="{{ asset('img/logo.jpeg') }}">
     @yield('meta')
     <!-- Compiled and minified CSS -->
@@ -23,8 +25,6 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>@yield('title') </title>
     
@@ -237,14 +237,6 @@
         </div>
     </div>
 
-    <!--
-    <div class="fixed-action-btn">
-        <button onclick="ocultarChat()" class="btn-floating btn-large waves-effect waves-light red" >
-            <i class="large material-icons">chat</i>
-        </button>
-    </div>
-    -->
-
 
     <footer class="page-footer" style="background-color: #C7F7F7;">
           <div class="container">
@@ -304,90 +296,9 @@
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LcztLgkAAAAAAkhcLxVC0asNYzPNM6A-CGgGK5Q"></script>
 
-    <script>
-        document.addEventListener('submit', function(e){
-            e.preventDefault();
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6LcztLgkAAAAAAkhcLxVC0asNYzPNM6A-CGgGK5Q', {action: 'submit'}).then(function(token) {
-                    let form = e.target;
-                    let input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = 'g-recaptcha-response';
-                    input.value = token;
+    <script src="{{asset('js/captcha.js')}}"> </script>
 
-                    form.appendChild(input);
+    <script src="{{asset('js/chat.js')}}"> </script>
 
-                    form.submit();
-                });
-            });
-        });
-    </script>
-
-    <script>
-        function ocultarChat(){
-            var x = document.getElementById("chat");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
-
-    <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $(document).ready(function(){
-        $("#send-btn").on("click", function(){
-            $value = $("#data").val();
-            if($value == ""){
-                M.toast({html: 'Por favor, ingresa tu pregunta!'})
-                return;
-            }
-            $msg = ` <div class="col s12">
-            <div class="row">
-                <div class="col s1"></div>
-                <div class="col s8" style="border-radius: 15px; background: #efefef; padding: 12px 15px ;">
-                    <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${$value} </b> </label>
-                </div>
-                <div class="col s2">
-                    <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%;  margin-right:10px; background: #efefef; " >person</i> </center>
-                </div>
-            </div>
-            </div>`;
-            //$("#form").append($msg);
-            document.getElementById("form").innerHTML += $msg;
-            $("#data").val('');
-            
-            
-            // start ajax code
-            $.ajax({
-                url: "{{route('ayuda.chat')}}",
-                type: 'POST',
-                data: 'pregunta='+$value,
-                success: function(result){
-                    $replay = ` <div class="col s12">
-                        <div class="row">
-                            <div class="col s2">
-                                <center><i class="material-icons left black-text" style="padding: 10px 10px; border-radius:50%; background: #C7F7F7; " >person</i> </center>
-                            </div>
-                            <div class="col s8" style="border-radius: 15px; background: #C7F7F7; padding: 12px 15px ; margin-left:10px;">
-                                <label class="black-text" style="word-break: break-all;  font-size: 15px;"> <b> ${result} </b> </label>
-                            </div>
-                            <div class="col s2"></div>
-                        </div>
-                    </div>`;
-                    $("#form").append($replay);
-                    // when chat goes down the scroll bar automatically comes to the bottom
-                    $("#form").scrollTop($("#form")[0].scrollHeight);
-                }
-            }); 
-        });
-    });
-    </script>
 </body>
 </html>
