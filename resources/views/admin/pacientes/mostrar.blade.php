@@ -11,12 +11,16 @@
     <div class="section container">
         <center><h3>Pacientes</h3></center>
         <div class="col s12">
+            <a href="{{route('admin.pacientes.exportar')}}" class="btn">Exportar csv</a>
+        </div>
+        <div class="col s12">
             <table class="striped responsive-table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellidos</th>
-                        <th>Fecha de nacimiento</th>
+                        <th>Tipo de lesion</th>
+                        <th>Edad</th>
                         <th>Fotografia</th>
                     </tr>
                 </thead>
@@ -25,7 +29,8 @@
                         <tr>
                             <th>{{$paciente->nombres}}</th>
                             <th>{{$paciente->a_paterno}} {{$paciente->a_materno}}</th>
-                            <th>{{$paciente->fecha_nacimiento}}</th>
+                            <th>{{$paciente->tipo_lesion}}</th>
+                            <th>{{$paciente->edad}}</th>
                             <th><img width="150px" height="150px"  src="{{ asset('pacientes/'.$paciente->foto) }}" alt="{{$paciente->nombre}}"></th>
                         </tr>
                     @endforeach

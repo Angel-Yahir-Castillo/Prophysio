@@ -49,6 +49,7 @@ Route::prefix('admin/pacientes')->middleware(['auth','isAdmin'])->name('admin.pa
     Route::get('/editar','edit')->name('edit');
 
     Route::post('/store','store')->name('store');
+    Route::get('/exportar','exportar')->name('exportar');
 });
 
 Route::prefix('admin/servicios')->middleware(['auth','isAdmin'])->name('admin.servicios.')->controller(ServiciosController::class)->group(function () {

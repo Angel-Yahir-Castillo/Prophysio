@@ -66,7 +66,7 @@
                             title="Acepta las politicas de privacidad para continuar">
                             <span><b>He leido y acepto la <a href="{{ route('politica.privacidad') }}">politica de privacidad</a></b></span>
                         </label>
-                    </div>
+                    </div> 
 
                     <div class="col s12">
                         <center><button class="btn waves-effect waves-light" type="submit" value="">Registrarse

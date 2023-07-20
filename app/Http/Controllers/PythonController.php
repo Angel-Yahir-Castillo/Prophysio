@@ -42,19 +42,27 @@ class PythonController extends Controller
         $paciente->a_paterno = $request->ap;
         $paciente->a_materno = $request->am;
         $paciente->user_id = $request->user;
-        $paciente->fecha_nacimiento = $request->fecha;;
+        $paciente->edad = $request->edad;;
         $paciente->peso = $request->peso;
         $paciente->sexo = $request->sexo;
+        $paciente->estatura=$request->estatura;
         $paciente->cp = $request->cp;
         $paciente->municipio = $request->municipio;
         $paciente->colonia = $request->colonia;
         $paciente->calle = $request->calle;
         $paciente->no_casa = $request->nc;
-        $paciente->cantidad_visitas = $request->cv;
-        $paciente->alergias_enfermedades = $request->enfermedades;
+        $paciente->cantidad_sesiones = $request->cv;
+        $paciente->tipo_lesion = $request->tipo;
+        $paciente->gravedad_lesion = $request->gravedad;
+        $paciente->aptitud_fisica = $request->aptitud;
+        $paciente->hipertension = $request->hipertencion;
+        $paciente->lesion_previa = $request->lesiones;
+        $paciente->osteoporosis = $request->osteoporosis;
+        $paciente->migrañas = $request->mig;
+        $paciente->imc = $request->imc;
         $paciente->situacion_por_la_cual_necesita_terapia = $request->causa;
 
-
+        
         $paciente->save();
 
         $usuario = User::where('id',$request->user)->first();

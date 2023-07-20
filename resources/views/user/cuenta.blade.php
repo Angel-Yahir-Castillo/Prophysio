@@ -17,7 +17,12 @@
                     Autenticacion de Doble factor
                 </a>
             </div>
-
+            <br><br><br>
+            <div class="col s12">
+                <a class="btn" href="{{route('user.configurar.alexa')}}">
+                    Token para aplicacion de Alexa
+                </a>
+            </div>
 
         </div>
         <div class="row section">

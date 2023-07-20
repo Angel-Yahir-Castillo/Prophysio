@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PacientesController extends Controller
 {
@@ -75,5 +77,45 @@ class PacientesController extends Controller
 
     public function edit(){
         return view('admin.pacientes_modificar');
+    }
+
+    public function exportar(){
+        // Nombre de la tabla que deseas convertir
+        $nombreTabla = 'pacientes';
+
+        // Consulta los datos de la tabla
+        //$datos = DB::table($nombreTabla)->get()->toArray();
+        $datos = DB::table($nombreTabla)
+        ->select('nombres', 'edad', 'sexo','tipo_lesion', 'gravedad_lesion', 'aptitud_fisica','imc', 'hipertension', 'lesion_previa','migrañas', 'osteoporosis', 'cantidad_sesiones')
+        ->get()
+        ->toArray();
+
+        // Nombre del archivo CSV de salida
+        $nombreArchivoCSV = 'prophysio_pacients.csv';
+
+        // Ruta donde se almacenará el archivo CSV
+        $rutaArchivoCSV = storage_path('app/' . $nombreArchivoCSV);
+
+        // Abre el archivo CSV en modo escritura
+        $archivoCSV = fopen($rutaArchivoCSV, 'w');
+
+        // Establecer la codificación a UTF-8
+        //stream_filter_append($archivoCSV, 'convert.iconv.utf-8/iso-8859-1', STREAM_FILTER_WRITE);
+
+        // Escribe el encabezado del archivo CSV
+        //fputcsv($archivoCSV, array_keys((array) $datos[0]));
+        $encabezado = ['Nombre', 'Edad', 'Sexo','Tipo de Lesion', 'Gravedad de la Lesion', 'Nivel de aptitud fisica','IMC', 'Hipertension', 'Lesion Previa','Migranas', 'Osteoporosis', 'Cantidad de sesiones de recuperacion'];
+        fputcsv($archivoCSV, $encabezado);
+        
+        // Escribe los datos de la tabla en el archivo CSV
+        foreach ($datos as $fila) {
+            fputcsv($archivoCSV, (array) $fila);
+        }
+
+        // Cierra el archivo CSV
+        fclose($archivoCSV);
+
+        // Descarga el archivo CSV generado
+        return response()->download($rutaArchivoCSV);
     }
 }
