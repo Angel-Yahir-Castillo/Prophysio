@@ -5,10 +5,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
+
 use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\AlexaController;
 use App\Http\Controllers\TerapeutaApiController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -47,3 +49,4 @@ Route::get('reagendarCita', [CitasController::class, 'reagendar']);
 Route::get('validarToken',[AlexaController::class, 'validarToken']);
 
 Route::get('consultaTerapeuta',[TerapeutaApiController::class, 'index']);
+
