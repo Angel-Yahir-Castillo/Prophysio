@@ -19,8 +19,8 @@
     <input type="text" name="am" id=""><br>
     user
     <input type="text" name="user" value="{{$user->id}}" id=""><br>
-fecha
-    <input type="text" name="fecha" id=""><br>
+edad
+    <input type="text" name="edad" id=""><br>
 peso
     <input type="text" name="peso" id=""><br>
 sexo
@@ -35,10 +35,27 @@ calle
     <input type="text" name="calle" id=""><br>
 casa
     <input type="text" name="nc" id=""><br>
+    tipo lesion
+    <input type="text" name="tipo" id=""><br>
+gravedad lesion
+    <input type="text" name="gravedad" id=""><br>
+aptitud fisica
+    <input type="text" name="aptitud" id=""><br>
+hipertencion
+    <input type="text" name="hipertencion" value="" id=""><br>
+lesiones previas 
+    <input type="text" name="lesiones" value="" id=""><br>
+osteoporosis
+    <input type="text" name="osteoporosis" id=""><br>
+migrañas
+    <input type="text" name="mig" id=""><br>
+
 cantidad
     <input type="text" name="cv" id=""><br>
-enfermedades
-    <input type="text" name="enfermedades" value="Ninguna" id=""><br>
+imc
+    <input type="text" name="imc" value="" id=""><br>
+estatura
+    <input type="text" name="estatura" value="" id=""><br>
 causas
     <input type="text" name="causa" id=""><br>
     <input type="submit" value="enviar">

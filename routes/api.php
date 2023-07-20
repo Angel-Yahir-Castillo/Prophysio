@@ -5,6 +5,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
+
+use App\Http\Controllers\ArticulosController;
+use App\Http\Controllers\CitasController;
+use App\Http\Controllers\AlexaController;
+use App\Http\Controllers\TerapeutaApiController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +35,18 @@ Route::post('blogEtiquetaApi', [BlogController::class, 'mostrarBlogsEtiqueta']);
 Route::post('mostrarEtiquetaApi', [BlogController::class, 'mostrarEtiquetas']);
 
 Route::get('chatApi', [ChatController::class, 'preguntaChat']);
+
+Route::get('articulos', [ArticulosController::class, 'index']);
+
+Route::get('consultaCita', [CitasController::class, 'consulta']);
+
+Route::post('agendarCita', [CitasController::class, 'store']);
+
+Route::get('cancelarCita', [CitasController::class, 'cancelar']);
+
+Route::get('reagendarCita', [CitasController::class, 'reagendar']);
+
+Route::get('validarToken',[AlexaController::class, 'validarToken']);
+
+Route::get('consultaTerapeuta',[TerapeutaApiController::class, 'index']);
+
