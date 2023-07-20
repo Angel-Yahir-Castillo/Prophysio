@@ -13,7 +13,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\NosotrosController;
 use App\Http\Controllers\PreguntaSecretaController;
 use App\Http\Controllers\LoginSecurityController;
-
+use App\Http\Controllers\AlexaController;
 //abrir sesion
 Route::get('inicio', [UserController::class, 'abrirSesion'])->middleware(['auth','verified','2fa'])->name('user.inicio');
 
@@ -30,6 +30,10 @@ Route::prefix('inicio/')->middleware(['auth','verified','2fa'])->name('user.')->
 
     //servicios 
     Route::get('servicios', [ServiciosController::class, 'userIndex'])->name('servicios.mostrar');
+
+    Route::get('alexa-configuracion',[AlexaController::class,'index'])->name('configurar.alexa');
+
+    Route::post('alexa-generar',[AlexaController::class,'generarToken'])->name('generar.alexa');
 });
 
 

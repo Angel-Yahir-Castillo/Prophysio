@@ -221,13 +221,6 @@
         </div>
     </div>
 
-    <!-- boton flotante
-    <div class="fixed-action-btn">
-        <button onclick="ocultarChat()" class="btn-floating btn-large waves-effect waves-light red" >
-            <i class="large material-icons">chat</i>
-        </button>
-    </div>
-    -->
 
     <!-- footer-->
     <footer class="page-footer" style="background-color: #C7F7F7;">
@@ -347,11 +340,12 @@
                 document.getElementById("form").innerHTML += $msg;
                 $("#data").val('');
                 
-                
+                const link = 'http://localhost//prophysio/public/api/';
+                const link2 = 'http://127.0.0.1:8000/api/'
                 // start ajax code
                 $.ajax({
-                    url: "{{route('ayuda.chat')}}",
-                    type: 'POST',
+                    url: link2 + "chatApi",
+                    type: 'get',
                     data: 'pregunta='+$value,
                     success: function(result){
                         $replay = ` <div class="col s12">
