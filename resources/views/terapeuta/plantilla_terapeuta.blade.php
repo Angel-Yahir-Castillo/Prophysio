@@ -42,36 +42,24 @@
         </li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">today</i>Mis Citas</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">group</i>Mis Pacientes</a></li>
+        <li><a class="waves-effect" href="{{route('terapeuta.pacientes.show')}}" @if (Request::is('terapeuta/pacientes/*') || Request::is('terapeuta/pacientes')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">group</i> Pacientes</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">content_paste</i>Agenda</a></li>
+        <li><a class="waves-effect" href="{{route('terapeuta.agenda')}}"><i class="material-icons left">content_paste</i>Agenda</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">search</i>Buscar cita</a></li>
+        <li><a class="waves-effect" href="{{route('terapeuta.buscar.cita')}}"><i class="material-icons left">search</i>Buscar cita</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="#" @if (Request::is('admin/blog/*') || Request::is('admin/blog')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">account_circle</i> Mi cuenta</a></li>
+        <li><a class="waves-effect" href="{{route('terapeuta.cuenta')}}" ><i class="material-icons left">account_circle</i> Mi cuenta</a></li>
         <li><div class="divider"></div></li>
     </ul>
 
-    <ul id="id_bd" class="dropdown-content">
-        <li><a class="waves-effect" href="{{route('admin.db.backup')}}"><i class="material-icons left">backup</i> Respaldos</a></li>
-        <li><a class="waves-effect" href="{{route('admin.db.restore')}}"><i class="material-icons left">restore</i> Restauracion</a></li>
-    </ul>
 
-    <ul id="id_personalizar" class="dropdown-content">
-        <li><a class="waves-effect" href="#"><i class="material-icons left">edit</i> Encabezado</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">edit</i> Pie de pagina</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">view_carousel</i> Carrousel</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">chat</i> Preguntas ChatBot</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">question_answer</i> Preguntas frecuentes</a></li>
-    </ul>
-
-    <ul id="id_empresa" class="dropdown-content">
-        <li><a class="waves-effect" href="{{route('admin.empresa.show')}}"><i class="material-icons left">info</i> Informacion</a></li>
-        <li><a class="waves-effect" href="#"><i class="material-icons left">policy</i> Politica de privacidad</a></li>
-    </ul>
 
     @yield('content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/locales-all.min.js"></script>
     
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

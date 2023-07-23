@@ -42,8 +42,6 @@
         </li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">today</i> Citas</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="{{route('admin.pacientes.show')}}" @if (Request::is('admin/pacientes/*') || Request::is('admin/pacientes')) style="background-color:#C7F7F7;" @endif><i class="material-icons left">group</i> Pacientes</a></li>
-        <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">group</i> Terapeutas</a></li>
         <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#"><i class="material-icons left">group</i> Usuarios</a></li>

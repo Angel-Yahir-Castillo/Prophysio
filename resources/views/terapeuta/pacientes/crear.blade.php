@@ -1,15 +1,19 @@
-@extends('admin.plantilla_admin')
+@extends('terapeuta.plantilla_terapeuta')
 
 @section('meta')
 
 @endsection
 
-@section('title', 'Registrar pacientes')
+@section('title', 'Registrar Pacientes')
+
+@section('foto', asset('terapeutas/'.$terapeuta->foto))
+
+@section('name', $terapeuta->nombres.' '.$terapeuta->a_paterno.' '.$terapeuta->a_materno)
 
 @section('content')
 
     <div class="row container section">
-            <form action="{{ route('admin.pacientes.store') }}" enctype="multipart/form-data" method="POST" class="col s12">
+            <form action="{{ route('terapeuta.pacientes.store') }}" enctype="multipart/form-data" method="POST" class="col s12">
 
             @csrf 
                 <div class="row card-panel">
@@ -172,7 +176,7 @@
     </div>
 
     <div class="fixed-action-btn">
-        <a href="{{route('admin.pacientes.show')}}" class="btn-floating btn-large red" >
+        <a href="{{route('terapeuta.pacientes.show')}}" class="btn-floating btn-large red" >
             <i class="large material-icons">arrow_back</i>
         </a>
     </div>

@@ -1,54 +1,20 @@
 @extends('plantilla_visit')
 
-@section('title', 'Prophysio Huejutla - Agendar')
+@section('title', 'Agendar')
 
 @section('content')
 
-    
     <div class="section container">
     {{ Breadcrumbs::render('agenda') }}
         <div class="row">
 
-            <form action="" method="GET" class="col s12">
-
+            <form action="" method="post" class="col s12">
                 <div class="row card-panel">
 
                     <center><b>Agendar una cita</b></center>
                     <div class="input-field col s12">
                         <input id="nombre" type="text" name="nombre" class="validate" required>
                         <label for="nombre">Nombre completo:</label>
-                    </div>
-
-                    <div class="input-field col s12 m6">
-                        <input id="registro_fecha" name="registro_fecha" type="text" class="datepicker validate" required>
-                        <label for="registro_fecha">Fecha de nacimiento:</label>
-                    </div>
-
-                    <div class="input-field col s12 m6">
-                        Sexo
-                        <p>
-                            <label>
-                                <input class="with-gap validate" name="sexo" type="radio" checked/>
-                                <span>Hombre</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input class="with-gap validate" name="sexo" type="radio" />
-                                <span>Mujer</span>
-                        </label>
-                        </p>
-                    </div>
-
-                    <div class="input-field col m6 s12">
-                        <input id="peso" name="peso" type="number" class="validate" required>
-                        <label for="peso">Peso:</label>
-                    </div>
-
-                    
-                    <div class="input-field col m6 s12">
-                        <input id="estatura" name="estatura" type="number" class="validate" required>
-                        <label for="estatura">Estatura:</label>
                     </div>
 
                     <div class="input-field col m6 s12">
