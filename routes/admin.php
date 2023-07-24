@@ -6,7 +6,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\EspecialidadesController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\InfoEmpresaController;
 
 
@@ -40,16 +39,6 @@ Route::prefix('admin/blog')->middleware(['auth','isAdmin'])->name('admin.blog.')
     Route::get('/crear','admin_create')->name('create');
     Route::get('/eliminar','admin_delete')->name('delete');
     Route::get('/editar','admin_edit')->name('edit');
-});
-
-Route::prefix('admin/pacientes')->middleware(['auth','isAdmin'])->name('admin.pacientes.')->controller(PacientesController::class)->group(function () {
-    Route::get('/','index')->name('show');
-    Route::get('/registrar','create')->name('create');
-    Route::get('/eliminar','delete')->name('delete');
-    Route::get('/editar','edit')->name('edit');
-
-    Route::post('/store','store')->name('store');
-    Route::get('/exportar','exportar')->name('exportar');
 });
 
 Route::prefix('admin/servicios')->middleware(['auth','isAdmin'])->name('admin.servicios.')->controller(ServiciosController::class)->group(function () {

@@ -7,17 +7,21 @@ use App\Models\Paciente;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Terapeuta;
 
 class PacientesController extends Controller
 {
     public function index(){
-        $pacientes = Paciente::all();
-        return view('admin.pacientes.mostrar',compact('pacientes'));
+        $terapeuta = Terapeuta::where('user_id',Auth::user()->id)->first();
+        $pacientes = Paciente::paginate(5);
+        return view('terapeuta.pacientes.mostrar',compact(['pacientes','terapeuta']));
     }
 
     public function create(){
+        $terapeuta = Terapeuta::where('user_id',Auth::user()->id)->first();
         $usuarios = User::where('es_paciente','0')->get();
-        return view('admin.pacientes.crear', compact('usuarios'));
+        return view('terapeuta.pacientes.crear', compact(['usuarios','terapeuta']));
     }
 
     public function store(Request $request){
@@ -72,12 +76,13 @@ class PacientesController extends Controller
         $usuario = User::where('id',$request->user)->first();
         $usuario->es_paciente = 1;
         $usuario->save();
-        return redirect(route('admin.pacientes.show'))->with('info', 'Se a registrado exitosamente');
+        return redirect(route('terapeuta.pacientes.show'))->with('info', 'Se a registrado exitosamente');
     }
 
     public function edit(){
-        return view('admin.pacientes_modificar');
+        return view('terapeuta.pacientes_modificar');
     }
+
 
     public function exportar(){
         // Nombre de la tabla que deseas convertir
