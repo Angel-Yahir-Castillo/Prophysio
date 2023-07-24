@@ -83,6 +83,7 @@ class PacientesController extends Controller
         return view('terapeuta.pacientes_modificar');
     }
 
+
     public function exportar(){
         // Nombre de la tabla que deseas convertir
         $nombreTabla = 'pacientes';

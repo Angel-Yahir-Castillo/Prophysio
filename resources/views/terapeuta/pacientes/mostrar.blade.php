@@ -18,6 +18,7 @@
         <center><h3>Pacientes</h3></center>
         <div class="col s12">
             <a href="{{route('terapeuta.pacientes.exportar')}}" class="btn">Exportar csv</a>
+
         </div>
         <div class="col s12">
             <table class="striped responsive-table">
