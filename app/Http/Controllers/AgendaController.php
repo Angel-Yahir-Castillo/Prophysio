@@ -5,7 +5,6 @@ use App\Models\Cita;
 use App\Models\User;
 use App\Models\TipoTerapia;
 use App\Models\Terapeuta;
-
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -17,8 +16,25 @@ class AgendaController extends Controller
         return view('agenda',compact(['tipos','terapeutas']));
     }
 
+
     public function folio(){
         return view('user.folio');
+
+    public function userIndex(){
+        $citas = Cita::all();
+
+        $events = [];
+
+        foreach ($citas as $event) {
+            $events[] = [
+                'title' => $event->id,
+                'start' => $event->fecha_inicio,
+                'end' => $event->fecha_fin,
+
+            ];
+        }
+
+        return view('user.agenda',compact('events'));
     }
 
     public function userIndex(){

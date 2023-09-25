@@ -80,7 +80,9 @@
             </form>
         </div>
         <div class="row">
+
             <div class="col s12"><center><b>Fechas disponibles</b></center></div>
+
             <div class="col s12" id='calendar'></div>
         </div>
     </div>
@@ -96,6 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/locales-all.min.js"></script>
 
     <script>
+
         var eventos = null;
         async function opcionCambiada(){
             if($terapeuta.value!==0){
@@ -176,6 +179,24 @@
             });
             calendar.render();
         };
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'timeGridWeek',
+            slotMinTime: '08:00',
+            slotMaxTime: '20:00',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            events: @json($events),
+            locale: 'es', // Establece el idioma español 
+        });
+        calendar.render();
+        });
+
     </script>
 
 @endsection

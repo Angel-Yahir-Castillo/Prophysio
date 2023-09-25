@@ -1,7 +1,9 @@
 @extends('terapeuta.plantilla_terapeuta')
 
 @section('meta')
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 @endsection
 
 @section('title', 'Registrar Pacientes')
@@ -11,7 +13,6 @@
 @section('name', $terapeuta->nombres.' '.$terapeuta->a_paterno.' '.$terapeuta->a_materno)
 
 @section('content')
-+
     <div class="row container section">
             <form action="{{ route('terapeuta.pacientes.store') }}" enctype="multipart/form-data" method="POST" class="col s12">
 
@@ -55,6 +56,10 @@
                         pattern="^(?:[1-9]|[1-9][0-9]|100)$" required>
                         <label for="edad">Edad:</label>
                         <strong style="color: red;">@error('edad') {{ $message }} @enderror</strong> 
+
+                        <input id="fechaNac" name="fechaNac" type="text"  class="datepicker validate" required>
+                        <label for="fechaNac">Fecha de nacimiento:</label>
+                        <strong style="color: red;">@error('fechaNac') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col s12 m6">
@@ -197,6 +202,12 @@
                         <button onclick="predecirSesiones()" class="btn">Calcular cantidad</button>
                     </div>
 
+                    
+                    <div class="input-field col m6 s12">
+                        <input id="estatura" name="estatura" type="number" step="0.01" value="{{ old('estatura') }}" class="validate" required>
+                        <label for="estatura">Estatura en cm:</label>
+                        <strong style="color: red;">@error('estatura') {{ $message }} @enderror</strong> 
+                    </div>
 
                     <div class="file-field input-field col m6 s12">
                         <div class="btn">
@@ -253,6 +264,20 @@
                     </div>
 
                     <div class="input-field col s12">
+
+                        <input id="cv" name="cv" type="number" value="{{ old('cv') }}" class="validate" required>
+                        <label for="cv">Cantidad de visitas necesarias:</label>
+                        <strong style="color: red;">@error('cv') {{ $message }} @enderror</strong> 
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input id="enfermedades" type="text" value="{{ old('enfermedades') }}" name="enfermedades" class="validate" required>
+                        <label for="enfermedades">Alergias y/o enfermedades:</label>
+                        <strong style="color: red;">@error('enfermedades') {{ $message }} @enderror</strong> 
+                    </div>
+
+                    <div class="input-field col s12">
+
                         <input id="causa" type="text" value="{{ old('causa') }}" name="causa" class="validate" required>
                         <label for="causa">Situacion por la cual necesita terapia:</label>
                         <strong style="color: red;">@error('causa') {{ $message }} @enderror</strong> 
@@ -298,6 +323,7 @@
     </script>
 
     <script>
+
         function calcularIMC() {
             var peso = parseFloat(document.getElementById('peso').value);
             var altura = parseFloat(document.getElementById('estatura').value);
@@ -411,5 +437,23 @@
                 console.error(error);
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, {
+                format: 'dd mmm, yyyy',
+                yearRange: [1923,2023],
+                i18n: {
+                    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                    weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                    weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                    weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"],
+                    cancel : 'cancelar',
+                    clear: 'limpiar'
+                }
+            });
+        });
+
     </script>
 @endsection
