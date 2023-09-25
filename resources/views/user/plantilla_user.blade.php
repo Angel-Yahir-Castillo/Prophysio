@@ -340,11 +340,11 @@
                 document.getElementById("form").innerHTML += $msg;
                 $("#data").val('');
                 
-                const link = 'http://localhost//prophysio/public/api/';
-                const link2 = 'http://127.0.0.1:8000/api/'
+                const linkLocal = 'http://127.0.0.1:8000/api/';
+                const linkHosting = 'https://prophysio.tagme.uno/public/api/'
                 // start ajax code
                 $.ajax({
-                    url: link2 + "chatApi",
+                    url: linkLocal + "chatApi",
                     type: 'get',
                     data: 'pregunta='+$value,
                     success: function(result){

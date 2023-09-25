@@ -28,33 +28,32 @@
                     </div>
 
                     <div class="input-field col s12 m6">
-                        <select>
-                            <option value="" disabled selected>Tipo de terapia</option>
-                            <option value="1">Masage</option>
-                            <option value="2">Dolor de hombro</option>
-                            <option value="3">Linfoterapia</option>
+                        <select id="tipo" name="tipo">
+                            @foreach ($tipos as $tipo)
+                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                            @endforeach
                         </select>
                         <label>Tipo de terapia</label>
                     </div>
 
                     <div class="input-field col s12 m6">
-                        <select>
-                            <option value="" disabled selected>Terapeuta</option>
-                            <option value="1">Lizbeth Mendoza</option>
-                            <option value="2">Thania Rivera</option>
-                            <option value="3">Monsserath Rojo</option>
+                        <select id="terapeuta" name="terapeuta">
+                        <option value="0" disabled selected>Terapeuta</option>
+                            @foreach ($terapeutas as $terapeuta)
+                                <option value="{{$terapeuta->id}}">{{$terapeuta->nombres.' '.$terapeuta->a_paterno.' '.$terapeuta->a_materno}}</option>
+                            @endforeach
                         </select>
                         <label>Terapeuta</label>
                     </div>
 
-                    <div class="input-field col s12 m6">
-                        <input id="registro_cita" name="registro_cita" type="text" class="datepicker validate" required>
-                        <label for="registro_cita">Fecha para la cita:</label>
+                    <div class="input-field col m6 s12">
+                        <input id="dia" type="text" name="dia" class="validate" readonly required>
+                        <label for="dia">Fecha de la cita:</label>
                     </div>
 
-                    <div class="input-field col s12 m6">
-                        <input id="hora_cita" name="hora_cita" type="text" class="timepicker validate" required>
-                        <label for="hora_cita">Hora para la cita:</label>
+                    <div class="input-field col m6 s12">
+                        <input id="hora" type="text" name="hora" class="validate" readonly required>
+                        <label for="hora">Hora de la cita:</label>
                     </div>
 
                     <center>Para poder agendar <a class="" href="{{ route('login.visit') }}">inicia sesion aqui</a> ó <a class="" href="{{ route('register.visit') }}">registrate aqui</a></center>
@@ -79,21 +78,4 @@
     </div>
     <br><br><br>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(elems, {
-                format: 'dd mmm, yyyy',
-                i18n: {
-                    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
-                    weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-                    weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-                    weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"],
-                    cancel : 'cancelar',
-                    clear: 'limpiar'
-                }
-            });
-        });
-    </script>
 @endsection

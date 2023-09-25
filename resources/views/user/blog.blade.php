@@ -97,7 +97,7 @@
             cursor: pointer;
         }
     </style>
-    <script type="" src="{{asset('js/blog_user.js')}}"></script>
+    <script type="" src="{{asset('js/blog.js')}}"></script>
 
     <script>
         verBlogs();

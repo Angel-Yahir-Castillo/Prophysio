@@ -27,6 +27,8 @@ Route::prefix('inicio/')->middleware(['auth','verified','2fa'])->name('user.')->
 
     //agendar
     Route::get('agendar', [AgendaController::class, 'userIndex'])->name('agendar.cita');
+    Route::post('agendar/guardar', [AgendaController::class, 'store'])->name('store.cita');
+    Route::get('folio', [AgendaController::class, 'folio'])->name('agendar.folio');
 
     //servicios 
     Route::get('servicios', [ServiciosController::class, 'userIndex'])->name('servicios.mostrar');

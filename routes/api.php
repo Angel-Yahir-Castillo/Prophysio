@@ -10,7 +10,7 @@ use App\Http\Controllers\ArticulosController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\AlexaController;
 use App\Http\Controllers\TerapeutaApiController;
-
+use App\Http\Controllers\AgendaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -50,3 +50,4 @@ Route::get('validarToken',[AlexaController::class, 'validarToken']);
 
 Route::get('consultaTerapeuta',[TerapeutaApiController::class, 'index']);
 
+Route::get('obtenerAgenda',[AgendaController::class, 'obtenerAgenda']);
