@@ -47,17 +47,13 @@ class PacientesController extends Controller
 
         $fileName = str_replace(' ','',$request->nombre).'.'.$request->fotografia->getClientOriginalExtension();
         $request->fotografia->move(public_path("pacientes"),$fileName);
-        
-        $fecha_unix = strtotime($request->fechaNac);
-        $fecha_formateada = date('Y-m-d', $fecha_unix);
 
-        return $fecha_unix;
         $paciente = New Paciente();
         $paciente->nombres = $request->nombre;
         $paciente->a_paterno = $request->ap;
         $paciente->a_materno = $request->am;
         $paciente->user_id = $request->user;
-        $paciente->fecha_nacimiento = $fecha_formateada;
+        $paciente->edad = $request->edad;
         $paciente->foto = $fileName;
         $paciente->peso = $request->peso;
         $paciente->sexo = $request->sexo;
@@ -69,8 +65,17 @@ class PacientesController extends Controller
         $paciente->cantidad_visitas = $request->cv;
         $paciente->alergias_enfermedades = $request->enfermedades;
         $paciente->situacion_por_la_cual_necesita_terapia = $request->causa;
+        $paciente->estatura=$request->estatura;
+        $paciente->tipo_lesion = $request->tipo;
+        $paciente->gravedad_lesion = $request->gravedad;
+        $paciente->aptitud_fisica = $request->aptitud;
+        $paciente->hipertension = $request->hipertencion;
+        $paciente->lesion_previa = $request->lesiones;
+        $paciente->osteoporosis = $request->osteoporosis;
+        $paciente->migrañas = $request->mig;
+        $paciente->imc = $request->imc;
 
-
+        return $paciente;
         $paciente->save();
 
         $usuario = User::where('id',$request->user)->first();

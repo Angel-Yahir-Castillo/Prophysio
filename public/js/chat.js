@@ -7,8 +7,8 @@ function ocultarChat(){
     }
 }
 
-const link = 'http://localhost//prophysio/public/api/';
-const link2 = 'http://127.0.0.1:8000/api/'
+const linkLocal = 'http://127.0.0.1:8000/api/';
+const linkHosting = 'https://prophysio.tagme.uno/public/api/'
 
 $(document).ready(function(){
     $("#send-btn").on("click", function(){
@@ -35,7 +35,7 @@ $(document).ready(function(){
         
         // start ajax code
         $.ajax({
-            url: link2 + "chatApi",
+            url: linkLocal + "chatApi",
             type: 'GET',
             data: 'pregunta='+$value,
             success: function(result){

@@ -98,7 +98,6 @@
     <script type="" src="{{asset('js/blog.js')}}"></script>
 
     <script>
-        //obtenerEtiquetas();
         verBlogs();
         
     </script>
