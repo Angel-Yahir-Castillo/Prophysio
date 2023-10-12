@@ -58,4 +58,9 @@ class ServiciosController extends Controller
     public function errorFuncion($codigo){
         abort($codigo);
     }
+
+    public function getServicios(){
+        $servicios = Servicio::all();
+        return $servicios;
+    }
 }

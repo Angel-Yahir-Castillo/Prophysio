@@ -11,6 +11,10 @@ use App\Http\Controllers\CitasController;
 use App\Http\Controllers\AlexaController;
 use App\Http\Controllers\TerapeutaApiController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,3 +55,12 @@ Route::get('validarToken',[AlexaController::class, 'validarToken']);
 Route::get('consultaTerapeuta',[TerapeutaApiController::class, 'index']);
 
 Route::get('obtenerAgenda',[AgendaController::class, 'obtenerAgenda']);
+
+//movil adicionales
+Route::get('getServicios',[ServiciosController::class, 'getServicios']);
+
+Route::get('loginMovil',[UserController::class,'loginMovil']);
+
+Route::get('getPreguntasFrecuentes', [ContactoController::class,'getPreguntasFrecuentes']);
+
+Route::get('sendMail', [ContactoController::class,'enviarCorreoContactoApi']);
