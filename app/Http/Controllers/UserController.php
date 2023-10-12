@@ -143,4 +143,40 @@ class UserController extends Controller
         return redirect(route('home'))->with('status', 'Sesion cerrada');
     }
 
+    public function loginMovil(Request $request){
+
+        $request->validate([
+            'correo' => ['required', 'email', 'string'],
+            'contrasena' => ['required', 'string'],
+            //'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
+        ]);
+
+        $user = User::where('email', $request->correo)->first();
+
+        if($user != null) {
+            if($user->active == 0){
+                return array("response"=>"1"); //la cuenta fue eliminada
+            }
+            else{
+                $credentials = [
+                    "email" => $request->correo,
+                    "password" => $request->contrasena,
+                    "active" => 1
+                ];
+         
+                $remember  = ($request->has('remember') ? true : false);
+        
+                if(Auth::attempt($credentials, $remember)){
+                    return $user; //contraeña correcta se regresan los datos del usuarios
+                }
+                else{
+                    return array("response"=>"2"); //la contraseña fue incorrecta 
+                }
+            }
+        }
+        else{
+            return array("response"=>"0"); //no exitse el correo
+        }
+    }
+
 }

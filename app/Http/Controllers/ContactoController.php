@@ -73,4 +73,32 @@ class ContactoController extends Controller
         return view('user.politica_privacidad');
     }
 
+    public function getPreguntasFrecuentes(){
+        $preguntas = Pregunta::all();
+        return $preguntas;
+    }
+
+    public function enviarCorreoContactoApi(Request $request){
+
+        $request->validate([
+            'nombre' => ['required','string','min:5'],
+            'correo' => ['required', 'email','string'],
+            'telefono' => ['required','string', 'max:10'],
+            'mensaje' => ['required', 'string','max:255'],
+        ]);
+
+        try{
+            $correo = new ContactanosMailable($request->all());
+            Mail::to('yahirgamerpvz@gmail.com')->send( $correo);
+
+            return array("response"=>"1");
+        }
+        catch (\Exception $e){
+            return array("response"=>"0");
+        }
+        
+
+        
+       
+    }
 }
