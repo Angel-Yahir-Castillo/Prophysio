@@ -30,6 +30,9 @@ Route::get('regreso-error', function(){
 })->name('regresar.error');
 
 
+Route::get('offline',function () {
+    return view('vendor.laravelpwa.offline');
+});
 
 require __DIR__.'/visit.php';
 require __DIR__.'/admin.php';
