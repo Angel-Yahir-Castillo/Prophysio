@@ -21,7 +21,7 @@ class AgendaController extends Controller
         return view('user.folio');
     }
     
-    public function userIndex(){
+    public function userIndex2(){
         $citas = Cita::all();
 
         $events = [];
@@ -38,10 +38,10 @@ class AgendaController extends Controller
         return view('user.agenda',compact('events'));
     }
 
-    public function userIndex2(){
+    public function userIndex(){
         $tipos = TipoTerapia::all();
         $terapeutas = Terapeuta::all();
-        
+
         return view('user.agenda',compact(['tipos','terapeutas']));
     }
 

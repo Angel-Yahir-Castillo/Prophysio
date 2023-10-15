@@ -110,7 +110,9 @@
 
                     const response = await axios.get(urlLo+'?terapeuta='+$terapeuta.value);
                     eventos = response.data;
-                    console.log(eventos);
+                    //console.log(eventos);
+                    document.getElementById('dia').value='';
+                    document.getElementById('hora').value='';
                     verCalendario();
                 } catch (error) {
                     console.error(error);
@@ -180,22 +182,7 @@
             calendar.render();
         };
 
-        document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar');
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'timeGridWeek',
-            slotMinTime: '08:00',
-            slotMaxTime: '20:00',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            events: @json($events),
-            locale: 'es', // Establece el idioma español 
-        });
-        calendar.render();
-        });
+     
 
     </script>
 
