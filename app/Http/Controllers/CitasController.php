@@ -106,4 +106,18 @@ class CitasController extends Controller
             return array("response"=>"4"); //error inesperado
         }
     }
+
+    public function misCitas(Request $request){
+        //$citas = Cita::where('estado_cita_id','1')
+        //->where('user_id',$request->user)->get();
+
+        $citas = Cita::select('citas.fecha_inicio', 'terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre','citas.folio')
+        ->join('terapeutas','citas.terapeuta_id','=','terapeutas.id')
+        ->join('tipo_terapia','citas.tipo_terapia_id','=','tipo_terapia.id')
+        ->where('citas.user_id',$request->user)
+        ->where('citas.estado_cita_id','1')
+        ->get();
+
+        return $citas;
+    }
 }

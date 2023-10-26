@@ -167,7 +167,14 @@ class UserController extends Controller
                 $remember  = ($request->has('remember') ? true : false);
         
                 if(Auth::attempt($credentials, $remember)){
-                    return $user; //contraeña correcta se regresan los datos del usuarios
+                    return array(
+                        "response"=>"3",
+                        "id"=>$user->id,
+                        "nombre"=>$user->name,
+                        "correo"=>$user->email,
+                        "telefono"=>$user->phone,
+                        "verificado"=>$user->email_verified_at,
+                    ); //contraeña correcta se regresan los datos del usuarios
                 }
                 else{
                     return array("response"=>"2"); //la contraseña fue incorrecta 
@@ -177,6 +184,46 @@ class UserController extends Controller
         else{
             return array("response"=>"0"); //no exitse el correo
         }
+    }
+
+    public function validarDatosUnicos(Request $request){
+        $user = User::where('email',$request->correo)->first();
+        if($user != null)
+            return array("response"=>"0"); //correo ya registrado
+        $user = User::where('phone',$request->telefono)->first();
+        if($user != null)
+            return array("response"=>"1"); //telefono ya registrado
+        return array("response"=>"2"); //datos no registrsos previamente
+    }
+
+    public function registroMovil(Request $request){
+        
+        /*
+        return $request->validate([
+            //'password' => ['required','confirmed', Rules\Password::defaults()],
+            //'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
+        ]);*/
+        
+
+        $user = new User();
+        $user->name = $request->nombre;
+        $user->email = $request->correo;
+        $user->phone = $request->telefono;
+        $user->contrasena = $request->password;
+        $user->password = Hash::make($request->password);  
+        if($user->save()){
+            $usuario = User::where('email',$request->correo)->first();
+            return array(
+                "response"=>"1",
+                "id"=>$usuario->id,
+                "verificado"=>$usuario->email_verified_at
+            );
+        }
+        else{
+            return array("response"=>"0");
+        }
+
+
     }
 
 }

@@ -13,8 +13,10 @@ return [
         'display' => 'fullscreen',
         'orientation'=> 'any',
         'status_bar'=> 'black',
-        'scope' =>  './',
-        'lang' =>  'es-MX',
+        'scope' => './',
+        'lang' => 'es-MX',
+        'maintainer' => 'Angel Yahir Hernández Castillo',
+        'contact' => 'yahirgamerpvz@gmail.com',
         'icons' => [
             '72x72' => [
                 'path' => '/images/icons/icon-72.png',

@@ -12,6 +12,7 @@ use App\Http\Controllers\AlexaController;
 use App\Http\Controllers\TerapeutaApiController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\PasswordResetLinkController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\UserController;
 
@@ -59,8 +60,20 @@ Route::get('obtenerAgenda',[AgendaController::class, 'obtenerAgenda']);
 //movil adicionales
 Route::get('getServicios',[ServiciosController::class, 'getServicios']);
 
-Route::get('loginMovil',[UserController::class,'loginMovil']);
+Route::post('loginMovil',[UserController::class,'loginMovil']);
 
 Route::get('getPreguntasFrecuentes', [ContactoController::class,'getPreguntasFrecuentes']);
 
 Route::get('sendMail', [ContactoController::class,'enviarCorreoContactoApi']);
+
+Route::get('getTerapias',[AgendaController::class,'getTerapias']);
+
+Route::get('getTerapeutas',[AgendaController::class,'getTerapeutas']);
+
+Route::get('getCitas',[CitasController::class, 'misCitas']);
+
+Route::post('registro',[UserController::class,'registroMovil']);
+
+Route::post('validarDatos',[UserController::class,'validarDatosUnicos']);
+
+Route::post('resetPassword',[PasswordResetLinkController::class, 'storeMovil']);
