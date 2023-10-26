@@ -62,5 +62,5 @@ jobs:
         with:
           app-name: 'Prophysio'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1B41D02D8A5B4BF586C2ED4ADF271C5C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8B6673585F284BD9A0A7BA1A4A41299A }}
           package: .
