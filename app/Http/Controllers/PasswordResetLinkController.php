@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -42,5 +43,21 @@ class PasswordResetLinkController extends Controller
                     ? back()->with('status', __($status))
                     : back()->withInput($request->only('email'))
                             ->withErrors(['email' => __($status)]);
+    }
+
+    public function storeMovil(Request $request): JsonResponse
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+        ]);
+    
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+    
+        return response()->json([
+            'message' => __($status),
+            'status' => $status,
+        ], $status === Password::RESET_LINK_SENT ? 200 : 400);
     }
 }

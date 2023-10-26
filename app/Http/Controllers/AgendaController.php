@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
+
+    public function getTerapias(){
+        $tipos = TipoTerapia::all();
+        return $tipos;
+    }
+
+    public function getTerapeutas(){
+        $terapeutas = Terapeuta::all();
+        return $terapeutas;
+    }
+    
     public function index(){
         $tipos = TipoTerapia::all();
         $terapeutas = Terapeuta::all();
