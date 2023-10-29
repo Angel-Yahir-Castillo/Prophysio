@@ -6,8 +6,8 @@ return [
         'name' => env('APP_NAME', 'Prophysio Huejutla'),
         'short_name' => 'Prophysio',
         'description' => 'Agenda tus citas desde la aplicacion',
-        'start_url' => '/',
-        'id' => '/',
+        'start_url' => 'https://prophysio.azurewebsites.net/',
+        'id' => 'https://prophysio.azurewebsites.net/',
         'background_color' => '#C7F7F7',
         'theme_color' => '#C7F7F7', //E20089
         'display' => 'fullscreen',
