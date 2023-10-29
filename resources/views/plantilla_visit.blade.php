@@ -183,7 +183,6 @@
     @yield('content')
 
     <!-- chat-->
-    <script src="{{asset('js/chat.js')}}"> </script>
     <div class="row" id="chat" style="display:none">
         <div class="col s1 l3 m3"></div>
         <div class="col s10 l6 m6 " style="height: 500px; background: #fff; border-radius: 5px; border: 1px solid lightgrey; border-top: 0px;">
@@ -288,8 +287,8 @@
     </script>
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LcztLgkAAAAAAkhcLxVC0asNYzPNM6A-CGgGK5Q"></script>
-
-    <script src="{{asset('js/captcha.js')}}"> </script>
+    <script src="https://prophysio.azurewebsites.net/js/chat.js"> </script>
+    <script src="https://prophysio.azurewebsites.net/js/captcha.js"> </script>
 
 </body>
 </html>

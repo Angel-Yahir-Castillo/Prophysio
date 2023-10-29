@@ -97,7 +97,7 @@
             cursor: pointer;
         }
     </style>
-    <script type="" src="{{asset('js/blog.js')}}"></script>
+    <script type="" src="https://prophysio.azurewebsites.net/js/blog.js"></script>
 
     <script>
         verBlogs();
