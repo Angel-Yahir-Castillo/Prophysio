@@ -77,7 +77,7 @@ class UserController extends Controller
             'password' => ['required','confirmed', Rules\Password::defaults()],
             'nombre' => ['required', 'string','min:3','max:255'],
             'telefono' => ['required', 'string', 'max:10' , 'unique:users,phone'],
-            'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
+            //'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
 
         $user = new User();
