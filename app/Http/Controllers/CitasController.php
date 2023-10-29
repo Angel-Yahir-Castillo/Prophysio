@@ -33,13 +33,19 @@ class CitasController extends Controller
     }
 
     public function store(Request $request){
+        $fechaDisp = Cita::where('fecha_inicio',$request->fecha)
+        ->where('terapeuta_id',$request->terapeuta_id)
+        ->first(); 
+        if($fechaDisp!=null)
+            return array("response"=>"2"); //no esta disponible la nueva fecha con ese terapeuta
         try{
             $cita = new Cita();
             $cita->terapeuta_id=$request->terapeuta;
             $cita->user_id=$request->user;
             $cita->tipo_terapia_id=$request->tipo;
             $cita->fecha_inicio=$request->fecha_inicio;
-    
+            $cita->paciente=$request->nombre;
+
             $fechaF = \Carbon\Carbon::parse($request->fecha_inicio);
             $folio =$request->user. $fechaF->format('dmYH');
             $fechaF->addHour(1);
@@ -111,11 +117,12 @@ class CitasController extends Controller
         //$citas = Cita::where('estado_cita_id','1')
         //->where('user_id',$request->user)->get();
 
-        $citas = Cita::select('citas.fecha_inicio', 'terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre','citas.folio')
+        $citas = Cita::select('citas.fecha_inicio','citas.paciente', 'terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre','citas.folio')
         ->join('terapeutas','citas.terapeuta_id','=','terapeutas.id')
         ->join('tipo_terapia','citas.tipo_terapia_id','=','tipo_terapia.id')
         ->where('citas.user_id',$request->user)
         ->where('citas.estado_cita_id','1')
+        ->orderBy('citas.fecha_inicio', 'ASC') // Ordena por fecha_inicio de manera ascendente (la más próxima primero)
         ->get();
 
         return $citas;

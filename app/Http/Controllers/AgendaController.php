@@ -80,7 +80,7 @@ class AgendaController extends Controller
         $cita = new Cita();
         $cita->terapeuta_id = $request->terapeuta;
         $cita->tipo_terapia_id = $request->tipo;
-
+        $cita->paciente=$request->nombre;
         $cita->fecha_inicio = $request->dia.' '.$request->hora.':00';
     
         $fechaF = \Carbon\Carbon::parse($request->dia.$request->hora.':00');
