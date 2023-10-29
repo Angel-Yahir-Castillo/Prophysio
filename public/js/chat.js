@@ -7,10 +7,10 @@ function ocultarChat(){
     }
 }
 
-const link = 'http://127.0.0.1:8000/api/';
-const linkHost = 'https://prophysio.tagme.uno/public/api/';
-const linkAzure = 'https://prophysio.azurewebsites.net/api/';
-const urlDefinitiva = linkAzure;
+const link2 = 'http://127.0.0.1:8000/api/';
+const linkHost2 = 'https://prophysio.tagme.uno/public/api/';
+const linkAzure2 = 'https://prophysio.azurewebsites.net/api/';
+const urlDefinitiva2 = linkAzure2;
 
 $(document).ready(function(){
     $("#send-btn").on("click", function(){
@@ -37,7 +37,7 @@ $(document).ready(function(){
         
         // start ajax code
         $.ajax({
-            url: urlDefinitiva + "chatApi",
+            url: urlDefinitiva2 + "chatApi",
             type: 'GET',
             data: 'pregunta='+$value,
             success: function(result){

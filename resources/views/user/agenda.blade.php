@@ -14,7 +14,7 @@
     {{ Breadcrumbs::render('agendaU') }}
         <div class="row">
 
-            <form action="{{route('user.store.cita')}}" method="POST" class="col s12">
+            <form action="{{URL::secure('inicio/agendar/guardar')}}" method="POST" class="col s12">
                 @csrf
                 <div class="row card-panel">
 
@@ -107,8 +107,8 @@
          
                     const urlLo= `http://127.0.0.1:8000/api/obtenerAgenda`;
                     const urlHost= `https://prophysio.tagme.uno/public/api/obtenerAgenda`;
-
-                    const response = await axios.get(urlLo+'?terapeuta='+$terapeuta.value);
+                    const urlAzure = `https://prophysio.tagme.uno/public/api/obtenerAgenda`;
+                    const response = await axios.get(urlAzure+'?terapeuta='+$terapeuta.value);
                     eventos = response.data;
                     //console.log(eventos);
                     document.getElementById('dia').value='';

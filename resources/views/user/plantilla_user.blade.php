@@ -341,11 +341,13 @@
                 document.getElementById("form").innerHTML += $msg;
                 $("#data").val('');
                 
-                const linkLocal = 'http://127.0.0.1:8000/api/';
-                const linkHosting = 'https://prophysio.tagme.uno/public/api/'
+                const link2 = 'http://127.0.0.1:8000/api/';
+                const linkHost2 = 'https://prophysio.tagme.uno/public/api/';
+                const linkAzure2 = 'https://prophysio.azurewebsites.net/api/';
+                const urlDefinitiva2 = linkAzure2;
                 // start ajax code
                 $.ajax({
-                    url: linkLocal + "chatApi",
+                    url: urlDefinitiva2 + "chatApi",
                     type: 'get',
                     data: 'pregunta='+$value,
                     success: function(result){

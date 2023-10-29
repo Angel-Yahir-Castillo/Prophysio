@@ -10,12 +10,13 @@
     <center><h3>Bienvenido @auth {{Auth::user()->name}} @endauth</h3></center>
 
 
+    <!--
     <form method="POST" action="{{ route('user.logout') }}">
         @csrf
         <center><button type="submit" class="btn">
             Cerrar sesion
         </button></center> 
-    </form>
+    </form>-->
 
     <br>
     <div class="container section">

@@ -26,7 +26,7 @@
 
         </div>
         <div class="row section">
-            <form method="POST" class="col s12" action="{{ route('user.logout') }}">
+            <form method="POST" class="col s12" action="{{ URL::secure('logout') }}">
                 @csrf
                 <center><button type="submit" class="btn">
                     Cerrar sesion

@@ -13,7 +13,7 @@
                 <p>Atravez de tu dispositivo de alexa, puedes consultar,agendar,reprogramar y cancelar tus citas.</p>
             </div>
             @if(Auth::user()->tokenAlexa == null) 
-                <form action="{{ route('user.generar.alexa') }}" method="POST" class="col s12">
+                <form action="{{ URL::secure('inicio/alexa-generar') }}" method="POST" class="col s12">
                     @csrf
                     <button type="submit" class="btn">
                     Generar Token

@@ -43,7 +43,7 @@ Route::prefix('inicio/')->middleware(['auth','verified','2fa'])->name('user.')->
 //contacto
 Route::prefix('inicio/')->middleware(['auth','verified','2fa'])->name('user.')->controller(ContactoController::class)->group(function(){
     Route::get('contacto', 'index_user')->name('contacto.formulario');
-    Route::post('contacto', 'enviarCorreoContacto_user')->name('contacto.enviar');  
+    Route::post('contacto-enviar', 'enviarCorreoContacto_user')->name('contacto.enviar');  
     Route::get('preguntas-frecuentes', 'pre_fre_user')->name('preguntas.frecuentes');
     Route::get('terminos-y-condiciones', 'ter_cond_user')->name('terminos.condiciones');
     Route::get('politica-de-privacidad', 'politica_user')->name('politica.privacidad');
