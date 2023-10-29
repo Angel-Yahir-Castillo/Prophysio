@@ -30,7 +30,7 @@ class UserController extends Controller
         $request->validate([
             'correo' => ['required', 'email', 'string'],
             'contrasena' => ['required', 'string'],
-            'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
+            //'g-recaptcha-response' => ['required', new \App\Rules\Recaptcha],
         ]);
  
         $credentials = [
