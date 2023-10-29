@@ -46,7 +46,7 @@
 
                     <br>
                     <div class="col s12">
-                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('password.options') }}">Recuperar contraseña </a></center><br>
+                        <center> ¿Se te olvido tu contraseña?  <a class="" href="{{ route('password.request') }}">Recuperar contraseña </a></center><br>
                     </div>
                     <center><input class="btn" type="submit" value="Iniciar sesion"> </input></center>
 

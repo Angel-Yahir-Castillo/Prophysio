@@ -10,7 +10,7 @@
         <div class="row ">
 
             <div class="col s0 m1"></div>
-            <form action="{{ route('contacto.enviar') }}" method="POST" class="col m10 s12">
+            <form action="{{ URL::secure('contacto-enviar') }}" method="POST" class="col m10 s12">
             @csrf
                 <div class="row card-panel">
 

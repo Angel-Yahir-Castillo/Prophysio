@@ -29,7 +29,7 @@
                     @endif
                     <div class="col s12">
                         <center>
-                            <form method="POST" class="row" action="{{ route('password.email') }}">
+                            <form method="POST" class="row" action="{{ URL::secure('forgot-password-email') }}">
                                 @csrf
 
                                 <!-- Email Address -->

@@ -13,11 +13,6 @@ use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PythonController;
 
-Route::get('paciente',[PythonController::class,'pacienteR'])->name('python.paciente');
-Route::post('pacientesRegistro',[PythonController::class,'guardar'])->name('python.guarda.paciente');
-
-Route::get('cita',[PythonController::class,'citasR'])->name('python.cita');
-Route::post('citassRegistro',[PythonController::class,'guardarCitas'])->name('python.guarda.cita');
 
 //blog
 Route::get('blog', [BlogController::class, 'index'])->middleware('isGuest')->name('blog.all');
@@ -32,7 +27,7 @@ Route::get('servicios', [ServiciosController::class, 'index'])->middleware('isGu
 //contacto
 Route::middleware('isGuest')->controller(ContactoController::class)->group(function(){
     Route::get('contacto', 'index')->name('contacto.formulario');
-    Route::post('contacto', 'enviarCorreoContacto')->name('contacto.enviar');  
+    Route::post('contacto-enviar', 'enviarCorreoContacto')->name('contacto.enviar');  
     Route::get('preguntas-frecuentes', 'pre_fre')->name('preguntas.frecuentes');
     Route::get('terminos-y-condiciones', 'ter_cond')->name('terminos.condiciones');
     Route::get('politica-de-privacidad', 'politica')->name('politica.privacidad');
@@ -70,7 +65,7 @@ Route::middleware('isGuest')->group(function(){
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+    Route::post('forgot-password-email', [PasswordResetLinkController::class, 'store'])
                 ->name('password.email');
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])

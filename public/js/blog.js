@@ -11,8 +11,9 @@ const $etiquetas = document.getElementById('etiquetasLista')
 $etiquetas.addEventListener("change", opcionCambiada);
 
 const link = 'http://127.0.0.1:8000/';
-const link2 = 'https://prophysio.tagme.uno/public/';
-
+const linkHost = 'https://prophysio.tagme.uno/public/';
+const linkAzure = 'https://prophysio.azurewebsites.net/';
+const urlDefinitiva = linkAzure;
 function verBlogs(){
     document.getElementById('circulo').classList.remove('hide');
     $.ajaxSetup({
@@ -22,8 +23,7 @@ function verBlogs(){
     });
     $("#blogs").empty();
     $.ajax({
-        url: link + "api/blogsApi",
-        //url: link2 "api/blogsApi",
+        url: urlDefinitiva + "api/blogsApi",
         type: "POST",
         success: function(result){
             var resultado = JSON.parse(result);
@@ -33,7 +33,7 @@ function verBlogs(){
                     $registro = `            <div class="col s12 m6 l4 contBlog">
                     <div class="card">
                         <div class="card-image">
-                            <img alt="${blog.alt}" style="width: 100%;" class="" src="${link}${blog.imagen} ">
+                            <img alt="${blog.alt}" style="width: 100%;" class="" src="${urlDefinitiva}${blog.imagen} ">
                         </div>
                         <div class="card-content">
                             <span class="card-title"> ${blog.nombre}</span>
@@ -43,8 +43,7 @@ function verBlogs(){
                     </div> </div>`
                     $("#blogs").append($registro);
                     $.ajax({
-                        url: link +"api/etiquetaApi",
-                        //url: link2 +"api/etiquetaApi",
+                        url: urlDefinitiva +"api/etiquetaApi",
                         type: "POST",
                         data: 'id='+ blog.id,
                         success: function(resultadoT){
@@ -70,8 +69,7 @@ function verBlogsEtiqueta(idEtiqueta) {
     });
     $("#blogs").empty();
     $.ajax({
-        url: link + "api/blogEtiquetaApi",
-        //url: link2 + "api/blogEtiquetaApi",
+        url: urlDefinitiva + "api/blogEtiquetaApi",
         type: "POST",
         data: 'id='+ idEtiqueta,
         success: function(result){
@@ -82,7 +80,7 @@ function verBlogsEtiqueta(idEtiqueta) {
                     $registro = `            <div class="col s12 m6 l4 contBlog">
                     <div class="card">
                         <div class="card-image">
-                            <img alt="${blog.alt}" style="width: 100%;" class="" src="${link}${blog.imagen} ">
+                            <img alt="${blog.alt}" style="width: 100%;" class="" src="${urlDefinitiva}${blog.imagen} ">
                         </div>
                         <div class="card-content">
                             <span class="card-title"> ${blog.nombre}</span>
@@ -92,8 +90,7 @@ function verBlogsEtiqueta(idEtiqueta) {
                     </div> </div>`
                     $("#blogs").append($registro);
                     $.ajax({
-                        url: link + "api/etiquetaApi",
-                        //url: link2 + "api/etiquetaApi",
+                        url: urlDefinitiva + "api/etiquetaApi",
                         type: "POST",
                         data: 'id='+ blog.id,
                         success: function(resultadoT){
@@ -118,7 +115,7 @@ function obtenerEtiquetas(){
     });
 
     $.ajax({
-        url: link + "api/mostrarEtiquetaApi",
+        url: urlDefinitiva + "api/mostrarEtiquetaApi",
         //url: link2 + "api/mostrarEtiquetaApi",
         type: "POST",
         success: function(resultado){

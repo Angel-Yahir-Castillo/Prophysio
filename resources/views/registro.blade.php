@@ -9,7 +9,7 @@
 
         <div class="row">
         {{ Breadcrumbs::render('registro') }}
-            <form action="{{ route('validar.registro') }}" method="POST" class="col s12">
+            <form action="{{ URL::secure('validar-registro') }}" method="POST" class="col s12">
 
             @csrf 
                 <div class="row card-panel">
