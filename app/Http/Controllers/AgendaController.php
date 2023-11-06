@@ -94,4 +94,50 @@ class AgendaController extends Controller
 
         return redirect(route('user.agendar.folio'))->with('info', $folio);
     }
+
+    public function obtenerHoras2(Request $request){
+        // Convierte la fecha a un objeto Carbon para trabajar con ella
+        $fecha = \Carbon\Carbon::parse($request->fecha);
+
+        // Crea un arreglo con todas las horas entre 10am y 8pm
+        $horas_disponibles = [];
+        $hora_actual = $fecha->copy()->setHour(10)->setMinute(0)->setSecond(0);
+
+        while ($hora_actual->hour < 20) {
+            $horas_disponibles[] = $hora_actual->format('H:i:s');
+            $hora_actual->addHour();
+        }
+
+        // Consulta la base de datos para obtener las horas ocupadas en la fecha dada
+        $horas_ocupadas = Cita::whereDate('fecha_inicio', $fecha->toDateString())
+            ->pluck('fecha_inicio')->all();
+
+        // Convierte las horas ocupadas en un formato "H:i:s"
+        $horas_ocupadas = array_map(function ($hora) {
+            return \Carbon\Carbon::parse($hora)->format('H:i:s');
+        }, $horas_ocupadas);
+        // Filtra las horas ocupadas del arreglo de horas disponibles
+        $horas_disponibles = array_diff($horas_disponibles, $horas_ocupadas);
+
+        return $horas_disponibles;
+    }
+
+    public function obtenerHoras(Request $request){
+        // Convierte la fecha a un objeto Carbon para trabajar con ella
+        $fecha = \Carbon\Carbon::parse($request->fecha);
+
+        // Crea un arreglo con todas las horas entre 10am y 8pm
+        $horas_disponibles = [];
+        $hora_actual = $fecha->copy()->setHour(10)->setMinute(0)->setSecond(0);
+
+        while ($hora_actual->hour < 20) {
+            $hora_disponible = $hora_actual->format('H:i:s');
+            if (!Cita::where('fecha_inicio', $fecha->format('Y-m-d ') . $hora_disponible)->exists()) {
+                $horas_disponibles[] = $hora_disponible;
+            }
+            $hora_actual->addHour();
+        }
+
+        return $horas_disponibles;
+    }
 }

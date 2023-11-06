@@ -43,6 +43,7 @@ Route::get('chatApi', [ChatController::class, 'preguntaChat']);
 
 Route::get('articulos', [ArticulosController::class, 'index']);
 
+// crud citas
 Route::get('consultaCita', [CitasController::class, 'consulta']);
 
 Route::post('agendarCita', [CitasController::class, 'store']);
@@ -51,11 +52,15 @@ Route::get('cancelarCita', [CitasController::class, 'cancelar']);
 
 Route::get('reagendarCita', [CitasController::class, 'reagendar']);
 
+//alexa 
 Route::get('validarToken',[AlexaController::class, 'validarToken']);
 
 Route::get('consultaTerapeuta',[TerapeutaApiController::class, 'index']);
 
+//calendario
 Route::get('obtenerAgenda',[AgendaController::class, 'obtenerAgenda']);
+
+Route::get('obtenerHoras',[AgendaController::class, 'obtenerHoras']);
 
 //movil adicionales
 Route::get('getServicios',[ServiciosController::class, 'getServicios']);
