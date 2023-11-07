@@ -132,7 +132,7 @@ class AgendaController extends Controller
 
         while ($hora_actual->hour < 20) {
             $hora_disponible = $hora_actual->format('H:i:s');
-            if (!Cita::where('fecha_inicio', $fecha->format('Y-m-d ') . $hora_disponible)->exists()) {
+            if (!Cita::where('terapeuta_id',$request->terapeuta)->where('fecha_inicio', $fecha->format('Y-m-d ') . $hora_disponible)->exists()) {
                 $horas_disponibles[] = $hora_disponible;
             }
             $hora_actual->addHour();
