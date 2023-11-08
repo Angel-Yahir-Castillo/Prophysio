@@ -126,13 +126,18 @@ class AgendaController extends Controller
         // Convierte la fecha a un objeto Carbon para trabajar con ella
         $fecha = \Carbon\Carbon::parse($request->fecha);
 
+        //obtener la hora actual
+        $hora_actual_real = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+        
         // Crea un arreglo con todas las horas entre 10am y 8pm
         $horas_disponibles = [];
         $hora_actual = $fecha->copy()->setHour(10)->setMinute(0)->setSecond(0);
-
+        
         while ($hora_actual->hour < 20) {
             $hora_disponible = $hora_actual->format('H:i:s');
-            if (!Cita::where('terapeuta_id',$request->terapeuta)->where('fecha_inicio', $fecha->format('Y-m-d ') . $hora_disponible)->exists()) {
+            
+            if ($hora_actual > $hora_actual_real && !Cita::where('terapeuta_id',$request->terapeuta)->where('fecha_inicio', $hora_actual->format('Y-m-d H:i:s'))->exists()) {
+
                 $horas_disponibles[] = $hora_disponible;
             }
             $hora_actual->addHour();
