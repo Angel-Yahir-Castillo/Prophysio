@@ -18,7 +18,8 @@
         "nesbot/carbon": "^2.68",
         "pragmarx/google2fa-laravel": "^2.1",
         "pragmarx/google2fa-qrcode": "^3.0",
-        "silviolleite/laravelpwa": "^2.0"
+        "silviolleite/laravelpwa": "^2.0",
+        "mondago/laravel-application-insights": "^0.6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -70,5 +71,15 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+          "type": "git",
+          "url": "https://github.com/mondago/ApplicationInsights-PHP"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/mondago/laravel-azure-application-insights"
+        }
+    ]
 }
