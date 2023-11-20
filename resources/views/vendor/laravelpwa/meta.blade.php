@@ -47,5 +47,5 @@
     }
 </script>
 
-<script src="https://prophysio.azurewebsites.net/js/notificaciones.js"></script>
+<script src="https://prophysio.azurewebsites.net/js/notifications.js"></script>
 <!--<script src="{{asset('js/notifications.js')}}"></script>-->
