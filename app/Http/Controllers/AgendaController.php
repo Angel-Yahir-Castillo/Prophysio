@@ -5,7 +5,9 @@ use App\Models\Cita;
 use App\Models\User;
 use App\Models\TipoTerapia;
 use App\Models\Terapeuta;
+use App\Models\Encuesta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgendaController extends Controller
 {
@@ -49,7 +51,32 @@ class AgendaController extends Controller
         return view('user.agenda',compact('events'));
     }
 
-    public function userIndex(){
+    public function misCitas(){
+        $citas2 = Cita::select('citas.fecha_inicio','citas.paciente', 'terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre','citas.folio')
+        ->join('terapeutas','citas.terapeuta_id','=','terapeutas.id')
+        ->join('tipo_terapia','citas.tipo_terapia_id','=','tipo_terapia.id')
+        ->where('citas.user_id',Auth::user()->id)
+        ->where('citas.estado_cita_id','1')
+        ->orderBy('citas.fecha_inicio', 'ASC') 
+        ->get();
+
+        $citas = [];
+
+        foreach ($citas2 as $date) {
+            $citas[] = [
+                'hora' => explode(' ',$date->fecha_inicio)[1],
+                'dia' => \Carbon\Carbon::createFromFormat('Y-m-d', explode(' ',$date->fecha_inicio)[0])->format('d-m-Y'),
+                'paciente' => $date->paciente,
+                'terapeuta' => $date->nombres . ' ' . $date->a_paterno .' ' . $date->a_materno,
+                'terapia' => $date->nombre,
+                'folio' => $date->folio,
+            ];
+        }
+        //return $citas;
+        return view('user.misCitas',compact('citas'));
+    }
+
+    public function agendar(){
         $tipos = TipoTerapia::all();
         $terapeutas = Terapeuta::all();
 
@@ -76,14 +103,22 @@ class AgendaController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'dia' => ['required', 'string'],
+            'hora' => ['required', 'string'],
+            'terapeuta' => ['required', 'string'],
+            'nombre' => ['required'],
+            'tipo' => ['required', 'min:0'],
+        ]);
+
         $user=User::where('email',$request->correo)->first();
         $cita = new Cita();
         $cita->terapeuta_id = $request->terapeuta;
         $cita->tipo_terapia_id = $request->tipo;
         $cita->paciente=$request->nombre;
-        $cita->fecha_inicio = $request->dia.' '.$request->hora.':00';
+        $cita->fecha_inicio = $request->dia.' '.$request->hora;
     
-        $fechaF = \Carbon\Carbon::parse($request->dia.$request->hora.':00');
+        $fechaF = \Carbon\Carbon::parse($request->dia.$request->hora);
         $folio =$user->id. $fechaF->format('dmYH');
         $fechaF->addHour(1);
 
@@ -92,34 +127,61 @@ class AgendaController extends Controller
         $cita->user_id=$user->id;
         $cita->save();
 
-        return redirect(route('user.agendar.folio'))->with('info', $folio);
+        $fechaCita = \Carbon\Carbon::parse($request->dia.' '.$request->hora); 
+        return redirect(route('user.agendar.cita'))->with('info', [$folio,$fechaCita]);
     }
 
-    public function obtenerHoras2(Request $request){
-        // Convierte la fecha a un objeto Carbon para trabajar con ella
-        $fecha = \Carbon\Carbon::parse($request->fecha);
+    public function update(Request $request){
+        $request->validate([
+            'dia' => ['required', 'string'],
+            'hora' => ['required', 'string'],
+            'folio' => ['required', 'string'],
+        ]);
 
-        // Crea un arreglo con todas las horas entre 10am y 8pm
-        $horas_disponibles = [];
-        $hora_actual = $fecha->copy()->setHour(10)->setMinute(0)->setSecond(0);
+        $cita = Cita::where('folio',$request->folio)->first();
+        if($cita==null)
+            return redirect(route('user.agendar.cita'))->with('actualizacion', 'Ocurrio un error al reagendar la cita'); //no existe esa cita
+        $fechaDisp = Cita::where('fecha_inicio',$request->dia . ' '.$request->hora)
+                    ->where('terapeuta_id',$cita->terapeuta_id)
+                    ->first(); 
+        if($fechaDisp!=null)
+            return redirect(route('user.agendar.cita'))->with('actualizacion', 'Esa fecha y hora ya estan ocupadas');//no esta disponible la nueva fecha con ese terapeuta
+        
+        try{
+            $cita->fecha_inicio = $request->dia . ' '.$request->hora;
+            $fechaF = \Carbon\Carbon::parse($request->fecha);
+            $fechaF->addHour(1);
+            $cita->fecha_fin=$fechaF->format('Y-m-d H:i:s');
 
-        while ($hora_actual->hour < 20) {
-            $horas_disponibles[] = $hora_actual->format('H:i:s');
-            $hora_actual->addHour();
+            $cita->save();
+            return redirect(route('user.agendar.cita'))->with('actualizacion', 'Se modifico el horario para la cita'); //si se pudo reagendar
+        } 
+        catch (\Exception $e){
+            return redirect(route('user.agendar.cita'))->with('actualizacion', 'Ocurrio un error al reagendar la cita'); //error inesperado
+        }
+    }
+
+    public function modificar($folio){
+        $date = Cita::select('citas.fecha_inicio','citas.paciente','citas.estado_cita_id', 'citas.folio', 'terapeutas.id','terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre')
+        ->join('terapeutas','citas.terapeuta_id','=','terapeutas.id')
+        ->join('tipo_terapia','citas.tipo_terapia_id','=','tipo_terapia.id')
+        ->where('citas.folio', $folio)
+        ->first();
+        if($date == null || $date->estado =! 1){
+            return redirect(route('user.agendar.cita'));
         }
 
-        // Consulta la base de datos para obtener las horas ocupadas en la fecha dada
-        $horas_ocupadas = Cita::whereDate('fecha_inicio', $fecha->toDateString())
-            ->pluck('fecha_inicio')->all();
-
-        // Convierte las horas ocupadas en un formato "H:i:s"
-        $horas_ocupadas = array_map(function ($hora) {
-            return \Carbon\Carbon::parse($hora)->format('H:i:s');
-        }, $horas_ocupadas);
-        // Filtra las horas ocupadas del arreglo de horas disponibles
-        $horas_disponibles = array_diff($horas_disponibles, $horas_ocupadas);
-
-        return $horas_disponibles;
+        $cita = array(
+            'hora' => explode(' ',$date->fecha_inicio)[1],
+            'dia' => \Carbon\Carbon::createFromFormat('Y-m-d', explode(' ',$date->fecha_inicio)[0])->format('d-m-Y'),
+            'paciente' => $date->paciente,
+            'terapeuta' => $date->nombres . ' ' . $date->a_paterno .' ' . $date->a_materno,
+            'terapia' => $date->nombre,
+            'folio' => $date->folio,
+            'terapeuta_id' => $date->id
+        );
+        
+        return view('user.reagendar', compact('cita'));
     }
 
     public function obtenerHoras(Request $request){
@@ -144,5 +206,20 @@ class AgendaController extends Controller
         }
 
         return $horas_disponibles;
+    }
+
+    public function encuesta(){
+        return view('user.encuesta');
+    }
+
+    public function encuestaStore(Request $request){
+        $encuesta = new Encuesta();
+        $encuesta->calificacion = $request->calificacion;
+        if($request->comentario!=null)
+            $encuesta->comentario = $request->comentario;
+        else
+            $encuesta->comentario = '';
+        $encuesta->save();
+        return redirect(route('user.inicio'))->with('info', 'Muchas gracias por tu participacion');
     }
 }

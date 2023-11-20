@@ -29,8 +29,8 @@
                 <ul class="right hide-on-med-and-down" style="padding-right:20px">
                     <li><a  href="{{ route('user.inicio') }}" @if (Request::is('inicio')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif class="">Inicio</a></li> 
                     <li>
-                        <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/agendar')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
-                            Agendar
+                        <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/mis-citas')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+                            Mis citas
                             <i class="material-icons left">
                                 today
                             </i>
@@ -124,8 +124,8 @@
     <ul class="sidenav" style="background-color: #FFFFFF"  id="menu-responsive">
         <li><a  href="{{ route('user.inicio') }}" @if (Request::is('inicio')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif class="">Inicio</a></li> 
         <li>
-            <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/agendar')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
-                Agendar
+            <a class="" href="{{ route('user.agendar.cita') }}" @if (Request::is('inicio/mis-citas')) style="background-color: #E20089; color:#FFFFFF;" @else style="color:#000000;" @endif>
+            Mis citas
                 <i class="material-icons left">
                     today
                 </i>

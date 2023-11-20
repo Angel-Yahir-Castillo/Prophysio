@@ -26,10 +26,16 @@ Route::prefix('inicio/')->middleware(['auth','verified','2fa'])->name('user.')->
     Route::get('blog', [BlogController::class, 'userIndex'])->name('blog.all');
 
     //agendar
-    Route::get('agendar', [AgendaController::class, 'userIndex'])->name('agendar.cita');
+    Route::get('mis-citas', [AgendaController::class, 'misCitas'])->name('agendar.cita');
+    Route::get('mis-citas/{cita}', [AgendaController::class, 'modificar'])->name('cita.mostrar');
+    Route::post('cita/update', [AgendaController::class, 'update'])->name('update.cita');
+
+    Route::get('agendar', [AgendaController::class, 'agendar'])->name('agendar.cita.form');
     Route::post('agendar/guardar', [AgendaController::class, 'store'])->name('store.cita');
     Route::get('folio', [AgendaController::class, 'folio'])->name('agendar.folio');
 
+    Route::get('encuesta',[AgendaController::class , 'encuesta']);
+    Route::post('encuesta/guardar',[AgendaController::class , 'encuestaStore']);
     //servicios 
     Route::get('servicios', [ServiciosController::class, 'userIndex'])->name('servicios.mostrar');
 
