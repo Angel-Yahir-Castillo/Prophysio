@@ -72,9 +72,13 @@ Breadcrumbs::for('homeU', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('agendaU', function (BreadcrumbTrail $trail) {
     $trail->parent('homeU');
-    $trail->push('Agendar', route('user.agendar.cita'));
+    $trail->push('Mis citas', route('user.agendar.cita'));
 });
 
+Breadcrumbs::for('agendaUF', function (BreadcrumbTrail $trail) {
+    $trail->parent('agendaU');
+    $trail->push('Agendar Cita', route('user.agendar.cita.form'));
+});
 
 Breadcrumbs::for('serviciosU', function (BreadcrumbTrail $trail) {
     $trail->parent('homeU');

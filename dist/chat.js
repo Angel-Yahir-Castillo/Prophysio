@@ -11,8 +11,10 @@ function ocultarChat() {
     x.style.display = "none";
   }
 }
-var linkLocal = 'http://127.0.0.1:8000/api/';
-var linkHosting = 'https://prophysio.tagme.uno/public/api/';
+var link2 = 'http://127.0.0.1:8000/api/';
+var linkHost2 = 'https://prophysio.tagme.uno/public/api/';
+var linkAzure2 = 'https://prophysio.azurewebsites.net/api/';
+var urlDefinitiva2 = linkAzure2;
 $(document).ready(function () {
   $("#send-btn").on("click", function () {
     $value = $("#data").val();
@@ -29,7 +31,7 @@ $(document).ready(function () {
 
     // start ajax code
     $.ajax({
-      url: linkLocal + "chatApi",
+      url: urlDefinitiva2 + "chatApi",
       type: 'GET',
       data: 'pregunta=' + $value,
       success: function success(result) {

@@ -1,7 +1,7 @@
-<!-- Web Application Manifest 
-<link rel="manifest" href="{{ route('laravelpwa.manifest') }}">-->
-<link rel="manifest" href="https://prophysio.azurewebsites.net/manifest.json">
+<!-- Web Application Manifest -->
 
+<link rel="manifest" href="https://prophysio.azurewebsites.net/manifest.json">
+<!--<link rel="manifest" href="{{ route('laravelpwa.manifest') }}">-->
 <!-- Chrome for Android theme color -->
 <meta name="theme-color" content="{{ $config['theme_color'] }}">
 
@@ -46,3 +46,6 @@
         });
     }
 </script>
+
+<script src="https://prophysio.azurewebsites.net/js/notificaciones.js"></script>
+<!--<script src="{{asset('js/notifications.js')}}"></script>-->

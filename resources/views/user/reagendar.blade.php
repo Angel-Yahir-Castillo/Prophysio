@@ -5,72 +5,53 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
 @endsection
 
-@section('title', ' Agendar - Prophysio Huejutla')
+@section('title', ' Reagendar cita - Prophysio Huejutla')
 
 @section('content')
 
     
     <div class="section container">
-    {{ Breadcrumbs::render('agendaUF') }}
+    {{ Breadcrumbs::render('agendaU') }}
         <div class="row">
 
-            <form action="{{URL::secure('inicio/agendar/guardar')}}" method="POST" class="col s12">
+            <form action="{{URL::secure('inicio/cita/update')}}" method="POST" class="col s12">
                 @csrf
                 <div class="row card-panel">
 
-                    <center><b>Agendar una cita</b></center>
+                    <center><b>Reagendar una cita</b></center>
                     <div class="input-field col s12">
-                        <input id="nombre" type="text" name="nombre" class="validate" required>
-                        <label for="nombre">Nombre completo:</label>
-                        <strong style="color: red;">@error('nombre') {{ $message }} @enderror</strong> 
+                        <input id="folio" type="hidden" name="folio" value="{{$cita['folio']}}"readonly class="validate" required>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="paciente" type="text" name="paciente" value="{{$cita['paciente']}}"readonly class="validate" required>
+                        <label for="paciente">Paciente:</label>
                     </div>
 
                     <div class="input-field col m6 s12">
-                        <input id="correo" name="correo" value="{{Auth::user()->email}}" type="email" readonly class="validate" required>
-                        <label for="correo">Correo electronico:</label>
+                        <input id="terapeuta" name="terapeuta" value="{{$cita['terapeuta']}}" type="text" readonly class="validate" required>
+                        <label for="terapeuta">Terapeuta:</label>
                     </div>
 
                     <div class="input-field col m6 s12">
-                        <input id="telefono" name="telefono" value="{{Auth::user()->phone}}" type="tel" readonly class="validate" required>
-                        <label for="telefono">Telefono:</label>
-                    </div>
-
-                    <div class="input-field col s12 m6">
-                        <select id="tipo" name="tipo">
-                            @foreach ($tipos as $tipo)
-                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                            @endforeach
-                        </select>
-                        <label>Tipo de terapia</label>
-                        <strong style="color: red;">@error('tipo') {{ $message }} @enderror</strong> 
-                    </div>
-
-                    <div class="input-field col s12 m6">
-                        <select id="terapeuta" name="terapeuta">
-                        <option value="0" disabled selected>Terapeuta</option>
-                            @foreach ($terapeutas as $terapeuta)
-                                <option value="{{$terapeuta->id}}">{{$terapeuta->nombres.' '.$terapeuta->a_paterno.' '.$terapeuta->a_materno}}</option>
-                            @endforeach
-                        </select>
-                        <label>Terapeuta</label>
-                        <strong style="color: red;">@error('terapeuta') {{ $message }} @enderror</strong> 
+                        <input id="tipo" name="tipo" value="{{$cita['terapia']}}" type="text" readonly class="validate" required>
+                        <label for="tipo">Tipo de terapia:</label>
                     </div>
 
                     <div class="input-field col m6 s12">
                         <input id="dia" type="text" name="dia" class="validate" placeholder=""
                         pattern="\d{4}-\d{2}-\d{2}" title="Seleccione una fecha" readonly required>
-                        <label for="dia">Fecha de la cita:</label>
+                        <label for="dia">Nueva fecha para la cita:</label>
                         <strong style="color: red;">@error('dia') {{ $message }} @enderror</strong> 
                     </div>
 
                     <div class="input-field col m6 s12">
                         <input id="hora" type="text" name="hora" class="validate" placeholder=""
                         pattern="\d{4}-\d{2}-\d{2}" title="Seleccione una fecha"  readonly required>
-                        <label for="hora">Hora de la cita:</label>
+                        <label for="hora">Nueva hora para la cita:</label>
                         <strong style="color: red;">@error('hora') {{ $message }} @enderror</strong> 
                     </div>
 
-                    <center><button class="btn" type="submit" value="">Agendar
+                    <center><button class="btn" type="submit" value="">Reagendar
                         <i class="material-icons left">
                             content_paste
                         </i>
@@ -83,7 +64,7 @@
             </form>
         </div>
         <div class="row">
-            <div class="col s12"><center><b>Selecciona un terapeuta para poder elejir un dia para la cita</b></center></div>
+            <div class="col s12"><center><b>Selecciona un dia para la cita</b></center></div>
             <div class="col s12" id='calendar'></div>
         </div>
     </div>
@@ -109,19 +90,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems, options);
+            var instances = M.Modal.init(elems);
         });
 
         var horasDisponibles = null;
-        function opcionCambiada(){
-            if($terapeuta.value!==0){
-                verCalendario();
-            }
-        };
-        const $terapeuta = document.getElementById('terapeuta')
-        $terapeuta.addEventListener("change", opcionCambiada);
+        
+        const $terapeuta = "{{$cita['terapeuta_id']}}" ;
 
-
+        verCalendario();
         function verCalendario() {
             var hoy = moment().format('YYYY-MM-DD');
             var unMesDespues = moment().add(1, 'months').format('YYYY-MM-DD');
@@ -138,7 +114,7 @@
                     var $fecha = fechaHora.format('YYYY-MM-DD');
                     
                     try {
-                        const data = { 'fecha': $fecha, 'terapeuta': $terapeuta.value };
+                        const data = { 'fecha': $fecha, 'terapeuta': $terapeuta };
                         const urlLo= `http://127.0.0.1:8000/api/obtenerHoras`;
                         const urlHost= `https://prophysio.tagme.uno/public/api/obtenerHoras`;
                         const urlAzure = `https://prophysio.azurewebsites.net/api/obtenerHoras`;
@@ -185,7 +161,8 @@
             // Mostrar la ventana modal
             instance.open();
         }
-    
+
+     
 
     </script>
 
