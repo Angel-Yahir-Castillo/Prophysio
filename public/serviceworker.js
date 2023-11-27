@@ -1,16 +1,15 @@
-var staticCacheName = "prophysio-static";// + new Date().getTime();
-//var dynamicCacheName = "prophysio-dyna";
+var staticCacheName = "prophysio-static";
 var inmutableCacheName = "prophysio-inmutable";
 
 const APP_SHELL = [
     '/images/icons/icon-72.png',
     '/images/icons/icon-96.png',
     '/images/icons/icon-128.png',
+    '/images/icons/icon-144.png',
+    '/images/icons/icon-152.png',
     '/images/icons/icon-192.png',
     '/images/icons/icon-384.png',
     '/images/icons/icon-512.png',
-   // '/css/app.css',
-    //'/js/app.js',
 ];
 
 const APP_SHELL_INMUTABLE = [
@@ -19,6 +18,7 @@ const APP_SHELL_INMUTABLE = [
     'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js',
     '/',
+    '/offline'
 ];
 
 // Cache on install
