@@ -25,11 +25,11 @@
                         @foreach ($encuestas as $encuesta)
                             <tr>
                                 @if ($encuesta->calificacion == 2 )
-                                    <th>Muy buena</th>
-                                @elseif ($encuesta->calificacion == 1 )
                                     <th>Buena</th>
+                                @elseif ($encuesta->calificacion == 1 )
+                                    <th>Regular</th>
                                 @else 
-                                    <th>Muy mala</th>
+                                    <th>Mala</th>
                                 @endif
                                 
                                 <th>{{$encuesta->comentario}}</th>
@@ -60,9 +60,9 @@
         var miGrafico = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Mala','Regular', 'Buena'],
+                labels: ['Buena','Regular', 'Mala'],
                 datasets: [{
-                    label: 'Nivel de satisfaccion al agendar una cita en ' + tiempo,
+                    label: 'Nivel de satisfaccion al agendar una cita',
                     data: datos,
                     backgroundColor: '#C7F7F7',
                     borderColor: '#017bc6',
