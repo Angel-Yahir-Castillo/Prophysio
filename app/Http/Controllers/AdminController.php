@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Encuesta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
+use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
 
@@ -17,7 +18,11 @@ class AdminController extends Controller
 
     public function inicio()
     {
-        return view('admin.dashboard');
+        $encuestas = Encuesta::orderBy('created_at', 'desc')->paginate(4);
+        $total = Encuesta::select('calificacion', DB::raw('COUNT(*) as total'))
+            ->groupBy('calificacion')
+            ->pluck('total');
+        return view('admin.dashboard', compact(['encuestas','total']));
     }
 
     public function login(Request $request){
@@ -49,8 +54,13 @@ class AdminController extends Controller
         
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            if($request->tipo=="1")
-                return redirect(route('admin.dashboard'));
+            if($request->tipo=="1"){
+                $encuestas = Encuesta::orderBy('created_at', 'desc')->paginate(4);
+                $total = Encuesta::select('calificacion', DB::raw('COUNT(*) as total'))
+                ->groupBy('calificacion')
+                ->pluck('total');
+                return view('admin.dashboard', compact('encuestas'));
+            }
             else
                 return redirect(route('terapeuta.dashboard'));
         }

@@ -35,7 +35,7 @@
             <div class="user-view">
                 <div style="background-color: #C7F7F7;" class="background">
                 </div>
-                <a href="{{route('admin.dashboard')}}"><img class="circle" src="{{ asset('img/logo.jpeg') }}"></a>
+                <a href="{{route('admin.dashboard')}}"><img class="circle" src="{{ asset('images/icons/icono_app.png') }}"></a>
                 <a href="{{route('admin.dashboard')}}"><span class="black-text name">Prophysio Huejutla</span></a>
                 <a href="{{route('admin.dashboard')}}"><span class="black-text email">Administrador</span></a>
             </div>

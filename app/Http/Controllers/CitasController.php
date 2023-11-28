@@ -117,11 +117,13 @@ class CitasController extends Controller
         //$citas = Cita::where('estado_cita_id','1')
         //->where('user_id',$request->user)->get();
 
+        $fechaActual = \Carbon\Carbon::now()->toDateTimeString();
         $citas = Cita::select('citas.fecha_inicio','citas.paciente', 'terapeutas.nombres', 'terapeutas.a_paterno', 'terapeutas.a_materno', 'tipo_terapia.nombre','citas.folio')
         ->join('terapeutas','citas.terapeuta_id','=','terapeutas.id')
         ->join('tipo_terapia','citas.tipo_terapia_id','=','tipo_terapia.id')
         ->where('citas.user_id',$request->user)
         ->where('citas.estado_cita_id','1')
+        ->where('citas.fecha_inicio', '>=', $fechaActual)
         ->orderBy('citas.fecha_inicio', 'ASC') // Ordena por fecha_inicio de manera ascendente (la más próxima primero)
         ->get();
 
