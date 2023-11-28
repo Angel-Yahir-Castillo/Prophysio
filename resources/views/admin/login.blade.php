@@ -32,7 +32,7 @@
         <div class="row">
 
             <div class="col m2 l3 s0"></div>
-            <form action="{{URL:secure('login_admin')}}" method="POST" class="col l6 m8 s12">
+            <form action="{{URL::secure('login_admin')}}" method="POST" class="col l6 m8 s12">
 
             @csrf
                 <div class="row card-panel">
