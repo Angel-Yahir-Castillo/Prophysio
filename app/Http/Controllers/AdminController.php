@@ -59,7 +59,7 @@ class AdminController extends Controller
                 $total = Encuesta::select('calificacion', DB::raw('COUNT(*) as total'))
                 ->groupBy('calificacion')
                 ->pluck('total');
-                return view('admin.dashboard', compact('encuestas'));
+                return view('admin.dashboard', compact(['encuestas','total']));
             }
             else
                 return redirect(route('terapeuta.dashboard'));

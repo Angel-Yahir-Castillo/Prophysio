@@ -42,8 +42,8 @@
                 </table>
                 <center> {{ $encuestas->links() }} </center>
             </div>
-            <div class="col s12">
-                <canvas id="miGrafico" width="200" height="200"></canvas>
+            <div class="col s12 m6">
+                <canvas id="miGrafico" ></canvas>
             </div>
         </div>
         
